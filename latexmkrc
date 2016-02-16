@@ -1,0 +1,1 @@
+/Users/Ethan/dotfiles-local/host-Ethans-MacBook-Pro-2.local/latexmkrc
