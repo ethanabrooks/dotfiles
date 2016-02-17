@@ -1,4 +1,5 @@
 colorscheme gruvbox
+set background=dark
 
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
