@@ -1,1 +1,6 @@
-/Users/Ethan/dotfiles-local/vimrc.local
+colorscheme gruvbox
+
+nnoremap <leader>w :w<CR>
+nnoremap <C-w> :close<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+
