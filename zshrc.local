@@ -87,8 +87,48 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 # aliases
+alias aliases='ag "^alias|function" ~/.zshrc.local'
 alias zshrc='vi ~/.zshrc.local'
+alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
 alias bundles='vi ~/.vimrc.bundles.local'
-function 595 { cd ~/595/homework$1 && ls; }
-function 594 { cd ~/594/hw$1 && ls; }
+alias ignore-untracked=$'git status --porcelain | grep \'^??\' | cut -c4- >> .gitignore'
+function activate {
+  if [ $# == 0 ]; then 
+    source env/bin/activate
+  else
+    source $1/bin/activate
+  fi
+}
+function copy-to-eniac {
+  dest=$1
+  shift
+  scp $@ "ethanbro@eniac-l.seas.upenn.edu:~/"$dest
+}
+function ignore {
+  for var in "$@"
+  do
+    echo "$var" >> .gitignore
+  done
+}
+function 595 { 
+  if [ $# == 0 ]; then
+    cd ~/595 && ls
+  else
+    cd ~/595/hw$1 && ls
+   fi
+}
+function 594 { 
+  if [ $# == 0 ]; then
+    cd ~/594 && ls
+  else
+    cd ~/594/hw$1 && ls
+   fi
+}
+
+# pretty vi
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+# pebble
+export PEBBLE_PHONE=158.130.199.89
+

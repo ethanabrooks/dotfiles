@@ -13,3 +13,4 @@ Plug 'Shougo/vimproc.vim'
 " Prettiness
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
+Plug 'justinmk/vim-syntax-extra'

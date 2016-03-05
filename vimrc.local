@@ -5,3 +5,4 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+set t_Co=256
