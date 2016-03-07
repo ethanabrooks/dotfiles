@@ -91,6 +91,7 @@ alias aliases='ag "^alias|function" ~/.zshrc.local'
 alias zshrc='vi ~/.zshrc.local'
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
+alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias ignore-untracked=$'git status --porcelain | grep \'^??\' | cut -c4- >> .gitignore'
 function activate {
