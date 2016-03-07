@@ -1,12 +1,11 @@
 #!/bin/bash -ue
 
-myconfig=$(find . ! -name '*.sh' ! -name '.*' -depth 1)  # mine
-dotfiles=$(ls ~/dotfiles/*rc{,.*})  # thoughtbot's
-files=$myconfig$dotfiles
+myconfig=$(find dotfiles-local -maxdepth 1 -type f -not -name '*.sh')  # mine
+dotfiles=$(find dotfiles -maxdepth 1 -name '*rc' -or -name '*rc.*')  # thoughtbot's
+files="$myconfig $dotfiles"
 
 for file in $files
 do
-  #echo $file 
   ln -f -s $file ~/.$(basename $file)
 done
 
