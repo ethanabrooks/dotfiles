@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-cd ~/bin
-file=$1
-echo '#!/bin/zsh\n' >> $file
-chmod +x $file
-vim + $file
