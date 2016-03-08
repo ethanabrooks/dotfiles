@@ -5,4 +5,8 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+"execute this file
+nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
+
 set t_Co=256
+
