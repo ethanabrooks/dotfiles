@@ -93,6 +93,7 @@ alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
+alias tesla='ssh -v ethanbro@tesla.ldc.upenn.edu'
 alias ignore-untracked=$'git status --porcelain | grep \'^??\' | cut -c4- >> .gitignore'
 function activate {
   if [ $# == 0 ]; then 
