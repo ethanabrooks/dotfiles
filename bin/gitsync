@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+commit $1
+git pull
+git push

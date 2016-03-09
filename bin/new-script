@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-cd ~/bin
-vim -c "normal! i#!/bin/zsh" -c "normal! o"
