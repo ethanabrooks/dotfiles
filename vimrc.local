@@ -4,9 +4,19 @@ set background=dark
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
+
+"remap window switches
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 "execute this file
 nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
 
-set t_Co=256
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+set t_Co=256
+set guifont=Menlo:h13
