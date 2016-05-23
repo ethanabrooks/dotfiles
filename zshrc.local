@@ -98,8 +98,8 @@ alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias tesla='ssh -o ServerAliveInterval=60 ethanbro@tesla.ldc.upenn.edu'
 alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
-alias check-model="tesla bin/check-model"
-alias check-debug="tesla bin/check-debug"
+alias check1="tesla bin/check1"
+alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
 alias commit="git commit -am $@"
