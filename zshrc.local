@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/dotfiles-local/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # save last visited dir
@@ -144,3 +144,4 @@ export PEBBLE_PHONE=158.130.199.89
 
 current
 
+source ~/siri-bash.profile

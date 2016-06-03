@@ -20,3 +20,7 @@ Plug 'plasticboy/vim-markdown'
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
+
+" Lua
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'

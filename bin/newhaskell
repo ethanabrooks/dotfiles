@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+if [[ $1 == *.hs ]]; then
+  file=$1
+else
+  file=$1.hs
+fi
+echo '/usr/local/bin/runhaskell\n' >> $file
+chmod +x $file
+vim + $file
