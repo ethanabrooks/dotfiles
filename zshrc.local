@@ -104,6 +104,9 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
 alias commit="git commit -am $@"
 alias openscript="vi ~/bin/$1"
+alias hn001='ssh ethan_brooks@st13g01sa-hn001.genie.apple.com'
+alias batch='ssh ethan_brooks@pv11p04si-batch001.siri.apple.com'
+
 
 function activate {
   if [ $# -eq 0 ]; then 
