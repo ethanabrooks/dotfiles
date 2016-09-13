@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export PATH=/usr/local/bin:$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -103,18 +104,7 @@ alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
 alias commit="git commit -am $@"
-alias openscript="vi ~/bin/$1"
-alias st13='ssh ethan_brooks@st13g01sa-hn001.genie.apple.com'
-alias batch='ssh ethan_brooks@pv11p04si-batch001.siri.apple.com'
-alias rd13='ssh ethan_brooks@rd13g01sp-hn001.siri.apple.com'
-
-function copy-to-hn001 {
-  echo scp $1 ethan_brooks@st13g01sa-hn001.genie.apple.com:$2
-}
-
-function copy-from-hn001 {
-  scp ethan_brooks@st13g01sa-hn001.genie.apple.com:$1 $2
-}
+alias openscript="vi ~/dotfiles-local/bin/$1"
 
 function activate {
   if [ $# -eq 0 ]; then 
@@ -136,9 +126,4 @@ function current {
 # pretty vi
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
-# pebble
-export PEBBLE_PHONE=158.130.199.89
-
 current
-
-source ~/siri-bash.profile
