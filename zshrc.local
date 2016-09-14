@@ -127,3 +127,4 @@ function current {
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 current
+echo "source /opt/ros/kinetic/setup.bash"
