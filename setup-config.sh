@@ -1,7 +1,5 @@
 #!/bin/bash -ue
 
-git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git
-
 cd ~
 
 # download thoughbot dotfiles
@@ -23,3 +21,8 @@ fi
 
 # install plugins
 vim -E -c "PlugInstall" -c "qa!"
+if [[ "$unamestr" == 'Linux'  ]]; then 
+  platform='linux' 
+elif [[ "$unamestr" == 'FreeBSD'  ]]; then 
+  platform='freebsd' 
+fi
