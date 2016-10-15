@@ -118,10 +118,15 @@ fi
 source /opt/ros/indigo/setup.bash
 set -o vi
 
+# cd without typing cd
+shopt -s autocd
+
+# aliases
 BASHRC="$HOME/.bashrc"
 alias vi=vim
 alias bashrc="vi $BASHRC"
+alias vimrc="vi $HOME/.vimrc.local"
+alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
-shopt -s autocd
 
 alias source-ws=". /home/ethan/catkin_ws/devel/setup.bash"

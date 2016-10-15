@@ -1,6 +1,8 @@
 #!/bin/bash -ue
 
-myconfig=$(find dotfiles-local -maxdepth 1 -type f -not -name '*.sh')  # mine
+cd ~
+
+myconfig=$(find local-dotfiles -maxdepth 1 -type f -not -name '*.sh')  # mine
 dotfiles=$(find dotfiles -maxdepth 1 -name '*rc' -or -name '*rc.*')  # thoughtbot's
 files="$myconfig $dotfiles"
 
