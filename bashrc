@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -115,7 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/indigo/setup.bash
 set -o vi
 
 BASHRC="$HOME/.bashrc"
@@ -123,3 +123,5 @@ alias vi=vim
 alias bashrc="vi $BASHRC"
 alias commit="git commit -am $1"
 shopt -s autocd
+
+alias source-ws=". /home/ethan/catkin_ws/devel/setup.bash"
