@@ -4,6 +4,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'scrooloose/nerdtree'
+Plug 'osyo-manga/vim-over'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'

@@ -54,7 +54,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/.local/bin:$HOME/dotfiles-local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/local-dotfiles/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # save last visited dir
@@ -105,6 +105,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
 alias commit="git commit -am $@"
 alias openscript="vi ~/dotfiles-local/bin/$1"
+alias gitignore="echo $1 >> .gitignore"
 
 function activate {
   if [ $# -eq 0 ]; then 
