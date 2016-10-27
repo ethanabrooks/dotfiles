@@ -87,10 +87,11 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 bindkey -v
 
 # aliases
-#alias aliases='ag "^alias|function" ~/.zshrc.local'
+export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
 alias zshrc='vi ~/.zshrc.local'
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
+alias hyper='vi ~/.hyper.js'
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias tesla='ssh -o ServerAliveInterval=60 ethanbro@tesla.ldc.upenn.edu'
@@ -98,7 +99,7 @@ alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
 alias check1="tesla bin/check1"
 alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
-alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
+alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias openscript="vi ~/dotfiles-local/bin/$1"
 alias gitignore="echo $1 >> .gitignore"
@@ -131,3 +132,9 @@ prompt pure
 
 # zsh syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# source z
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit

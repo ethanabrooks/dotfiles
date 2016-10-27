@@ -15,6 +15,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'flazz/vim-colorschemes'
 
 " MarkDown
 Plug 'plasticboy/vim-markdown'

@@ -67,12 +67,14 @@ module.exports = {
     bell: 'SOUND',
 
     // if true, selected text will automatically be copied to the clipboard
-    copyOnSelect: false
+    copyOnSelect: false,
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    summonShortcut: 'Alt+Cmd+T'
   },
 
   // a list of plugins to fetch and install from npm
@@ -82,7 +84,12 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hyper-snazzy"
+    //'hyper-snazzy',
+    //'hyperterm-atom-dark',
+    //'hyperterm-hipster', 
+    //'hyperterm-firewatch',
+    'hyperterm-gruvbox-dark',
+    'hyperterm-summon'
   ],
 
   // in development, you can create a directory under
