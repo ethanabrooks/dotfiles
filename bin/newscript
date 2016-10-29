@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-cd ~/bin
+cd ~/dotfiles-local/bin
 file=$1
 echo '#!/bin/zsh\n' >> $file
 chmod +x $file

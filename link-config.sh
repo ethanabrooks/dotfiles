@@ -1,27 +1,21 @@
 #!/bin/bash -ue
 
+cd $HOME
 
-dotfiles=$HOME/dotfiles
+base_dir="$HOME/local-dotfiles"
 
-search-dotfiles() {
-  echo "find $dotfiles$1 -maxdepth 1"
-}
-dotfiles_local=$(search-dotfiles -local)
-echo $dotfiles_local
-myconfig=$($dotfiles_local -not -name '*.sh' -type f) # mine
-theirconfig=$($(search-dotfiles '') -name '*rc' -or -name '*rc.*') # thoughtbot's
-files="$myconfig $theirconfig"
+myconfig=$(find $base_dir -maxdepth 1 -type f -not -name '*.sh')  # mine
+dotfiles=$(find dotfiles -maxdepth 1 -name '*rc' -or -name '*rc.*')  # thoughtbot's
+files="$myconfig $dotfiles"
 
 for file in $files
 do
-  ln -f -s $file $HOME/.$(basename $file)
+ ln -f -s $file $HOME/.$(basename $file)
 done
 
-# link dotfiles-local/bin
-ln -f -s $HOME/dotfiles-local/bin $HOME/bin
+dirs="$base_dir/kwm"
 
-# if bin is not in path, add it
-if [[ $SHELL == "/bin/bash" ]] && [[ ":$PATH:" != *":$HOME/bin:"* ]]
-then
-  echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bashrc
-fi
+for dir in $dirs 
+do
+  ln -s -f $dir $HOME/.$(basename $dir)
+done

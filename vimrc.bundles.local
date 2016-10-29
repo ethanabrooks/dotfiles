@@ -4,6 +4,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'scrooloose/nerdtree'
+Plug 'osyo-manga/vim-over'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
@@ -14,3 +15,14 @@ Plug 'Shougo/vimproc.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'flazz/vim-colorschemes'
+
+" MarkDown
+Plug 'plasticboy/vim-markdown'
+
+" JavaScript
+Plug 'pangloss/vim-javascript'
+
+" Lua
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
