@@ -1,12 +1,10 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
 export PATH=/usr/local/bin:$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,13 +52,11 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/.local/bin:$HOME/dotfiles-local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/local-dotfiles/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -91,10 +87,11 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 
 # aliases
-#alias aliases='ag "^alias|function" ~/.zshrc.local'
+export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
 alias zshrc='vi ~/.zshrc.local'
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
+alias hyper='vi ~/.hyper.js'
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias tesla='ssh -o ServerAliveInterval=60 ethanbro@tesla.ldc.upenn.edu'
@@ -102,9 +99,10 @@ alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
 alias check1="tesla bin/check1"
 alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
-alias install-tensorflow="pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl"
+alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias openscript="vi ~/dotfiles-local/bin/$1"
+alias gitignore="echo $1 >> .gitignore"
 
 function activate {
   if [ $# -eq 0 ]; then 
@@ -127,4 +125,16 @@ function current {
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 current
-echo "source /opt/ros/kinetic/setup.bash"
+
+# pure
+autoload -U promptinit; promptinit
+prompt pure
+
+# zsh syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# source z
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit
