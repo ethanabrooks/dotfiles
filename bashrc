@@ -129,4 +129,4 @@ alias vimrc="vi $HOME/.vimrc.local"
 alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
 
-alias source-ws=". /home/ethan/catkin_ws/devel/setup.bash"
+source $HOME/catkin-ws/devel/setup.bash
