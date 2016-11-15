@@ -132,5 +132,4 @@ alias commit="git commit -am $1"
 source $HOME/catkin-ws/devel/setup.bash
 source /opt/ros/indigo/setup.bash  
 source /usr/share/drcsim/setup.sh
-source /usr/share/drcsim/setup.sh
 export ROS_PACKAGE_PATH=/home/servicerobot3/ros:/home/servicerobot3/catkin-ws/src:/opt/ros/indigo/share:/opt/ros/indigo/stacks
