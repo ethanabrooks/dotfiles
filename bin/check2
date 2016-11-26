@@ -1,0 +1,1 @@
+tail -f ~/database_nn/RNN-EM/nohup2.out
