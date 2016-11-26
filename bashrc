@@ -1,3 +1,6 @@
+CUDA=/usr/local/cuda-7.5
+export LD_LIBRARY_PATH=$CUDA/lib64
+export PATH=$PATH:$CUDA/bin
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -115,7 +118,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source /opt/ros/indigo/setup.bash
 set -o vi
 
 # cd without typing cd
@@ -129,4 +131,4 @@ alias vimrc="vi $HOME/.vimrc.local"
 alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
 
-alias source-ws=". /home/ethan/catkin_ws/devel/setup.bash"
+

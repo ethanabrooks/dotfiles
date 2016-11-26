@@ -24,7 +24,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 set t_Co=256
 set guifont=Menlo:h13
 
-let $PATH .= ';' . '$HOME/.local/bin/'
+let $PATH .= ':' . '$HOME/.local/bin/'
 
 "aesthetics
 set background=dark
