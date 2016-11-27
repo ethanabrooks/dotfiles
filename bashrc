@@ -130,3 +130,4 @@ alias bashrc="vi $BASHRC"
 alias vimrc="vi $HOME/.vimrc.local"
 alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
+alias gitignore='echo  >> .gitignore'
