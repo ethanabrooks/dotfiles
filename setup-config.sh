@@ -16,6 +16,7 @@ read name
 name=${name:-"$default_name"}
 git config --global user.name $name
 
+exit
 
 echo "Downloading thoughtbot dotfiles..."
 if ! [[ -e ~/dotfiles ]]  # check if already downloaded
@@ -26,7 +27,9 @@ fi
 
 echo "Do you want to use zsh for your shell? [y|n]"
 read want_zsh
-zsh_path="$(which zsh)"
+if [[ $want_zsh == 'y' ]]; then
+  zsh_path="$(which zsh)"
+fi
 
 echo "add ssh to git? [y|n]"
 read add_ssh
@@ -96,3 +99,5 @@ if [[ $add_ssh == 'y' ]]; then
     echo "pbcopy < ~/.ssh/id_rsa.pub"
   fi
 fi
+
+source $HOME/.bashrc
