@@ -1,6 +1,9 @@
 CUDA=/usr/local/cuda-7.5
 export LD_LIBRARY_PATH=$CUDA/lib64
 export PATH=$PATH:$CUDA/bin
+export PATH=$HOME/rust/bin:$PATH
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -123,6 +126,10 @@ set -o vi
 # cd without typing cd
 shopt -s autocd
 
+function gitignore {
+  echo $1 >> .gitignore
+}
+
 # aliases
 BASHRC="$HOME/.bashrc"
 alias vi=vim
@@ -130,4 +137,3 @@ alias bashrc="vi $BASHRC"
 alias vimrc="vi $HOME/.vimrc.local"
 alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
-alias gitignore='echo  >> .gitignore'
