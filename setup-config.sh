@@ -1,5 +1,7 @@
 #!/bin/bash -ue
 
+
+
 cd ~
 
 default_email="ethanabrooks@gmail.com"
@@ -15,8 +17,6 @@ echo "What name do you want to use for git? [default: $default_name]"
 read name
 name=${name:-"$default_name"}
 git config --global user.name $name
-
-exit
 
 echo "Downloading thoughtbot dotfiles..."
 if ! [[ -e ~/dotfiles ]]  # check if already downloaded
@@ -49,11 +49,14 @@ if [[ "$(uname)" == 'Linux'  ]]; then
       sudo apt-get install zsh
     fi
   fi
-  echo "downloading rcm"
-  sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
-  sudo apt-get update
-  sudo apt-get install rcm
-
+  PKG_OK=$(dpkg-query -W --showformat='${Status}\n' rcm|grep "install ok installed")
+  echo "Checking for rcm: $PKG_OK"
+  if [ "" == "$PKG_OK" ]; then
+    echo "rcm not installed. Downloading rcm"
+    sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
+    sudo apt-get update
+    sudo apt-get install rcm
+  fi
 elif [[ "$(uname)" == 'Darwin'  ]]; then 
   echo "Detected platform as OS X"
   echo "downloading rcm"
@@ -79,7 +82,7 @@ fi
 
 
 echo "Generating symlinks in $HOME"
-./local-dotfiles/link-config.sh
+$local_dotfiles/link-config.sh
 
 echo "Downloading vim-plug..."
 if ! [[ -e ~/.vim/autoload/plug.vim ]]  # check if already downloaded

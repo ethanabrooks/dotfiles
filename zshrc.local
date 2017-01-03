@@ -1,5 +1,8 @@
 # Path to your oh-my-zsh installation.
 export PATH=/usr/local/bin:$PATH
+local_dotfiles="$HOME/local-dotfiles"
+export CELLAR='/usr/local/Cellar/'
+fpath=($fpath $local_dotfiles)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,7 +55,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/.local/bin:$HOME/local-dotfiles/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$local_dotfiles/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # save last visited dir
@@ -101,7 +104,7 @@ alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias openscript="vi ~/dotfiles-local/bin/$1"
+alias openscript="vi $local_dotfiles/bin/$1"
 alias gitignore="echo $1 >> .gitignore"
 
 function activate {
@@ -127,14 +130,13 @@ source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 current
 
 # pure
-autoload -U promptinit; promptinit
+autoload -U promptinit
+promptinit
 prompt pure
 
 # zsh syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # source z
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-
-export CELLAR='/usr/local/Cellar/'
