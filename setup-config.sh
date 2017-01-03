@@ -16,6 +16,8 @@ read name
 name=${name:-"$default_name"}
 git config --global user.name $name
 
+exit
+
 echo "Downloading thoughtbot dotfiles..."
 if ! [[ -e ~/dotfiles ]]  # check if already downloaded
 then
