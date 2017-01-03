@@ -130,12 +130,11 @@ source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 current
 
 # pure
-autoload -U promptinit
-promptinit
+autoload -U promptinit; promptinit
 prompt pure
 
 # zsh syntax highlighting
-#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # source z
 zstyle ':completion:*' completer _complete
