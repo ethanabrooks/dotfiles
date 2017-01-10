@@ -19,13 +19,6 @@ fi
 echo 'add ssh to git? [y|n]'
 read add_ssh
 
-if [[ $add_ssh == 'y' ]]; then
-  email="$(git config user.email)"
-  ssh-keygen -t rsa -b 4096 -C $email
-  eval "$(ssh-agent -s)"
-  ssh-add $HOME/.ssh/id_rsa
-fi
-
 if [[ "$(uname)" == 'Linux'  ]]; then 
   echo 'Detected platform as Linux'
 
@@ -88,18 +81,7 @@ echo 'Installing plugins'
 vim -c PluginInstall -c qall
 
 if [[ $add_ssh == 'y' ]]; then
-  echo "Copying SSH key to clipboard:"
-  if [[ "$(uname)" == 'Linux'  ]]; then 
-    PKG_OK=$(dpkg-query -W --showformat='${Status}' xclip)
-    echo "Checking for xclip: $PKG_OK"
-    if [ '' == "$PKG_OK" ]; then
-      echo 'xclip not installed. Downloading...'
-      sudo apt-get install xclip
-    fi
-    xclip -sel clip < ~/.ssh/id_rsa.pub
-  elif [[ "$(uname)" == 'Darwin'  ]]; then 
-    pbcopy < ~/.ssh/id_rsa.pub
-  fi
+  $HOME/local_dotfiles/bin/add_ssh
 fi
 
 source $HOME/.bashrc
