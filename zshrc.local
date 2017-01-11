@@ -2,7 +2,7 @@
 export PATH=/usr/local/bin:$PATH
 local_dotfiles="$HOME/local-dotfiles"
 export CELLAR='/usr/local/Cellar/'
-fpath=($fpath $local_dotfiles)
+fpath=($fpath $local_dotfiles/pure)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
