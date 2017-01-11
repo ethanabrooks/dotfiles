@@ -89,9 +89,11 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 # vim please!
 bindkey -v
 
+export ZSHRC="$HOME/.zshrc.local"
+
 # aliases
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
-alias zshrc='vi ~/.zshrc.local'
+alias zshrc='vi $ZSHRC'
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
 alias hyper='vi ~/.hyper.js'
@@ -106,6 +108,7 @@ alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias openscript="vi $local_dotfiles/bin/$1"
 alias gitignore="echo $1 >> .gitignore"
+alias i3config="vi ~/.i3/config"
 
 function activate {
   if [ $# -eq 0 ]; then 
@@ -139,3 +142,7 @@ source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source z
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+
+# ros
+source /opt/ros/indigo/setup.zsh
+source ~/catkin/devel/setup.zsh

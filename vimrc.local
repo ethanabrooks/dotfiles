@@ -14,6 +14,8 @@ nnoremap <leader>x :<up><CR>
 command! Sovim source $MYVIMRC
 "easy update plugins
 command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
+"delete trailing whitespace
+command! Despace %s/\s\+\n/\r/g
 
 
 let $BUNDLES = "~/.vimrc.bundles.local"
