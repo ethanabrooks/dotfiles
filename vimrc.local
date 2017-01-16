@@ -22,6 +22,8 @@ nnoremap <leader>x :<up><CR>
 command! Sovim source $MYVIMRC
 "easy update plugins
 command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
+"delete trailing whitespace
+command! Despace %s/\s\+\n/\r/g
 
 
 let $BUNDLES = "~/.vimrc.bundles.local"
@@ -32,8 +34,10 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 set t_Co=256
 set guifont=Menlo:h13
 
-let $PATH .= ';' . '$HOME/.local/bin/'
+let $PATH .= ':' . '$HOME/.local/bin/'
 
 "aesthetics
 set background=dark
 colorscheme gruvbox 
+
+let g:syntastic_python_python_exec = '/usr/bin/python3'

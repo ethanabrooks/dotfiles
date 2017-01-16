@@ -1,3 +1,9 @@
+CUDA=/usr/local/cuda-7.5
+export LD_LIBRARY_PATH=$CUDA/lib64
+export PATH=$PATH:$CUDA/bin
+export PATH=$HOME/rust/bin:$PATH
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -115,11 +121,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source /opt/ros/indigo/setup.bash
 set -o vi
 
 # cd without typing cd
 shopt -s autocd
+
+function gitignore {
+  echo $1 >> .gitignore
+}
 
 # aliases
 BASHRC="$HOME/.bashrc"
