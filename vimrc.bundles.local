@@ -1,4 +1,4 @@
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
@@ -29,3 +29,6 @@ Plug 'xolox/vim-lua-ftplugin'
 
 " Rust
 Plug 'rust-lang/rust.vim'
+
+" GLSL
+Plug 'tikhomirov/vim-glsl'
