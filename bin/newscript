@@ -1,7 +1,4 @@
 #!/bin/zsh
 
 cd ~/local-dotfiles/bin
-file=$1
-echo '#!/bin/zsh\n' >> $file
-chmod +x $file
-vi + $file
+newexec $1
