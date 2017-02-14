@@ -1,5 +1,0 @@
-#!/bin/zsh
-cd ~/seq2seq/
-source bin/activate
-cd translate/
-python translate.py --decode
