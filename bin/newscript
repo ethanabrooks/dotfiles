@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+cd ~/local-dotfiles/bin
+newexec $1
