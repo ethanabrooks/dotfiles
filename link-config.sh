@@ -11,11 +11,13 @@ files="$myconfig $dotfiles"
 for file in $files
 do
  ln -f -s $file $HOME/.$(basename $file)
+ echo "ln -f -s $file $HOME/.$(basename $file)"
 done
 
-dirs="$base_dir/kwm"
+dirs="$base_dir/kwm $base_dir/git"
 
 for dir in $dirs 
 do
   ln -s -f $dir $HOME/.$(basename $dir)
+  echo "ln -s -f $dir $HOME/.$(basename $dir)"
 done

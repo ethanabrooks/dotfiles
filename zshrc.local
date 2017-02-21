@@ -111,6 +111,7 @@ alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias gitignore="echo $1 >> .gitignore"
 alias i3config="vi ~/.i3/config"
+alias ls='ls --color'
 
 function chpwd {
   ls
@@ -134,6 +135,9 @@ prompt pure
 # zsh syntax highlighting
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
 # source z
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
@@ -142,9 +146,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
-# ros
-source /opt/ros/indigo/setup.zsh
-source ~/catkin/devel/setup.zsh
 
 # cuda
 export PATH="/usr/local/cuda-8.0/bin:$PATH"
