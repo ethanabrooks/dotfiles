@@ -1,15 +1,10 @@
-nnoremap <leader>w :w<CR>
+nnoremap <C-s> :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
-o
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
 
 set clipboard=unnamed
 autocmd BufRead,BufNewFile *.md setlocal spell

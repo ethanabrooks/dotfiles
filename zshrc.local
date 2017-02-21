@@ -1,8 +1,8 @@
 # Path to your oh-my-zsh installation.
-export PATH=/usr/local/bin:$PATH
 local_dotfiles="$HOME/local-dotfiles"
-export CELLAR='/usr/local/Cellar/'
 fpath=($fpath $local_dotfiles/pure)
+export PATH=/usr/local/bin:$PATH
+export CELLAR='/usr/local/Cellar/'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -89,12 +89,14 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 # vim please!
 bindkey -v
 
-export ZSHRC="$HOME/.zshrc.local"
+export zshrc="$HOME/.zshrc.local"
 
 # aliases
 export tesla='ethanbro@tesla.ldc.upenn.edu'
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
-alias zshrc='vi $ZSHRC'
+export local_bin="$local_dotfiles/bin/"
+
+alias zshrc="vi $zshrc"
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
 alias hyper='vi ~/.hyper.js'
@@ -107,17 +109,9 @@ alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias openscript="vi $local_dotfiles/bin/$1"
 alias gitignore="echo $1 >> .gitignore"
 alias i3config="vi ~/.i3/config"
 
-function activate {
-  if [ $# -eq 0 ]; then 
-    source env/bin/activate
-  else
-    source $1/bin/activate
-  fi
-}
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
@@ -144,6 +138,16 @@ source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
+# virtualenvwrapper
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
+
 # ros
 source /opt/ros/indigo/setup.zsh
 source ~/catkin/devel/setup.zsh
+
+# cuda
+export PATH="/usr/local/cuda-8.0/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
+
+export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4"
