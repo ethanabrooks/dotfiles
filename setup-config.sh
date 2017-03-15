@@ -31,6 +31,8 @@ fi
 print 'Cloning thoughtbot dotfiles...'
 git clone https://github.com/thoughtbot/dotfiles.git || :
 env RCRC=$HOME/dotfiles/rcrc rcup
+
+print 'Linking local dotfiles'
 bash $local_dotfiles/link-config.sh
 
 print 'Downloading vim-plug...'
@@ -46,17 +48,19 @@ sed -i '1iset encoding=utf-8\nsetglobal fileencoding=utf-8' $HOME/.vimrc
 print 'Installing vim plugins...'
 vim -c PlugInstall -c qall
 
-print 'Cloning zsh-syntax-highlighting...'
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git || :
-
-#print 'Sourcing zshrc...'
+# zsh stuff
 if [[ $privileged == 'y' ]]; then
-  chsh -s $(which zsh)
-fi
-zsh
+  print 'Cloning zsh-syntax-highlighting...'
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git || :
 
-print 'Downloading oh-my-zsh...'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || :
+  chsh -s $(which zsh)
+
+  print 'Downloading oh-my-zsh...'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || :
+fi
+
 
 GREEN='\033[0;32m'
-print "${GREEN}All done! Congratulations, your system is all setup." TODO
+print "${GREEN}All done! Congratulations, your system is all setup."
+zsh
+
