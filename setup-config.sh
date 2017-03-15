@@ -40,7 +40,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 print 'Cloning gruvbox'
-git clone https://github.com/morhetz/gruvbox.git ~/.vim/bundle/gruvbox
+git clone https://github.com/morhetz/gruvbox.git ~/.vim/bundle/gruvbox || :
 
 # hack to fix file encoding in vimrc
 sed -i '1iset encoding=utf-8\nsetglobal fileencoding=utf-8' $HOME/.vimrc
