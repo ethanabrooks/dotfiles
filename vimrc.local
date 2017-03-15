@@ -1,4 +1,4 @@
-nnoremap <C-s> :w<CR>
+nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
@@ -8,6 +8,8 @@ filetype plugin indent on
 
 set clipboard=unnamed
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.world set filetype=xml
+autocmd BufRead,BufNewFile *.launch set filetype=xml
 
 "execute this file
 nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
@@ -36,3 +38,6 @@ set background=dark
 colorscheme gruvbox 
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+set encoding=utf-8
+setglobal fileencoding=utf-8
