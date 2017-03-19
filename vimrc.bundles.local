@@ -35,3 +35,9 @@ Plug 'tikhomirov/vim-glsl'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" Elixir
+Plug 'elixir-lang/vim-elixir'
+
+" Swift
+Plug 'keith/swift.vim'

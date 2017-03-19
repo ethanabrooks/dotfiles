@@ -1,4 +1,4 @@
-nnoremap <C-s> :w<CR>
+nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
@@ -19,6 +19,8 @@ command! Sovim source $MYVIMRC
 command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
 "delete trailing whitespace
 command! Despace %s/\s\+\n/\r/g
+"add shebang and make executable
+command! Shebang !chmod +w % && 
 
 
 let $BUNDLES = "~/.vimrc.bundles.local"
@@ -36,3 +38,7 @@ set background=dark
 colorscheme gruvbox 
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+"merlin for OCaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
