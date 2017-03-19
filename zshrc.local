@@ -107,7 +107,6 @@ alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias gitignore="echo $1 >> .gitignore"
 alias i3config="vi ~/.i3/config"
 #alias ls='ls --color'
 
@@ -148,7 +147,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 # cuda
 export PATH="/usr/local/cuda-8.0/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
-export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4"
 
 # Malmo
 export MALMO_XSD_PATH=~/MalmoPlatform/Schemas

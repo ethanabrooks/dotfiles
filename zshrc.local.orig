@@ -94,14 +94,10 @@ export zshrc="$HOME/.zshrc.local"
 # aliases
 export tesla='ethanbro@tesla.ldc.upenn.edu'
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
-<<<<<<< HEAD
-export local_bin="$local_dotfiles/bin/"
+export bin="$local_dotfiles/bin/"
 
+alias catkin="~/docker/catkin"
 alias zshrc="vi $zshrc"
-=======
-export WORKON_HOME='~/.virtualenvs'
-alias zshrc='vi $zshrc'
->>>>>>> d35ab4abfdafb0a86831acb8715af3018c91500f
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
 alias hyper='vi ~/.hyper.js'
@@ -109,14 +105,11 @@ alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias tesla="ssh $tesla"
 alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
-alias check1="tesla bin/check1"
-alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias gitignore="echo $1 >> .gitignore"
 alias i3config="vi ~/.i3/config"
-alias ls='ls --color'
+#alias ls='ls --color'
 
 function chpwd {
   ls
@@ -147,19 +140,26 @@ source /usr/local/bin/virtualenvwrapper.sh
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
-<<<<<<< HEAD
 # virtualenvwrapper
-export WORKON_HOME="$HOME/.virtualenvs"
+export WORKON_HOME="$HOME/virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
-# ros
-source /opt/ros/indigo/setup.zsh
-source ~/catkin/devel/setup.zsh
 
 # cuda
 export PATH="/usr/local/cuda-8.0/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
-
+<<<<<<< HEAD
 export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4"
+
+# Malmo
+export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
+
+# OPAM configuration
+. /Users/ethan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 =======
->>>>>>> d35ab4abfdafb0a86831acb8715af3018c91500f
+
+# ros
+source /opt/ros/indigo/setup.zsh
+source $HOME/ardrone/catkin/devel/setup.zsh
+export ROS_MASTER_URI=http://localhost:11311/
+>>>>>>> 0ba0de6bb178cb336c7542ac9fd147fdffc2f1b9

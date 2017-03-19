@@ -1,26 +1,38 @@
 #!/bin/zsh
 
 if [[ $# -eq 1 ]]; then
-  if [[ $1 -lt 2 || $1 -gt 4 ]];  then
-    echo "$1 must be between 2 and 4"
+  if [[ $1 -lt 1 || $1 -gt 3 ]];  then
+    echo "$1 must be between 1 and 3"
     exit
   fi
+  echo here
   array=($1)
 else
-  array=(2 3 4)
+  array=(1 2 3)
 fi
 
-image=qbert
-dir=tf-docker
-src=$HOME/$dir
+src=$(pwd)
+while [[ "$src" != '/' ]]; do
+  echo src: $src
+  if [[ -a $src/Dockerfile ]]; then
+    break
+  fi
+  src=$(dirname "$src")
+done
+
+if [[ "$src" == '/' ]]; then
+  echo "No Dockerfile found."
+  exit 0
+fi
+
+project=$(basename $src)
 
 for x in $array; do
-  server=ethan@10.113.2.1$x
-  dst=$server:~/
-  rsync -av $src $dst \
-    --exclude $src/rl_kit/rl_kit/examples/traces/*.json \
-    --exclude $src/rl_kit/.idea
-  ssh $server "docker build -t $image -f $dir/Dockerfile $dir" &
+  echo $server
+  dst=gpu$x:$HOME/
+  rsync -av $src $dst --filter=':- .gitignore' --exclude '.git' \
+    || exit 1 # stop if rsync fails
+  ssh gpu$x "docker build -t $project -f $project/Dockerfile $project" &
 done
 wait
 echo "All synced."
