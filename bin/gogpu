@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if [[ $1 -lt 2 || $1 -gt 4 ]];  then
+  echo "$1 must be between 2 and 4"
+  exit
+fi
+
+ssh ethan@10.113.2.1$(expr 1 + $1)
