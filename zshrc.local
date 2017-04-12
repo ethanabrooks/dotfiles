@@ -108,6 +108,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.i3/config"
+alias brew="sudo apt-get"
 #alias ls='ls --color'
 
 function chpwd {

@@ -1,0 +1,9 @@
+[user]
+	name = Ethan Brooks
+	email = ethanabrooks@gmail.com
+[web]
+	browser = google-chrome
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

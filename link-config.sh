@@ -14,7 +14,7 @@ do
  echo "ln -f -s $file $HOME/.$(basename $file)"
 done
 
-dirs="$base_dir/kwm $base_dir/git"
+dirs="$base_dir/kwm $base_dir/git $base_dir/i3"
 
 for dir in $dirs 
 do
