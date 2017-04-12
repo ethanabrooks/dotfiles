@@ -14,9 +14,9 @@ do
  echo "ln -f -s $file $HOME/.$(basename $file)"
 done
 
-dirs="$base_dir/kwm $base_dir/git $base_dir/i3"
-
-for dir in $dirs 
+dirs=( git i3 ssh )
+dirs=( "${dirs[@]/#/$base_dir/}" )  # prepend base_dir
+for dir in ${dirs[@]}
 do
   ln -s -f $dir $HOME/.$(basename $dir)
   echo "ln -s -f $dir $HOME/.$(basename $dir)"

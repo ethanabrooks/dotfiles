@@ -153,6 +153,5 @@ export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/loca
 # Malmo
 export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
 
-source /opt/ros/indigo/setup.zsh
-source ~/ardrone/catkin/devel/setup.zsh
+source /opt/ros/kinetic/setup.zsh
 source ~/catkin/devel/setup.zsh
