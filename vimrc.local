@@ -8,6 +8,8 @@ filetype plugin indent on
 
 set clipboard=unnamed
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.launch set filetype=xml
+autocmd BufRead,BufNewFile *.world set filetype=xml
 
 "execute this file
 nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
