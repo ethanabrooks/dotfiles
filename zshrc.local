@@ -110,7 +110,7 @@ alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.i3/config"
 alias brew="sudo apt-get"
-#alias ls='ls --color'
+alias ls='ls --color'
 
 function chpwd {
   ls
@@ -148,10 +148,12 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # cuda
 export PATH="/usr/local/cuda-8.0/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/home/ethan/mjpro150/bin/:/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
 
 # Malmo
 export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
 
 source /opt/ros/kinetic/setup.zsh
-source ~/catkin/devel/setup.zsh
+source /home/ethan/ardrone-project/catkin/devel/setup.zsh
+#source activate a3c
+synclient MaxTapTime=0

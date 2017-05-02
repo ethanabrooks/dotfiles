@@ -1,21 +1,21 @@
 ControlMaster auto
-ControlPath /home/ethan/.ssh/tmp/%h_%p_%r
+#ControlPath /home/ethan/.ssh/tmp/%h_%p_%r
 ControlPersist 600
 
 # Cluster.
-Host gpu1
+Host mla1
     HostName 10.113.2.12
     RSAAuthentication yes
     User ethan
     IdentityFile ~/.ssh/id_rsa
 
-Host gpu2
+Host mla2
     HostName 10.113.2.13
     RSAAuthentication yes
     User ethan
     IdentityFile ~/.ssh/id_rsa
 
-Host gpu3
+Host mla3
     HostName 10.113.2.14
     RSAAuthentication yes
     User ethan

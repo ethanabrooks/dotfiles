@@ -1,14 +1,33 @@
 #!/bin/zsh
 
-if [[ $# -eq 1 ]]; then
-  if [[ $1 -lt 1 || $1 -gt 3 ]];  then
-    echo "$1 must be between 1 and 3"
+
+all=false
+
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+      -g|--mla)
+        mla_id="$2"
+        shift # past argument
+      ;;
+      -a|--all)
+        all=true
+      ;;
+      *)
+      ;;
+  esac
+  shift # past argument or value
+done
+
+if [[ -z "$mla_id" ]]; then
+  array=(1 2 3)
+else
+  if [[ $mla_id -lt 1 || $mla_id -gt 3 ]];  then
+    echo "$mla_id must be between 1 and 3"
     exit
   fi
-  echo here
-  array=($1)
-else
-  array=(1 2 3)
+  array=($mla_id)
 fi
 
 src=$(pwd)
@@ -29,10 +48,15 @@ project=$(basename $src)
 
 for x in $array; do
   echo $server
-  dst=gpu$x:$HOME/
-  rsync -av $src $dst --filter=':- .gitignore' --exclude '.git' \
-    || exit 1 # stop if rsync fails
-  ssh gpu$x "docker build -t $project -f $project/Dockerfile $project" &
+  dst=mla$x:$HOME/
+  if $all; then
+    rsync -av $src $dst --exclude '.git' \
+      || exit 1 # stop if rsync fails
+  else
+    rsync -av $src $dst --filter=':- .gitignore' --exclude '.git' \
+      || exit 1 # stop if rsync fails
+  fi
+  ssh mla$x "docker build -t $project -f $project/Dockerfile $project" &
 done
 wait
 echo "All synced."
