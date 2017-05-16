@@ -1,0 +1,34 @@
+ControlMaster auto
+#ControlPath /home/ethan/.ssh/tmp/%h_%p_%r
+ControlPersist 600
+
+# Cluster.
+Host mla1
+    HostName 10.113.2.12
+    RSAAuthentication yes
+    User ethan
+    IdentityFile ~/.ssh/id_rsa
+
+Host mla2
+    HostName 10.113.2.13
+    RSAAuthentication yes
+    User ethan
+    IdentityFile ~/.ssh/id_rsa
+
+Host mla3
+    HostName 10.113.2.14
+    RSAAuthentication yes
+    User ethan
+    IdentityFile ~/.ssh/id_rsa
+
+Host deep
+  HostName k40
+  RSAAuthentication yes
+  User ethan
+  IdentityFile ~/.ssh/id_rsa
+
+Host rasd
+  HostName 10.108.21.141
+  RSAAuthentication yes
+  User ethan
+  IdentityFile ~/.ssh/id_rsa

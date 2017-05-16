@@ -94,23 +94,24 @@ export zshrc="$HOME/.zshrc.local"
 # aliases
 export tesla='ethanbro@tesla.ldc.upenn.edu'
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
-export bin="$local_dotfiles/bin/"
+export local_bin="$local_dotfiles/bin/"
 
 alias zshrc="vi $zshrc"
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
-alias brew='sudo apt-get' 
 alias hyper='vi ~/.hyper.js'
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles.local'
 alias tesla="ssh $tesla"
 alias eniac='ssh ethanbro@eniac-l.seas.upenn.edu'
+alias check1="tesla bin/check1"
+alias check2="tesla bin/check2"
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
+alias gitignore="echo $1 >> .gitignore"
 alias i3config="vi ~/.i3/config"
-alias brew="sudo apt-get"
-alias ls='ls --color'
+#alias ls='ls --color'
 
 function chpwd {
   ls
@@ -148,12 +149,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # cuda
 export PATH="/usr/local/cuda-8.0/bin:$PATH"
-export LD_LIBRARY_PATH="/home/ethan/mjpro150/bin/:/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
 
-# Malmo
+export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4"
 export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
-
-source /opt/ros/kinetic/setup.zsh
-source /home/ethan/ardrone-project/catkin/devel/setup.zsh
-#source activate a3c
-synclient MaxTapTime=0
+#export PYTHONPATH=~/MalmoPlatform/build/Malmo/src/PythonWrapper

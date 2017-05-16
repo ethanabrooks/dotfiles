@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+
+all=false
+
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+      -g|--mla)
+        mla_id="$2"
+        shift # past argument
+      ;;
+      -a|--all)
+        all=true
+      ;;
+      *)
+      ;;
+  esac
+  shift # past argument or value
+done
+
+if [[ -z "$mla_id" ]]; then
+  array=(1 2 3)
+else
+  if [[ $mla_id -lt 1 || $mla_id -gt 3 ]];  then
+    echo "$mla_id must be between 1 and 3"
+    exit
+  fi
+  array=($mla_id)
+fi
+
+src=$(pwd)
+while [[ "$src" != '/' ]]; do
+  echo src: $src
+  if [[ -a $src/Dockerfile ]]; then
+    break
+  fi
+  src=$(dirname "$src")
+done
+
+if [[ "$src" == '/' ]]; then
+  echo "No Dockerfile found."
+  exit 0
+fi
+
+project=$(basename $src)
+
+for x in $array; do
+  echo $server
+  dst=mla$x:$HOME/
+  if $all; then
+    rsync -av $src $dst --exclude '.git' \
+      || exit 1 # stop if rsync fails
+  else
+    rsync -av $src $dst --filter=':- .gitignore' --exclude '.git' \
+      || exit 1 # stop if rsync fails
+  fi
+  ssh mla$x "docker build -t $project -f $project/Dockerfile $project" &
+done
+wait
+echo "All synced."

@@ -1,98 +1,72 @@
 #!/bin/bash -ue
 
+local_dotfiles=$PWD
 cd ~
 
-default_email="ethanabrooks@gmail.com"
-default_name="Ethan Brooks"
+YELLOW='\e[33m'
+NORMAL='\e[0m'
 
-echo "What email do you want to use for git? [default: $default_email]"
-read email
-email=${email:-"$default_email"}
+function print() {
+  echo -e "$YELLOW$1$NORMAL"
+}
 
-git config --global user.email $email
+print "Do you have root privileges? [y|n]"
+read privileged
 
-echo "What name do you want to use for git? [default: $default_name]"
-read name
-name=${name:-"$default_name"}
-git config --global user.name $name
+if [[ $privileged == 'y' ]]; then
+  if [[ "$(uname)" == 'Linux' ]]; then
+    # for Chrome
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
-
-echo "Downloading thoughtbot dotfiles..."
-if ! [[ -e ~/dotfiles ]]  # check if already downloaded
-then
-  git clone git@github.com:thoughtbot/dotfiles.git
-fi
-
-
-echo "Do you want to use zsh for your shell? [y|n]"
-read want_zsh
-zsh_path="$(which zsh)"
-
-echo "add ssh to git? [y|n]"
-read add_ssh
-
-if [[ $add_ssh == 'y' ]]; then
-  ssh-keygen -t rsa -b 4096 -C $email
-  eval "$(ssh-agent -s)"
-  ssh-add $HOME/.ssh/id_rsa
-fi
-
-if [[ "$(uname)" == 'Linux'  ]]; then 
-  echo "Detected platform as Linux"
-
-  if [[ $want_zsh == 'y' ]]; then
-    if [[ $zsh_path == '' ]]; then
-      echo "Downloading zsh..."
-      sudo apt-get install zsh
-    fi
+    sudo apt-get update
+    sudo apt-get install -y \
+      software-properties-common \
+      python-software-properties
+    sudo add-apt-repository -y ppa:martin-frost/thoughtbot-rcm
+    sudo apt-get update
+    sudo apt-get install -y ssh zsh rcm google-chrome-stable
+  elif [[ "$(uname)" == 'Darwin' ]]; then
+    brew tap thoughtbot/formulae
+    brew install rcm zsh
+    brew cask install google-chrome
   fi
-  echo "downloading rcm"
-  sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
-  sudo apt-get update
-  sudo apt-get install rcm
-
-elif [[ "$(uname)" == 'Darwin'  ]]; then 
-  echo "Detected platform as OS X"
-  echo "downloading rcm"
-  brew tap thoughtbot/formulae
-  brew install rcm
+  sudo pip install virtualenvwrapper
 fi
 
-echo "Symlinking dotfiles"
+print 'Cloning thoughtbot dotfiles...'
+git clone https://github.com/thoughtbot/dotfiles.git || :
 env RCRC=$HOME/dotfiles/rcrc rcup
 
-if [[ $want_zsh == 'y' ]]; then
-  echo "Changing shell to zsh"
-  chsh -s $zsh_path
+print 'Linking local dotfiles'
+bash $local_dotfiles/link-config.sh
 
-  echo "Downloading oh-my-zhs..."
-  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-elif [[ $want_zsh == 'n' ]]; then
-  echo "Changing shell to bash"
-  chsh -s "$(which bash)"
-else
-  echo "Did not understand whether you want zsh. Leaving shell as is."
+print 'Downloading vim-plug...'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+print 'Cloning gruvbox'
+git clone https://github.com/morhetz/gruvbox.git ~/.vim/bundle/gruvbox || :
+
+# hack to fix file encoding in vimrc
+sed -i '1iset encoding=utf-8\nsetglobal fileencoding=utf-8' $HOME/.vimrc
+
+print 'Installing vim plugins...'
+vim -c PlugInstall -c qall
+
+# zsh stuff
+if [[ $privileged == 'y' ]]; then
+  print 'Cloning zsh-syntax-highlighting...'
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git || :
+
+  chsh -s $(which zsh)
+
+  print 'Downloading oh-my-zsh...'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || :
 fi
 
 
-echo "Generating symlinks in $HOME"
-./local-dotfiles/link-config.sh
+GREEN='\033[0;32m'
+print "${GREEN}All done! Congratulations, your system is all setup."
+zsh
 
-echo "Downloading vim-plug..."
-if ! [[ -e ~/.vim/autoload/plug.vim ]]  # check if already downloaded
-then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-vim -E -c "PlugInstall" -c "qa!"
-
-if [[ $add_ssh == 'y' ]]; then
-  echo "Command to copy SSH key to clipboard:"
-  if [[ "$(uname)" == 'Linux'  ]]; then 
-    sudo apt-get install xclip
-    echo "xclip -sel clip < ~/.ssh/id_rsa.pub"
-  elif [[ "$(uname)" == 'Darwin'  ]]; then 
-    echo "pbcopy < ~/.ssh/id_rsa.pub"
-  fi
-fi

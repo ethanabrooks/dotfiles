@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+if [[ $1 -eq -h || $1 -eq --help || $# -lt 3 ]]; then
+  echo "usage: $(basename $0) [gpu-number] [image-name] [docker-path] [(optional) destination-path]"
+  return 0
+fi
+
+gpu_dir=/tmp/
+dst=${4:-$(pwd)}
+container=$(ssh gpu$1 "docker ps -a" | grep $2 | awk '{print $1}')
+docker_path=$container:$3
+file=$(basename $docker_path)
+
+echo "copying $docker_path to $dst"
+ssh gpu$1 "docker cp $docker_path $gpu_dir" || exit 1
+rsync -av gpu$1:$gpu_dir/$file $dst
