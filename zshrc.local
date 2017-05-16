@@ -1,8 +1,29 @@
 # Path to your oh-my-zsh installation.
 local_dotfiles="$HOME/local-dotfiles"
-fpath=($fpath $local_dotfiles/pure)
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$HOME/.local/bin:$local_dotfiles/bin:/usr/local/bin:$PATH
 export CELLAR='/usr/local/Cellar/'
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# virtualenvwrapper
+export WORKON_HOME="$HOME/virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
+
+# cuda
+export PATH="/usr/local/cuda-8.0/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
+
+# Malmo
+export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
+
+export AF_PATH='/usr/local/share/ArrayFire/'
+
+# aliases
+export tesla='ethanbro@tesla.ldc.upenn.edu'
+export bin="$local_dotfiles/bin/"
+export zshrc="$HOME/.zshrc.local"
+
+fpath=($fpath $local_dotfiles/pure)
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,11 +76,6 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/.local/bin:$local_dotfiles/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -89,13 +105,9 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 # vim please!
 bindkey -v
 
-export zshrc="$HOME/.zshrc.local"
+local_dotfiles="$HOME/local-dotfiles"
 
 # aliases
-export tesla='ethanbro@tesla.ldc.upenn.edu'
-export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.11.0rc1-py2-none-any.whl
-export bin="$local_dotfiles/bin/"
-
 alias zshrc="vi $zshrc"
 alias tmuxconf='vi ~/.tmux.conf.local'
 alias vimrc='vi ~/.vimrc.local'
@@ -109,6 +121,10 @@ alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.i3/config"
 #alias ls='ls --color'
+
+# save last visited dir
+export CURRENT_PROJECT_PATH=$HOME/.current-project
+
 
 function chpwd {
   ls
@@ -139,17 +155,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
-# virtualenvwrapper
-export WORKON_HOME="$HOME/virtualenvs"
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-# cuda
-export PATH="/usr/local/cuda-8.0/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/lib/nvidia-375/:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64/:$LD_LIBRARY_PATH"
-
-# Malmo
-export MALMO_XSD_PATH=~/MalmoPlatform/Schemas
 
 # OPAM configuration
 . /Users/ethan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
