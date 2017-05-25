@@ -1,0 +1,21 @@
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'scrooloose/nerdtree'
+Plug 'osyo-manga/vim-over'
+Plug 'scrooloose/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+
+
+" Prettiness
+Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'justinmk/vim-syntax-extra'
+
+" MarkDown
+Plug 'plasticboy/vim-markdown'
+
+" Docker
+Plug 'ekalinin/Dockerfile.vim'
