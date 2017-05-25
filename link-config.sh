@@ -8,14 +8,14 @@ files=$(find $base_dir -maxdepth 1 -type f -not -name '*.sh')
 
 for file in $files
 do
- ln -f -s $file $HOME/.$(basename $file)
+ ln -fs $file $HOME/.$(basename $file)
  echo "ln -fs $file $HOME/.$(basename $file)"
 done
 
-dirs="$base_dir/git"
+dirs="$base_dir/git $base_dir/config"
 
 for dir in $dirs 
 do
-  ln -s -f $dir $HOME/.$(basename $dir)
+  ln -sf $dir $HOME/.$(basename $dir)
   echo "ln -sf $dir $HOME/.$(basename $dir)"
 done

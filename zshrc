@@ -47,7 +47,7 @@ alias bundles='vi ~/.vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias i3config="vi ~/.i3/config"
+alias i3config="vi ~/.config/i3/config"
 #alias ls='ls --color'
 
 # save last visited dir
@@ -83,8 +83,8 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 
 # improve ag tab completion
-if (( CURRENT == 2 )); then
-  compadd $(cut -f 1 tmp/tags .git/tags 2>/dev/null)
-else;
-  _files
-fi
+#if (( CURRENT == 2 )); then
+  #compadd $(cut -f 1 tmp/tags .git/tags 2>/dev/null)
+#else;
+  #_files
+#fi

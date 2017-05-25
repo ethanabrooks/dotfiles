@@ -85,6 +85,8 @@ set complete+=kspell
 nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
 "execute last command
 nnoremap <leader>x :<up><CR>
+"save
+nnoremap <leader>w :w<CR>
 "easy source virmc
 command! Sovim source $MYVIMRC
 "easy update plugins
@@ -161,10 +163,3 @@ function! Hashbang(portable, permission, RemExt)
 endfunction
 
 :autocmd BufNewFile *.* :call Hashbang(1,1,0)
-
-
-
-
-
-
-
