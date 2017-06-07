@@ -138,3 +138,6 @@ alias vimrc="vi $HOME/.vimrc.local"
 alias bundles="vi $HOME/.vimrc.bundles.local"
 alias commit="git commit -am $1"
 zsh
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/usr/local/google/home/ethanabrooks/anaconda3/bin:$PATH"

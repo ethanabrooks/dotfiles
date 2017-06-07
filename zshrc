@@ -1,6 +1,15 @@
 # Path to your oh-my-zsh installation.
 local_dotfiles="$HOME/local-dotfiles"
-export PATH=/usr/local/bin:$HOME/.local/bin:$local_dotfiles/bin:/usr/local/bin:$PATH
+export PATH="\
+/usr/local/google/home/ethanabrooks/anaconda3/bin:\
+/google/data/ro/projects/g3python:\
+/usr/local/bin:\
+$HOME/.local/bin:\
+$local_dotfiles/bin:\
+/usr/local/bin:\
+$PATH\
+"
+
 export CELLAR='/usr/local/Cellar/'
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -12,6 +21,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 # aliases
 export bin="$local_dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
+export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
+export pv="$eab/placevault"
 
 fpath=($fpath $local_dotfiles/pure)
 
@@ -27,15 +38,14 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
-# User configuration
+# User configurationw
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# vim please!
-bindkey -v
 
 local_dotfiles="$HOME/local-dotfiles"
 
@@ -81,10 +91,19 @@ source /usr/local/bin/virtualenvwrapper.sh
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
+setopt autocd
+setopt autopushd
+setopt inc_append_history
+setopt inc_append_history
+setopt share_history
 
-# improve ag tab completion
-#if (( CURRENT == 2 )); then
-  #compadd $(cut -f 1 tmp/tags .git/tags 2>/dev/null)
-#else;
-  #_files
-#fi
+# History
+setopt APPEND_HISTORY          # append rather than overwrite history file.
+setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HISTSIZE
+setopt EXTENDED_HISTORY        # save timestamp and runtime information
+HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
+HISTSIZE=1200                  # lines of history to maintain memory
+SAVEHIST=1000                  # lines of history to maintain in history file.
+
+# g4d
+source /etc/bash_completion.d/g4d

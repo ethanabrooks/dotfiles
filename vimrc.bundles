@@ -6,7 +6,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
-
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
 
 " Prettiness
 Plug 'flazz/vim-colorschemes'
