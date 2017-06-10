@@ -14,7 +14,7 @@ export CELLAR='/usr/local/Cellar/'
 
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
-# source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 # exports
 export bin="$dotfiles/bin/"
@@ -72,16 +72,12 @@ current
 # pretty vi
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
-
 # pure
 autoload -U promptinit; promptinit
 prompt pure
 
 # zsh syntax highlighting
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# virtualenvwrapper
-# source /usr/local/bin/virtualenvwrapper.sh
 
 # source z
 zstyle ':completion:*' completer _complete
