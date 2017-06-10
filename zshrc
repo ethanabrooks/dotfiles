@@ -1,11 +1,9 @@
 # Path to your oh-my-zsh installation.
-local_dotfiles="$HOME/local-dotfiles"
+dotfiles="$HOME/dotfiles"
 export PATH="\
-/usr/local/google/home/ethanabrooks/anaconda3/bin:\
-/google/data/ro/projects/g3python:\
 /usr/local/bin:\
 $HOME/.local/bin:\
-$local_dotfiles/bin:\
+$dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
@@ -16,15 +14,15 @@ export CELLAR='/usr/local/Cellar/'
 
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # exports
-export bin="$local_dotfiles/bin/"
+export bin="$dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
 
-fpath=($fpath $local_dotfiles/pure)
+fpath=($fpath $dotfiles/pure)
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -46,8 +44,6 @@ bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-local_dotfiles="$HOME/local-dotfiles"
 
 # aliases
 alias zshrc="vi $zshrc"
@@ -85,7 +81,7 @@ prompt pure
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # source z
 zstyle ':completion:*' completer _complete
@@ -105,5 +101,4 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
-# g4d
-source /etc/bash_completion.d/g4d
+

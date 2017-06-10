@@ -1,3 +1,0 @@
-echo "TEST TEST TEST"
-set surround
-source ~/.vimrc
