@@ -18,7 +18,7 @@ export CELLAR='/usr/local/Cellar/'
 export WORKON_HOME="$HOME/virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
-# aliases
+# exports
 export bin="$local_dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
@@ -58,7 +58,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.config/i3/config"
-#alias ls='ls --color'
+alias ls='ls --color'
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
