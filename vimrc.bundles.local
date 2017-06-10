@@ -41,3 +41,5 @@ Plug 'elixir-lang/vim-elixir'
 
 " Swift
 Plug 'keith/swift.vim'
+
+Plug 'ekalinin/Dockerfile.vim'

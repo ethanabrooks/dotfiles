@@ -11,18 +11,5 @@ if ! [[ -e ~/.ssh/id_rsa.pub ]]; then
   ssh-add ~/.ssh/id_rsa
 fi
 
-echo "Adding a new SSH key to your GitHub account"
-echo "Copying SSH key to clipboard:"
-if [[ "$(uname)" == 'Linux'  ]]; then 
-  PKG_OK=$(dpkg-query -W --showformat='${Status}' xclip)
-  echo "Checking for xclip: $PKG_OK"
-  if [[ '' == $PKG_OK ]]; then
-    echo 'xclip not installed. Downloading...'
-    sudo apt-get -y install xclip
-  fi
-  xclip -sel clip < $HOME/.ssh/id_rsa.pub
-elif [[ "$(uname)" == 'Darwin'  ]]; then 
-  pbcopy < ~/.ssh/id_rsa.pub
-fi
-
-echo "Your SSH key is now copied to your clipboard."
+id_rsa=$(cat ~/.ssh/id_rsa.pub)
+ssh $1 "echo $id_rsa >> $HOME/.ssh/authorized_keys"
