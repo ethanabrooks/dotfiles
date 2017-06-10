@@ -1,8 +1,7 @@
 #!/bin/bash -ue
 
+base_dir=$(dirname $0)
 cd $HOME
-
-base_dir="$HOME/local-dotfiles"
 
 files=$(find $base_dir -maxdepth 1 -type f -not -name '*.sh')
 
