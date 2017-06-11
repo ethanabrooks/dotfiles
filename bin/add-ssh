@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 echo "Checking for existing SSH keys"
+sudo pacman -S --noconfirm xclip openssh
 if ! [[ -e ~/.ssh/id_rsa.pub ]]; then
 
   echo "Generating a new SSH key"
@@ -13,16 +14,6 @@ fi
 
 echo "Adding a new SSH key to your GitHub account"
 echo "Copying SSH key to clipboard:"
-if [[ "$(uname)" == 'Linux'  ]]; then 
-  PKG_OK=$(dpkg-query -W --showformat='${Status}' xclip)
-  echo "Checking for xclip: $PKG_OK"
-  if [[ '' == $PKG_OK ]]; then
-    echo 'xclip not installed. Downloading...'
-    sudo apt-get -y install xclip
-  fi
-  xclip -sel clip < $HOME/.ssh/id_rsa.pub
-elif [[ "$(uname)" == 'Darwin'  ]]; then 
-  pbcopy < ~/.ssh/id_rsa.pub
-fi
+xclip -sel clip < $HOME/.ssh/id_rsa.pub
 
 echo "Your SSH key is now copied to your clipboard."

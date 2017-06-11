@@ -17,12 +17,10 @@ if [[ $privileged == 'y' ]]; then
   mkdir -p $HOME/virtualenvs
 
   print 'Cloning zsh-syntax-highlighting...'
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/zsh-syntax-highlighting || :
 
   chsh -s $(which zsh)
 
-  #print 'Downloading oh-my-zsh...'
-  #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &
 fi
 
 print 'Downloading vim-plug...'
@@ -33,8 +31,10 @@ print 'Cloning gruvbox'
 git clone https://github.com/morhetz/gruvbox.git $HOME/.vim/bundle/gruvbox || :
 
 # hack to fix file encoding in vimrc
-#sed -i '1iset encoding=utf-8\nsetglobal fileencoding=utf-8' $HOME/.vimrc
+print 'Setting encodings to utf-8...'
+sed -i '1iscriptencoding utf-8\nset encoding=utf-8' $HOME/.vimrc
 
+exit
 print 'Installing vim plugins...'
 vim -c PlugInstall -c qall
 
