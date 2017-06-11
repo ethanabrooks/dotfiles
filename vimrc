@@ -1,3 +1,7 @@
+scriptencoding utf-8
+set encoding=utf-8
+
+
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -38,7 +42,7 @@ let g:is_posix = 1
 autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Display extra whitespace
-set list listchars=tab:»,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')

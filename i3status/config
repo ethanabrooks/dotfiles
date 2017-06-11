@@ -17,7 +17,7 @@ order += "cpu_usage"
 order += "disk /"
 order += "wireless _first_"
 order += "battery all"
-order += "load"
+#order += "load"
 order += "tztime local"
 #order += "ethernet _first_"
 
