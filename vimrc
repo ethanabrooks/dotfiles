@@ -1,7 +1,6 @@
 scriptencoding utf-8
 set encoding=utf-8
 
-
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -24,7 +23,13 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+
 call plug#end()
+
+"aesthetics
+set background=dark
+colorscheme gruvbox
+
 
 filetype plugin indent on
 " show existing tab with 2 spaces width
@@ -109,10 +114,6 @@ set guifont=Menlo:h13
 
 let $PATH .= ':' . '$HOME/.local/bin/'
 
-"aesthetics
-set background=dark
-colorscheme gruvbox
-
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 "merlin for OCaml
@@ -166,4 +167,5 @@ function! Hashbang(portable, permission, RemExt)
 
 endfunction
 
+autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 :autocmd BufNewFile *.* :call Hashbang(1,1,0)

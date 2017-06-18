@@ -10,10 +10,12 @@ do
  echo "ln -fs $file $HOME/.$(basename $file)"
 done
 
-dirs="$base_dir/git $base_dir/config"
+dirs="$base_dir/git"
 
 for dir in $dirs 
 do
   ln -sf $dir $HOME/.$(basename $dir)
   echo "ln -sf $dir $HOME/.$(basename $dir)"
 done
+
+configs="$base_dir/i3 $base_dir/"

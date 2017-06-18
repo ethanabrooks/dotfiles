@@ -49,6 +49,7 @@ bindkey '^R' history-incremental-search-backward
 # aliases
 alias zshrc="vi $zshrc"
 alias vimrc='vi ~/.vimrc'
+alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
@@ -58,6 +59,7 @@ alias i3config="vi ~/.config/i3/config"
 alias vi=vim
 alias ls='ls --color'
 alias pacman='sudo pacman'
+alias wifi-menu='sudo wifi-menu'
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project

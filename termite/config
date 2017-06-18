@@ -1,41 +1,23 @@
 [options]
-font = Monaco 14
+font = Droid Sans Mono 16
 
 [colors]
-# hard contrast: background = #1d2021
-background = #282828
-# soft contrast: background = #32302f
-foreground = #ebdbb2
-foreground_bold = #ebdbb2
-
-# dark0 + gray
-color0 = #282828
-color8 = #928374
-
-# neutral_red + bright_red
-color1 = #cc241d
-color9 = #fb4934
-
-# neutral_green + bright_green
-color2 = #98971a
-color10 = #b8bb26
-
-# neutral_yellow + bright_yellow
-color3 = #d79921
-color11 = #fabd2f
-
-# neutral_blue + bright_blue
-color4 = #458588
-color12 = #83a598
-
-# neutral_purple + bright_purple
-color5 = #b16286
-color13 = #d3869b
-
-# neutral_aqua + faded_aqua
-color6 = #689d6a
-color14 = #8ec07c
-
-# light4 + light1
-color7 = #a89984
-color15 = #ebdbb2
+background = "#002240"
+cursor = "#e5be0c"
+foreground = "#2cc55d"
+color0 =  #222d3f
+color1 = #a82320
+color2 = #32a548
+color3 = #e58d11
+color4 = #3167ac
+color5 = #781aa0
+color6 = #2c9370
+color7 = #b0b6ba
+color8 = #212c3c
+color9 = #d4312e
+color10 = #2d9440
+color11 = #e5be0c
+color12 = #3c7dd2
+color13 = #8230a7
+color14 = #35b387
+color15 = #e7eced
