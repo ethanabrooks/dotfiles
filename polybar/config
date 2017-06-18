@@ -1,0 +1,275 @@
+[colors]
+power-button = #cc241d
+selected = #a82320
+#3167ac
+
+background = #b0b6ba
+#1d2021
+#1e1e1e
+not-selected = #222d3f
+#928374
+icons = #222d3f
+#928374
+highlight = #56f442
+
+bar0 = #55aa55
+bar1 = #67a055
+bar2 = #7a9755
+bar3 = #8d8d55
+bar4 = #a08455
+bar5 = #b37a55
+bar6 = #c67155
+bar7 = #d96755
+bar8 = #ec5e55
+bar9 = #ff5555
+
+[bar/bar]
+monitor = eDP-1
+width = 100%
+height = 27
+border-size = 0
+border-color = rgb(0, 0, 0)
+
+background = ${colors.background}
+foreground = ${colors.icons}
+
+module-margin-left = 3
+module-margin-right = 0
+padding-right = 3
+
+font-0 = Droid sans mono:size=14;4
+font-1 = material-wifi:size=14:antialias=true;4
+font-2 = FontAwesome:size=14:antialias=true;3
+font-3 = Icons:size=20:antialias=true;6
+;font-4 = unifont:fontformat=truetype:size=8:antialias=false;4
+;font-5 = Wuncon Siji:pixelsize=10;1
+
+modules-left = i3
+modules-center = 
+modules-right = wlan volume battery date time
+radius = 3
+
+tray-position = right
+bottom = true
+
+[module/i3]
+type = internal/i3
+index-sort = true
+wrapping-scroll = false
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.selected}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.not-selected}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+;label-urgent-background = ${module/bspwm.label-urgent-background}
+;label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+format-mounted = <bar-used>
+
+bar-used-width = 10
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #55aa55
+bar-used-foreground-2 = #55aa55
+bar-used-foreground-3 = #55aa55
+bar-used-foreground-4 = #55aa55
+bar-used-foreground-5 = #f5a70a
+bar-used-foreground-6 = #ff5555
+bar-used-gradient = true
+bar-used-indicator = |
+bar-used-fill = ─
+bar-used-empty = ─
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+label = RAM %bar-used%
+format = <bar-used>
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #55aa55
+bar-used-foreground-2 = #55aa55
+bar-used-foreground-3 = #55aa55
+bar-used-foreground-4 = #55aa55
+bar-used-foreground-5 = #f5a70a
+bar-used-foreground-6 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+;bar-used-empty-foreground = #444444
+
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <ramp-load>
+label = CPU
+
+ramp-load-0 = ▁
+ramp-load-1 = ▂
+ramp-load-2 = ▃
+ramp-load-3 = ▄
+ramp-load-4 = ▅
+ramp-load-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume> 
+label-muted = 
+label-volume-foreground = ${root.foreground}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+[module/wlan]
+type = internal/network
+interface = wlp4s0
+interval = 3.0
+
+format-connected = <ramp-signal>
+;format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-foreground = ${colors.icons}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%b %d"
+format-prefix-foreground = ${colors.icons}
+label =   %date%
+
+[module/time]
+type = internal/date
+interval = 1
+time = %H:%M
+format-prefix-foreground = ${colors.icons}
+label =  %time%
+
+[module/battery]
+type = internal/battery
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.power-button}
+;label-close =  cancel
+label-close-foreground = ${colors.power-button}
+label-separator = |
+label-separator-foreground = ${colors.icons}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+;[module/xbacklight]
+;type = internal/xbacklight
+
+;format = <label> <bar>
+;label = BL
+
+;bar-width = 10
+;bar-indicator = |
+;bar-indicator-foreground = #ff
+;bar-indicator-font = 2
+;bar-fill = ─
+;bar-fill-font = 2
+;bar-fill-foreground = #9f78e1
+;bar-empty = ─
+;bar-empty-font = 2
+;bar-empty-foreground = ${colors.foreground-alt}
