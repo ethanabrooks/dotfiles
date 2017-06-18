@@ -21,7 +21,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # exports
 export bin="$local_dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
-export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
+export eab='/google/src/cloud/ethanabrooks/switch_placevault/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
 
 fpath=($fpath $local_dotfiles/pure)

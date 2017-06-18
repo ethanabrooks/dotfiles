@@ -1,3 +1,4 @@
+set nocompatible
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -77,6 +78,7 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
@@ -112,8 +114,8 @@ colorscheme gruvbox
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 "merlin for OCaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 function! Hashbang(portable, permission, RemExt)
   let shells = {
@@ -163,3 +165,6 @@ function! Hashbang(portable, permission, RemExt)
 endfunction
 
 :autocmd BufNewFile *.* :call Hashbang(1,1,0)
+
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0

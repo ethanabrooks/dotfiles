@@ -20,3 +20,8 @@ Plug 'plasticboy/vim-markdown'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" Python
+Plug 'davidhalter/jedi-vim'
+Plug 'kevinw/pyflakes-vim'
+Plug 'nvie/vim-flake8'
