@@ -10,9 +10,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 
 " Prettiness
-Plug 'flazz/vim-colorschemes'
 Plug 'joshdick/onedark.vim'
-Plug 'MaxSt/FlatColor'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'justinmk/vim-syntax-extra'

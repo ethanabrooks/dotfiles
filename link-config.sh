@@ -18,4 +18,10 @@ do
   echo "ln -sf $dir $HOME/.$(basename $dir)"
 done
 
-configs="$base_dir/i3 $base_dir/"
+configs="$base_dir/i3 $base_dir/polybar $base_dir/termite"
+
+for config in $configs 
+do
+  ln -sf $config $HOME/.config/$(basename $dir)
+  echo ln -sf $config $HOME/.config/$(basename $config)
+done
