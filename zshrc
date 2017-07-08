@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 local_dotfiles="$HOME/local-dotfiles"
+#$SCALA_HOME/bin:
 export PATH="\
 /usr/local/google/home/ethanabrooks/anaconda3/bin:\
 /google/data/ro/projects/g3python:\
@@ -9,6 +10,7 @@ $local_dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
+export SCALA_HOME=/google/src/head/depot/google3/third_party/scala/current
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -21,7 +23,11 @@ source /usr/local/bin/virtualenvwrapper.sh
 # exports
 export bin="$local_dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
-export eab='/google/src/cloud/ethanabrooks/switch_placevault/google3/experimental/users/ethanabrooks/'
+export eab="$HOME/experimental/google3/experimental/users/ethanabrooks/"
+export lc_physician="/usr/local/google/home/ethanabrooks/experimental/google3/experimental/lc_physician/"
+export befs=$lc_physician"BatteryEfficientFLPScan/"
+export scala_dir="$HOME/scala/google3/experimental/users/ethanabrooks/"
+export placevault=$eab'placevault'
 export pv="$eab/placevault"
 
 fpath=($fpath $local_dotfiles/pure)
@@ -107,3 +113,5 @@ SAVEHIST=1000                  # lines of history to maintain in history file.
 
 # g4d
 source /etc/bash_completion.d/g4d
+export GOPATH=$(go env GOPATH)
+PATH=$PATH:$GOPATH/bin

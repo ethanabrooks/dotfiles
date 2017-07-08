@@ -25,3 +25,6 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'kevinw/pyflakes-vim'
 Plug 'nvie/vim-flake8'
+
+" Go
+Plug 'fatih/vim-go'
