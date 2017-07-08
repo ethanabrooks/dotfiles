@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+#dirs=$(pwd | sed 's/\//\n/g')
+array=("${(s:/:)$(pwd)}")
+reversed=("${(@Oa)array}")
+string=("${(j:\n:)reversed}")
+first_match=$(echo $string | sed -n '/java/{p;q;}')
+if [[ $first_match = java ]]
+then
+  pattern='0,/java/{s/java/javatests/}'
+elif [[ $first_match = javatests ]]
+then
+  pattern='0,/javatests/{s/javatests/java/}'
+else
+  echo "Not in a child directory of java/ or javatests/"
+  exit
+fi
+
+new_array=("${(f)$(echo $string | sed $pattern)}")
+new_reversed=("${(@Oa)new_array}")
+new_path=("${(j:/:)new_reversed}")
+echo $new_path
