@@ -1,4 +1,3 @@
-# Path to your oh-my-zsh installation.
 dotfiles="$HOME/dotfiles"
 export PATH="\
 /usr/local/bin:\
@@ -102,4 +101,9 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
+autoload -U compinit
+compinit
 
+# Go
+export GOPATH=~/go
+PATH=$PATH:$GOPATH/bin

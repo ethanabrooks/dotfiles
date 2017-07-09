@@ -6,22 +6,19 @@ files=$(find $base_dir -maxdepth 1 -type f -not -name '*.sh')
 
 for file in $files
 do
- ln -fs $file $HOME/.$(basename $file)
- echo "ln -fs $file $HOME/.$(basename $file)"
+  ln -fs $file $HOME/.$(basename $file)
 done
 
-dirs="$base_dir/git"
+dirs="git"
 
 for dir in $dirs 
 do
-  ln -sf $dir $HOME/.$(basename $dir)
-  echo "ln -sf $dir $HOME/.$(basename $dir)"
+  ln -sf $base_dir/$dir $HOME/.$(basename $dir)
 done
 
-configs="$base_dir/i3 $base_dir/polybar $base_dir/termite"
+configs="i3 polybar termite"
 
 for config in $configs 
 do
-  ln -sf $config $HOME/.config/$(basename $dir)
-  echo ln -sf $config $HOME/.config/$(basename $config)
+  ln -sf $base_dir/$config $HOME/.config/$(basename $config)
 done

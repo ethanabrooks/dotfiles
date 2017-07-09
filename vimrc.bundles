@@ -20,3 +20,10 @@ Plug 'plasticboy/vim-markdown'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Haskell
+Plug 'bitc/vim-hdevtools'
+Plug 'neovimhaskell/haskell-vim'

@@ -6,15 +6,12 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
-;;; Code:
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (evil-surround tex racer rust-mode intero helm-company helm exec-path-from-shell company-jedi flycheck-pyflakes elpy gruvbox-theme evil-nerd-commenter evil))))
+;;; Code: (custom-set-variables
+;; custom-set-variables was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right
+'(package-selected-packages (quote (gruvbox-theme evil-surround racer rust-mode intero helm-company helm exec-path-from-shell company-jedi flycheck-pyflakes elpy evil-nerd-commenter evil)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -23,6 +20,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(add-to-list 'default-frame-alist '(font . "Droid Sans Mono-12" ))
+(set-face-attribute 'default t :font "Droid Sans Mono-12" )
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -74,11 +73,8 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; haskell
+(intero-global-mode 1)
 (add-hook 'haskell-mode-hook 'intero-mode)
-;; (add-to-list 'load-path "/Users/ethan/.stack/snapshots/x86_64-osx/lts-4.0/7.10.3/share/x86_64-osx-ghc-7.10.3/HaRe-0.8.2.1/elisp")
-;; ;; (require hare)
-;; (autoload 'hare-init "hare" nil t)
-;; (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))
 
 ;; code completion
 (eval-after-load 'company
@@ -95,3 +91,11 @@
 
 ;;; .emacs ends here
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (gruvbox-theme racer intero helm-company flycheck-pyflakes exec-path-from-shell evil-surround evil-nerd-commenter elpy company-jedi))))

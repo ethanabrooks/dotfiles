@@ -1,6 +1,6 @@
 scriptencoding utf-8
 set encoding=utf-8
-
+ 
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -9,7 +9,7 @@ nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
 " Leader
 let mapleader = " "
 
-set backspace=2   " Backspace deletes like most programs in insert mode
+set backspace=2   " Backspace deletes like most programs in insert mode               
 set noswapfile    "
 set history=50
 set incsearch     " do incremental searching
@@ -67,8 +67,8 @@ if executable('ag')
  endif
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+"set textwidth=80
+"set colorcolumn=+1
 
 " Numbers
 set number
@@ -110,7 +110,7 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 
 set t_Co=256
-set guifont=Menlo:h13
+set guifont=Menlo:h7
 
 let $PATH .= ':' . '$HOME/.local/bin/'
 
@@ -124,7 +124,7 @@ function! Hashbang(portable, permission, RemExt)
   let shells = {
         \    'awk': "awk",
         \     'sh': "bash",
-        \     'hs': "runhaskell",
+        \     'hs': "stack",
         \     'jl': "julia",
         \    'lua': "lua",
         \    'mak': "make",
@@ -169,3 +169,15 @@ endfunction
 
 autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 :autocmd BufNewFile *.* :call Hashbang(1,1,0)
+
+" vim-hdevtools
+:autocmd BufRead *.hs :let &makeprg='hdevtools check %'
+" haskell-vim
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+

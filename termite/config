@@ -1,5 +1,6 @@
 [options]
-font = Droid Sans Mono 16
+font = Droid Sans Mono 14
+scrollback_lines = -1
 
 [colors]
 background = "#002240"

@@ -85,16 +85,16 @@ bindsym $mod+w layout toggle split
 bindsym $mod+e layout toggle 
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+p focus parent
+#bindsym $mod+p focus parent
 
 # focus the child container
-bindsym $mod+semicolon focus child
+#bindsym $mod+semicolon focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -154,10 +154,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 font pango:nimbus sans 18
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
- 
-for_window [class="\w*"] border pixel 2
+# 
+for_window [class="\w*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
-client.focused          #F1F2F6 #282828 #282828 #282828
+client.focused          #b0b6ba #b0b6ba #282828 #282828
 client.focused_inactive #F1F2F6 #282828 #282828 #282828
 client.unfocused        #F1F2F6 #282828 #282828 #282828
 client.urgent           #F1F2F6 #282828 #282828 #C1D1E0
