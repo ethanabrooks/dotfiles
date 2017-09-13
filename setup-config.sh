@@ -20,7 +20,7 @@ if [[ $privileged == 'y' ]]; then
     sudo pacman -Sy curl gvim zsh python-pip the_silver_searcher tree termite
   elif [[ $distro =~ 'Ubuntu' ]]
   then
-    sudo apt-get install gvim zsh python-pip silversearcher-ag tree terminator
+    sudo apt-get install vim-gnome zsh python-pip silversearcher-ag tree terminator
   else
     echo "This script does not support $distro."
     exit
