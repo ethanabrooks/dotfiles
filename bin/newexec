@@ -11,4 +11,4 @@ bin_path=${+bin[$extension]:=$zsh_path}
 
 echo "#!$bin_path\n" >> $file
 chmod +x $file
-vi + $file
+vim $file

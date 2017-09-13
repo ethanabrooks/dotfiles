@@ -58,7 +58,7 @@ alias i3config="vi ~/.config/i3/config"
 alias vi=vim
 alias ls='ls --color'
 alias pacman='sudo pacman'
-alias wifi-menu='sudo wifi-menu'
+alias wifi='sudo wifi-menu'
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
@@ -74,7 +74,7 @@ function current {
 current
 
 # pretty vi
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+#source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # pure
 autoload -U promptinit; promptinit

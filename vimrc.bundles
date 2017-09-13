@@ -8,12 +8,18 @@ Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
+Plug 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
 
 " Prettiness
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
+Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'blueshirts/darcula'
+Plug 'whatyouhide/vim-gotham'
+Plug 'NLKNguyen/papercolor-theme'
+"Plug 'morhetz/gruvbox'
 
 " MarkDown
 Plug 'plasticboy/vim-markdown'
@@ -21,9 +27,16 @@ Plug 'plasticboy/vim-markdown'
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
 
+" Python
+Plug 'davidhalter/jedi-vim'
+Plug 'kevinw/pyflakes-vim'
+Plug 'nvie/vim-flake8'
+
 " Go
 Plug 'fatih/vim-go'
 
 " Haskell
 Plug 'bitc/vim-hdevtools'
 Plug 'neovimhaskell/haskell-vim'
+"Plug 'alx741/vim-hindent'
+Plug 'pbrisbin/vim-syntax-shakespeare'

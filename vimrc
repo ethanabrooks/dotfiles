@@ -5,11 +5,12 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
+nnoremap <C-t> :TagbarToggle<CR>
 
 " Leader
 let mapleader = " "
 
-set backspace=2   " Backspace deletes like most programs in insert mode               
+set backspace=2   " Backspace deletes like most programs in insert mode
 set noswapfile    "
 set history=50
 set incsearch     " do incremental searching
@@ -27,8 +28,8 @@ endif
 call plug#end()
 
 "aesthetics
-set background=dark
-colorscheme gruvbox
+set background=light 
+colorscheme PaperColor
 
 
 filetype plugin indent on
@@ -45,6 +46,10 @@ let g:is_posix = 1
 
 " spell-check markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md nnoremap k gk
+autocmd BufRead,BufNewFile *.md nnoremap j gj
+autocmd BufRead,BufNewFile *.md nnoremap gk k
+autocmd BufRead,BufNewFile *.md nnoremap gj j
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -108,17 +113,17 @@ let $BUNDLES = "~/.vimrc.bundles.local"
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_haskell_checkers = ['hlint']
 
 set t_Co=256
-set guifont=Menlo:h7
+set guifont="Droid Sans Mono":h14
 
 let $PATH .= ':' . '$HOME/.local/bin/'
 
-let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 "merlin for OCaml
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 function! Hashbang(portable, permission, RemExt)
   let shells = {
@@ -168,16 +173,23 @@ function! Hashbang(portable, permission, RemExt)
 endfunction
 
 autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
-:autocmd BufNewFile *.* :call Hashbang(1,1,0)
+autocmd BufNewFile *.* :call Hashbang(1,1,0)
+
+au BufReadPost *.julius set syntax=javascript
+au BufReadPost *.hamlet set syntax=html
 
 " vim-hdevtools
-:autocmd BufRead *.hs :let &makeprg='hdevtools check %'
+autocmd BufRead *.hs :let &makeprg='hdevtools check %'
 " haskell-vim
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+let g:haskell_classic_highlighting  = 1
+"let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+"let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+"let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+"let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+"let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+"let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+"let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
