@@ -9,6 +9,7 @@ do
   ln -fs "$file" "$HOME/.$(basename "$file")"
 done
 
+
 dirs="git"
 
 for dir in $dirs 

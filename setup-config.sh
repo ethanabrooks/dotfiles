@@ -50,7 +50,7 @@ if [[ $privileged == 'y' ]]; then
 fi
 
 print 'Linking local dotfiles'
-bash "$HOME/dotfiles/link-config.sh"
+bash "$HOME/dotfiles/link-config.sh '$distro'"
 
 print 'Downloading vim-plug...'
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
