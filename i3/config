@@ -31,7 +31,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec terminator
 
 # start a browser
 bindsym $mod+b exec google-chrome-stable
@@ -152,8 +152,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-font pango:nimbus sans 18
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#font pango:nimbus sans 18
 # 
 for_window [class="\w*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
