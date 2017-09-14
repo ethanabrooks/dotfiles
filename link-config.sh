@@ -21,7 +21,7 @@ do
   fi
 done
 
-configs="i3 polybar termite"
+configs="i3 terminator"
 mkdir -p "$HOME/.config"
 
 for config in $configs 
