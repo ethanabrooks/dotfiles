@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+stack exec $(basename $(pwd))-exe
