@@ -23,6 +23,7 @@ if [[ $privileged == 'y' ]]; then
       python-pip \
       tree \
       meld \
+      xclip \
       i3 \
       the_silver_searcher \
       gvim \
@@ -35,6 +36,7 @@ if [[ $privileged == 'y' ]]; then
       python-pip \
       tree \
       meld \
+      xclip \
       i3 \
       silversearcher-ag \
       vim-gnome \
