@@ -19,26 +19,29 @@ if [[ $privileged == 'y' ]]; then
   then
     sudo pacman -Sy --noconfirm \
       curl \
-      gvim \
       zsh \
       python-pip \
-      the_silver_searcher \
       tree \
+      i3 \
+      the_silver_searcher \
+      gvim \
       termite
   elif [[ $distro =~ 'Ubuntu' ]]
   then
     sudo apt-get install -y \
-      vim-gnome \
+      curl \
       zsh \
       python-pip \
-      silversearcher-ag \
       tree \
+      i3 \
+      silversearcher-ag \
+      vim-gnome \
       terminator
   else
     echo "This script does not support $distro."
     exit
   fi
-  sudo pip install virtualenvwrapper
+  sudo pip install --upgrade pip virtualenvwrapper
   mkdir -p "$HOME/virtualenvs"
 
   print 'Cloning zsh-syntax-highlighting...'
