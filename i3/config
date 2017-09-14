@@ -152,7 +152,10 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-font pango:nimbus sans 18
+font pango:nimbus sans 10
+bar {
+        status_command i3status
+}
 
 for_window [class="\w*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
