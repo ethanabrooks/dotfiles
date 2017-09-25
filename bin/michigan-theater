@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+lines=("${(f)1}")
+date=$(cut -d' ' -f1 --complement <<< "$lines[3]")
+echo "$lines[1] at the Michigan Theater on $date" | xclip
