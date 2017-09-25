@@ -22,6 +22,8 @@ if [[ $privileged == 'y' ]]; then
       zsh \
       python-pip \
       tree \
+      meld \
+      xclip \
       i3 \
       the_silver_searcher \
       gvim \
@@ -33,6 +35,8 @@ if [[ $privileged == 'y' ]]; then
       zsh \
       python-pip \
       tree \
+      meld \
+      xclip \
       i3 \
       silversearcher-ag \
       vim-gnome \
@@ -50,7 +54,7 @@ if [[ $privileged == 'y' ]]; then
 fi
 
 print 'Linking local dotfiles'
-bash "$HOME/dotfiles/link-config.sh '$distro'"
+bash "$HOME/dotfiles/link-config.sh"
 
 print 'Downloading vim-plug...'
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \

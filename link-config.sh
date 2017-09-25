@@ -10,11 +10,15 @@ do
 done
 
 
-dirs="git"
+dirs=""  # may add some in the future
 
 for dir in $dirs 
 do
-  ln -sf "$base_dir"/"$dir" "$HOME/.$(basename $dir)"
+  dst="$HOME/.$(basename $dir)"
+  if [ ! -d $dst ]
+  then
+    ln -sf "$base_dir"/"$dir" $dst
+  fi
 done
 
 configs="i3 polybar termite"
@@ -22,5 +26,9 @@ mkdir -p "$HOME/.config"
 
 for config in $configs 
 do
-  ln -sf "$base_dir"/"$config" "$HOME/.config/$(basename "$config")"
+  dst="$HOME/.config/$(basename "$config")"
+  if [ ! -d $dst ]
+  then
+    ln -sf "$base_dir"/"$config" $dst
+  fi
 done

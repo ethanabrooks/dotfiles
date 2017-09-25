@@ -1,0 +1,11 @@
+[user]
+	email = ethanabrooks@gmail.com
+	name = Ethan Brooks
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+[push]
+	default = simple
