@@ -50,6 +50,8 @@ autocmd BufRead,BufNewFile *.md nnoremap k gk
 autocmd BufRead,BufNewFile *.md nnoremap j gj
 autocmd BufRead,BufNewFile *.md nnoremap gk k
 autocmd BufRead,BufNewFile *.md nnoremap gj j
+autocmd BufRead,BufNewFile *.mjcf setf xml
+
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
