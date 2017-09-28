@@ -13,7 +13,7 @@ export CELLAR='/usr/local/Cellar/'
 
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
-source /usr/bin/virtualenvwrapper.sh
+source '/usr/local/bin/virtualenvwrapper.sh'
 
 # exports
 export bin="$dotfiles/bin/"

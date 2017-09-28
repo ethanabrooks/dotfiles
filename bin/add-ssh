@@ -14,6 +14,8 @@ fi
 
 echo "Adding a new SSH key to your GitHub account"
 echo "Copying SSH key to clipboard:"
-xclip -sel clip < $HOME/.ssh/id_rsa.pub
-
-echo "Your SSH key is now copied to your clipboard."
+key_file="$HOME/.ssh/id_rsa.pub"
+xclip -sel clip < $key_file\
+  && echo "Your SSH key is now copied to your clipboard." ||\
+  echo "\nxclip failed. You need to manually copy your key: " && 
+  cat $key_file
