@@ -114,7 +114,7 @@ let $BUNDLES = "~/.vimrc.bundles.local"
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_haskell_checkers = ['hlint']
+let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 set t_Co=256
 set guifont="Droid Sans Mono":h14
