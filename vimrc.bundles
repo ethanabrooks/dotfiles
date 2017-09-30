@@ -20,6 +20,7 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'blueshirts/darcula'
 Plug 'whatyouhide/vim-gotham'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'godlygeek/tabular' 
 "Plug 'morhetz/gruvbox'
 
 " MarkDown
