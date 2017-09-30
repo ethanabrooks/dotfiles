@@ -10,6 +10,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
+Plug 'Chiel92/vim-autoformat'
 
 " Prettiness
 Plug 'flazz/vim-colorschemes'

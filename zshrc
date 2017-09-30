@@ -17,7 +17,8 @@ source '/usr/local/bin/virtualenvwrapper.sh'
 
 # exports
 export bin="$dotfiles/bin/"
-export zshrc="$HOME/.zshrc"
+export config="$dotfiles/config/"
+export zshrc="$config/nvim/init.vim"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
 export VISUAL=vim
@@ -55,7 +56,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.config/i3/config"
-alias vi=vim
+alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
