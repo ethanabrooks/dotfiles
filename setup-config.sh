@@ -12,39 +12,21 @@ function print() {
 privileged='y'
 
 if [[ $privileged == 'y' ]]; then
-  string="$(cat /etc/*-release | grep '^NAME=')"
-  tmp=${string#*\"}  # remove prefix ending in "
-  distro=${tmp%\"*}  # remove suffix starting with "
-  if [[ $distro =~ 'Arch Linux' ]]
-  then
-    sudo pacman -Sy --noconfirm \
-      curl \
-      zsh \
-      python-pip \
-      tree \
-      meld \
-      xclip \
-      i3 \
-      the_silver_searcher \
-      gvim \
-      termite
-  elif [[ $distro =~ 'Ubuntu' ]]
-  then
-    sudo apt-get install -y \
-      curl \
-      zsh \
-      python-pip \
-      tree \
-      meld \
-      xclip \
-      i3 \
-      silversearcher-ag \
-      vim-gnome \
-      terminator
-  else
-    echo "This script does not support $distro."
-    exit
-  fi
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+  sudo apt-get update
+  sudo apt-get install -y \
+    curl \
+    zsh \
+    python-pip \
+    tree \
+    meld \
+    xclip \
+    i3 \
+    silversearcher-ag \
+    vim-gnome \
+    terminator \
+    google-chrome-stable
   sudo pip install --upgrade pip virtualenvwrapper
   mkdir -p "$HOME/virtualenvs"
 
