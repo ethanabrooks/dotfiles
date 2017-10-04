@@ -47,7 +47,7 @@ bindkey '^R' history-incremental-search-backward
 
 # aliases
 alias zshrc="vi $zshrc"
-alias vimrc='vi ~/.vimrc'
+alias vimrc='vi ~/.config/nvim/init.vim'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles'

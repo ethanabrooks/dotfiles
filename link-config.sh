@@ -15,20 +15,20 @@ dirs=""  # may add some in the future
 for dir in $dirs 
 do
   dst="$HOME/.$(basename $dir)"
-  if [ ! -d $dst ]
+  if [ ! -d "$dst" ]
   then
-    ln -sf "$base_dir"/"$dir" $dst
+    ln -sf "$base_dir"/"$dir" "$dst"
   fi
 done
 
-configs="i3 terminator"
+configs="i3 polybar termite nvim"
 mkdir -p "$HOME/.config"
 
 for config in $configs 
 do
   dst="$HOME/.config/$(basename "$config")"
-  if [ ! -d $dst ]
+  if [ ! -d "$dst" ]
   then
-    ln -sf "$base_dir"/"$config" $dst
+    ln -sf "$base_dir"/"$config" "$dst"
   fi
 done
