@@ -10,6 +10,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Yggdroot/indentLine'
 
 " Prettiness
 Plug 'flazz/vim-colorschemes'
@@ -29,7 +31,8 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " Python
 Plug 'davidhalter/jedi-vim'
-Plug 'kevinw/pyflakes-vim'
+Plug 'zchee/deoplete-jedi'
+"Plug 'kevinw/pyflakes-vim'
 Plug 'nvie/vim-flake8'
 
 " Go
@@ -38,5 +41,4 @@ Plug 'fatih/vim-go'
 " Haskell
 Plug 'bitc/vim-hdevtools'
 Plug 'neovimhaskell/haskell-vim'
-"Plug 'alx741/vim-hindent'
 Plug 'pbrisbin/vim-syntax-shakespeare'

@@ -1,6 +1,6 @@
 scriptencoding utf-8
 set encoding=utf-8
- 
+
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -28,7 +28,7 @@ endif
 call plug#end()
 
 "aesthetics
-set background=light 
+set background=light
 colorscheme PaperColor
 
 
@@ -44,6 +44,8 @@ set expandtab
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
+"au BufWrite * :Autoformat
+
 " spell-check markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.md nnoremap k gk
@@ -58,20 +60,20 @@ set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
- " Use Ag over Grep
-   set grepprg=ag\ --nogroup\ --nocolor
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
 
-   " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 
-   if !exists(":Ag")
-     command -nargs=+ -complete=file -bar Ag silent! grep!  <args>|cwindow|redraw!
-     nnoremap \ :Ag<SPACE>
-   endif
- endif
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep!  <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
 
 " Make it obvious where 80 characters is
 "set textwidth=80
@@ -115,9 +117,10 @@ let $BUNDLES = "~/.vimrc.bundles.local"
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
-let g:syntastic_python_python_exec = 'python'
 let g:syntastic_haskell_checkers = ['hlint']
 let g:syntastic_python_checkers = ['flake8']
+let g:jedi#force_py_version = 3
+let g:loaded_python_provider = 1
 
 set t_Co=256
 set guifont="Droid Sans Mono":h14
@@ -196,3 +199,5 @@ let g:haskell_classic_highlighting  = 1
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
