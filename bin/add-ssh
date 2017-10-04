@@ -14,6 +14,6 @@ fi
 
 echo "Adding a new SSH key to your GitHub account"
 echo "Copying SSH key to clipboard:"
-xclip -sel clip < $HOME/.ssh/id_rsa.pub
+DISPLAY=:0 xclip -sel clip < $HOME/.ssh/id_rsa.pub
 
 echo "Your SSH key is now copied to your clipboard."
