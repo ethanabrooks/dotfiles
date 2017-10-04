@@ -12,8 +12,14 @@ if ! [[ -e ~/.ssh/id_rsa.pub ]]; then
   ssh-add ~/.ssh/id_rsa
 fi
 
-echo "Adding a new SSH key to your GitHub account"
-echo "Copying SSH key to clipboard:"
-DISPLAY=:0 xclip -sel clip < $HOME/.ssh/id_rsa.pub
+key_path=$HOME/.ssh/id_rsa.pub
+if [ -z $DISPLAY ]
+then
+  echo "This is your SSH key:"
+  cat $key_path
+else
+  echo "Copying SSH key to clipboard:"
+  xclip -sel clip < $key_path
+  echo "Your SSH key is now copied to your clipboard."
+fi
 
-echo "Your SSH key is now copied to your clipboard."
