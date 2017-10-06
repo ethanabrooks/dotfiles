@@ -21,7 +21,7 @@ do
   fi
 done
 
-configs="i3 terminator"
+configs="i3 terminator nvim"
 mkdir -p "$HOME/.config"
 
 for config in $configs 
