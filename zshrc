@@ -55,7 +55,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.config/i3/config"
-alias vi=vim
+alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
@@ -107,3 +107,19 @@ compinit
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
+source /opt/ros/indigo/setup.zsh
+
+network_if=em1
+
+if [ -e /opt/tmc/ros/indigo/setup.zsh ] ; then
+  export TARGET_IP=$(LANG=C /sbin/ifconfig $network_if | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
+  if [ -z "$TARGET_IP" ] ; then
+    echo "ROS_IP is not set."
+  else
+    export ROS_IP=$TARGET_IP
+  fi
+  export ROS_HOME=~/.ros
+  alias sim_mode='export ROS_MASTER_URI=http://localhost:11311 export PS1="\[\033[44;1;37m\]<local>\[\033[0m\]\w$ "'
+  alias hsrb_mode='export ROS_MASTER_URI=http://hsrb.local:11311 export PS1="\[\033[41;1;37m\]<hsrb>\[\033[0m\]\w$ "'
+  source /opt/tmc/ros/indigo/setup.zsh
+fi
