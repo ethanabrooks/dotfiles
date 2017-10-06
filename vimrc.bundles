@@ -40,3 +40,5 @@ Plug 'bitc/vim-hdevtools'
 Plug 'neovimhaskell/haskell-vim'
 "Plug 'alx741/vim-hindent'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+
+Plug 'ekalinin/Dockerfile.vim'
