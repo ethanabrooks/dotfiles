@@ -16,8 +16,6 @@ function print() {
 privileged='y'
 
 if [[ $privileged == 'y' ]]; then
- # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || :
-#	brew update
   brew install \
     curl \
     zsh \
@@ -41,19 +39,11 @@ print 'Linking local dotfiles'
 bash "$HOME/dotfiles/link-config.sh"
 
 print 'Downloading vim-plug...'
-# Vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# NeoVim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# hack to fix file encoding in vimrc
-#print 'Setting encodings to utf-8...'
-#sed -i '1iscriptencoding utf-8\nset encoding=utf-8' "$HOME/.vimrc"
-
 print 'Installing vim plugins...'
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 GREEN=2
 tput setaf $green
