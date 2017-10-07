@@ -28,6 +28,7 @@ if [[ $privileged == 'y' ]]; then
     macvim \
     neovim \
     || :
+  sudo easy_install pip
   sudo pip install --upgrade pip virtualenvwrapper
   mkdir -p "$HOME/virtualenvs"
 
@@ -36,7 +37,6 @@ if [[ $privileged == 'y' ]]; then
   zsh_dir=$(brew info zsh | ag zsh/ | tail -1 | cut -d' ' -f1)
   zsh_path=$zsh_dir/bin/zsh
   sudo dscl . -create /Users/$USER UserShell $zsh_path
-  sudo easy_install pip
 fi
 
 print 'Linking local dotfiles'
