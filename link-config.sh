@@ -21,7 +21,7 @@ do
   fi
 done
 
-configs="i3 polybar termite nvim"
+configs="nvim"
 mkdir -p "$HOME/.config"
 
 for config in $configs 

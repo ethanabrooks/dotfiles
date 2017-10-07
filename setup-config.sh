@@ -1,10 +1,16 @@
 #!/bin/bash -ue
 
-YELLOW='\e[33m'
-NORMAL='\e[0m'
+# enable terminal colors
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+cyan=6
+green=2
+normal=9
 
 function print() {
-  echo -e "$YELLOW$1$NORMAL"
+  tput setaf $cyan
+  printf "\n$1\n"
+  tput setaf $normal
 }
 
 # print "Do you have root privileges? [y|n]"
@@ -12,24 +18,25 @@ function print() {
 privileged='y'
 
 if [[ $privileged == 'y' ]]; then
-  sudo pacman -Sy --noconfirm \
+ # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || :
+#	brew update
+  brew install \
     curl \
     zsh \
-    python-pip \
     tree \
-    meld \
-    xclip \
-    i3 \
     the_silver_searcher \
-    gvim \
+    macvim \
     neovim \
-    termite
+    || :
   sudo pip install --upgrade pip virtualenvwrapper
   mkdir -p "$HOME/virtualenvs"
 
   print 'Cloning zsh-syntax-highlighting...'
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
-  chsh -s "$(which zsh)"
+  zsh_dir=$(brew info zsh | ag zsh/ | tail -1 | cut -d' ' -f1)
+  zsh_path=$zsh_dir/bin/zsh
+  sudo dscl . -create /Users/$USER UserShell $zsh_path
+  sudo easy_install pip
 fi
 
 print 'Linking local dotfiles'
@@ -46,7 +53,8 @@ curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
 print 'Installing vim plugins...'
 vim -c PlugInstall -c qall
 
-GREEN='\033[0;32m'
-print "${GREEN}All done! Congratulations, your system is all setup."
+GREEN=2
+tput setaf $green
+printf "\nAll done! Congratulations, your system is all setup.\n"
 zsh
 

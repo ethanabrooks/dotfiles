@@ -18,7 +18,8 @@ source '/usr/local/bin/virtualenvwrapper.sh'
 # exports
 export bin="$dotfiles/bin/"
 export config="$dotfiles/config/"
-export zshrc="$config/nvim/init.vim"
+export vimrc="$config/nvim/init.vim"
+export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
 export VISUAL=vim
@@ -48,18 +49,14 @@ bindkey '^R' history-incremental-search-backward
 
 # aliases
 alias zshrc="vi $zshrc"
-alias vimrc='vi ~/.vimrc'
+alias vimrc='vi $vimrc'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
-alias i3config="vi ~/.config/i3/config"
 alias vi=nvim
-alias ls='ls --color'
-alias pacman='sudo pacman'
-alias wifi='sudo wifi-menu'
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
