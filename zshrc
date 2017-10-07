@@ -17,8 +17,8 @@ source '/usr/local/bin/virtualenvwrapper.sh'
 
 # exports
 export bin="$dotfiles/bin/"
-export config="$dotfiles/config/"
-export vimrc="$config/nvim/init.vim"
+export config="$HOME/.config/"
+export vimrc="${config}nvim/init.vim"
 export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"

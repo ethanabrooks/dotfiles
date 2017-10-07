@@ -1,8 +1,6 @@
 #!/bin/bash -ue
 
 # enable terminal colors
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
 cyan=6
 green=2
 normal=9
@@ -43,7 +41,11 @@ print 'Linking local dotfiles'
 bash "$HOME/dotfiles/link-config.sh"
 
 print 'Downloading vim-plug...'
-curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+# Vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# NeoVim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # hack to fix file encoding in vimrc
@@ -51,7 +53,7 @@ curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
 #sed -i '1iscriptencoding utf-8\nset encoding=utf-8' "$HOME/.vimrc"
 
 print 'Installing vim plugins...'
-vim -c PlugInstall -c qall
+vim +PlugInstall +qall
 
 GREEN=2
 tput setaf $green
