@@ -25,14 +25,14 @@ if [[ $privileged == 'y' ]]; then
     neovim \
     || :
   sudo easy_install pip
-  sudo pip install --upgrade pip virtualenvwrapper
+  sudo pip install --upgrade pip virtualenvwrapper neovim
   mkdir -p "$HOME/virtualenvs"
 
   print 'Cloning zsh-syntax-highlighting...'
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
+
   zsh_dir=$(brew info zsh | ag zsh/ | tail -1 | cut -d' ' -f1)
-  zsh_path=$zsh_dir/bin/zsh
-  sudo dscl . -create /Users/$USER UserShell $zsh_path
+  sudo dscl . -create /Users/$USER UserShell $zsh_dir/bin/zsh
 fi
 
 print 'Linking local dotfiles'
