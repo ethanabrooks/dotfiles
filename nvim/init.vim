@@ -43,7 +43,7 @@ nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
 nnoremap <C-t> :TagbarToggle<CR>
-noremap <F3> :Autoformat<CR>
+noremap <F4> :Autoformat<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
