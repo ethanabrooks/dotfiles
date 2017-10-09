@@ -42,3 +42,6 @@ Plug 'fatih/vim-go'
 Plug 'bitc/vim-hdevtools'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+
+" XML
+"Plug 'othree/xml.vim'

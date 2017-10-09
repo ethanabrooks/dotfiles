@@ -12,8 +12,13 @@ au FileType hamlet set syntax=html
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 "}}}
-"
+
+"{{{ autocmd
+autocmd BufNewFile,BufRead *.mjcf   set filetype=xml
+"}}}
+
 "{{{ let
 let mapleader = " "
 let $PATH .= ':' . '$HOME/.local/bin/'
@@ -38,6 +43,7 @@ nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
 nnoremap <C-t> :TagbarToggle<CR>
+noremap <F3> :Autoformat<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
