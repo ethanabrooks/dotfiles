@@ -52,7 +52,7 @@ print 'Setting encodings to utf-8...'
 sed -i '1iscriptencoding utf-8\nset encoding=utf-8' "/home/ethanbro/.config/nvim/init.vim"
 
 print 'Installing vim plugins...'
-vim -c PlugInstall -c qall
+vim +PlugInstall +qall
 
 GREEN='\033[0;32m'
 print "${GREEN}All done! Congratulations, your system is all setup."
