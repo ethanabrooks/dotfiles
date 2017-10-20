@@ -9,3 +9,5 @@
     cmd = meld "$LOCAL" "$REMOTE"
 [push]
 	default = simple
+[mergetool]
+	keepBackup = false
