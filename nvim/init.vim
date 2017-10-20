@@ -25,7 +25,6 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:jedi#completions_enabled = 0
 let g:python_host_prog  = '/usr/bin/python'
 let g:python3_host_prog  = '/usr/bin/python3'
 
@@ -56,7 +55,6 @@ nnoremap <leader>x :<up><CR>
 
 "save
 nnoremap <leader>w :w<CR>
-
 "}}}
 
 "{{{ plug

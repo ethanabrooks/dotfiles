@@ -109,3 +109,5 @@ compinit
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
+
+
