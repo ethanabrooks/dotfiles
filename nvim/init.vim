@@ -1,11 +1,3 @@
-scriptencoding utf-8
-set encoding=utf-8
-scriptencoding utf-8
-set encoding=utf-8
-scriptencoding utf-8
-set encoding=utf-8
-scriptencoding utf-8
-set encoding=utf-8
 filetype plugin indent on
  
 "{{{ au FileType
@@ -20,6 +12,7 @@ au FileType hamlet set syntax=html
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+au BufRead,BufNewFile *.mjcf setfiletype xml
 "}}}
 "
 "{{{ let
@@ -32,6 +25,7 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
+let g:jedi#completions_enabled = 0
 let g:python_host_prog  = '/usr/bin/python'
 let g:python3_host_prog  = '/usr/bin/python3'
 
@@ -46,6 +40,7 @@ nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
 nnoremap <C-t> :TagbarToggle<CR>
+nnoremap <F4> :Autoformat<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -61,6 +56,7 @@ nnoremap <leader>x :<up><CR>
 
 "save
 nnoremap <leader>w :w<CR>
+
 "}}}
 
 "{{{ plug

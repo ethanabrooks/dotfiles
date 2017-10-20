@@ -30,6 +30,7 @@ if [[ $privileged == 'y' ]]; then
     silversearcher-ag \
     vim-gnome \
     neovim \
+    mlocate \
     terminator \
     google-chrome-stable
   sudo pip install --upgrade pip virtualenvwrapper

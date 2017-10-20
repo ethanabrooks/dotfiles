@@ -1,11 +1,13 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
+/usr/local/cuda-8.0/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
+export LD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin:/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH"
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -67,7 +69,7 @@ function chpwd {
   echo $(pwd) >! $CURRENT_PROJECT_PATH
 }
 function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
     cd "$(cat $CURRENT_PROJECT_PATH)"
   fi
 }

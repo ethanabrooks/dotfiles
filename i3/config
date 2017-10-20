@@ -151,6 +151,15 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+mode "moveit" {
+    bindsym "k" move up 20px
+    bindsym "h" move left 20px
+    bindsym "j" move down 20px
+    bindsym "l" move right 20px
+    bindsym Mod4+m mode "default"
+}
+bindsym Mod4+m focus floating; mode "moveit"
+
 bindsym $mod+r mode "resize"
 font pango:nimbus sans 10
 bar {

@@ -15,8 +15,8 @@ Plug 'Yggdroot/indentLine'
 
 " Prettiness
 Plug 'flazz/vim-colorschemes'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'blueshirts/darcula'
 Plug 'whatyouhide/vim-gotham'
@@ -30,9 +30,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'ekalinin/Dockerfile.vim'
 
 " Python
-Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
-"Plug 'kevinw/pyflakes-vim'
+"Plug 'davidhalter/jedi-vim'
+"Plug 'zchee/deoplete-jedi'
 Plug 'nvie/vim-flake8'
 
 " Go
@@ -44,3 +43,5 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
 Plug 'ekalinin/Dockerfile.vim'
+
+Plug 'vim-jp/vim-cpp'
