@@ -6,6 +6,7 @@ $dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
+#export DYLD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin"
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -14,6 +15,7 @@ export CELLAR='/usr/local/Cellar/'
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
+export VIRTUALENV_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
@@ -86,6 +88,7 @@ zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
 setopt autocd
+setopt extendedglob
 setopt autopushd
 setopt inc_append_history
 setopt inc_append_history

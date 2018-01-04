@@ -2,10 +2,14 @@
 	email = ethanabrooks@gmail.com
 	name = Ethan Brooks
 [diff]
-    tool = meld
+    tool = filemerge
 [difftool]
     prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+[difftool "filemerge"]
+    cmd = filemerge "$LOCAL" "$REMOTE"
 [push]
 	default = simple
+[merge]
+	tool = opendiff
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

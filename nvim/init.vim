@@ -24,8 +24,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/bin/python'
-let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog  = '/usr/local/bin/python3'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
@@ -100,7 +100,6 @@ if executable('ag')
 
    if !exists(":Ag")
      command -nargs=+ -complete=file -bar Ag silent! grep!  <args>|cwindow|redraw!
-     nnoremap \ :Ag<SPACE>
    endif
  endif
  "}}}
@@ -112,6 +111,7 @@ command! Sovim source $MYVIMRC
 command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
 "delete trailing whitespace
 command! Despace %s/\s\+\n/\r/g
+command! Format !autopep8 -i %; yapf -i %
 "}}}
 
 "{{{ Hashbang
