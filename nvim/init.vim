@@ -22,6 +22,7 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
+let g:syntastic_tex_checkers = ['lacheck']
 
 " jedi-vim
 let g:python_host_prog  = '/usr/bin/python'

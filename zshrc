@@ -14,13 +14,12 @@ export CELLAR='/usr/local/Cellar/'
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
 export config="$dotfiles/config/"
-export zshrc="$config/nvim/init.vim"
-export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
-export pv="$eab/placevault"
+export vimrc="$config/nvim/init.vim"
 export VISUAL=vim
 
 fpath=($fpath $dotfiles/pure)
@@ -47,8 +46,8 @@ bindkey '^R' history-incremental-search-backward
 # export ARCHFLAGS="-arch x86_64"
 
 # aliases
-alias zshrc="vi $zshrc"
-alias vimrc='vi ~/.vimrc'
+alias zshrc="vi ~/.zshrc"
+alias vimrc="vi $vimrc"
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles'
