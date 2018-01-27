@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+sudo ip link set wlp4s0 down
+systemctl restart netctl-auto@wlp4s0.service
