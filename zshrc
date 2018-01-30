@@ -18,7 +18,7 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
-export config="$dotfiles/config/"
+export config="$HOME/.config/"
 export vimrc="$config/nvim/init.vim"
 export VISUAL=vim
 
