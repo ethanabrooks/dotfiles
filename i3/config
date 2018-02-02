@@ -12,6 +12,7 @@
 
 
 set $mod Mod4
+focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -34,7 +35,7 @@ floating_modifier $mod
 bindsym $mod+Return exec terminator
 
 # start a browser
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec google-chrome-unstable
 
 # kill focused window
 bindsym $mod+q kill
@@ -152,11 +153,13 @@ mode "resize" {
 }
 
 mode "moveit" {
-    bindsym "k" move up 20px
-    bindsym "h" move left 20px
-    bindsym "j" move down 20px
-    bindsym "l" move right 20px
-    bindsym Mod4+m mode "default"
+    bindsym "k" move up    50px
+    bindsym "h" move left  50px
+    bindsym "j" move down  50px
+    bindsym "l" move right 50px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym Mod4+m focus floating; mode "moveit"
 

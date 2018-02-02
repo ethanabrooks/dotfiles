@@ -1,47 +1,48 @@
-Plug 'ConradIrwin/vim-bracketed-paste'
+"Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'scrooloose/nerdcommenter'
-Plug 'easymotion/vim-easymotion'
-Plug 'jszakmeister/vim-togglecursor'
-Plug 'scrooloose/nerdtree'
-Plug 'osyo-manga/vim-over'
+"Plug 'easymotion/vim-easymotion'
+"Plug 'jszakmeister/vim-togglecursor'
+"Plug 'scrooloose/nerdtree'
+"Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
-Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
-Plug 'Chiel92/vim-autoformat'
-Plug 'Yggdroot/indentLine'
+"Plug 'tpope/vim-endwise'
+"Plug 'ervandew/supertab'
+"Plug 'majutsushi/tagbar'
+"Plug 'Chiel92/vim-autoformat'
+"Plug 'Yggdroot/indentLine'
+"
 
 " Prettiness
-Plug 'flazz/vim-colorschemes'
+"Plug 'flazz/vim-colorschemes'
 "Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'blueshirts/darcula'
-Plug 'whatyouhide/vim-gotham'
-Plug 'NLKNguyen/papercolor-theme'
-"Plug 'morhetz/gruvbox'
+""Plug 'vim-airline/vim-airline-themes'
+"Plug 'justinmk/vim-syntax-extra'
+"Plug 'blueshirts/darcula'
+"Plug 'whatyouhide/vim-gotham'
+"Plug 'NLKNguyen/papercolor-theme'
+""Plug 'morhetz/gruvbox'
 
-" MarkDown
-Plug 'plasticboy/vim-markdown'
+"" MarkDown
+"Plug 'plasticboy/vim-markdown'
 
-" Docker
-Plug 'ekalinin/Dockerfile.vim'
+"" Docker
+"Plug 'ekalinin/Dockerfile.vim'
 
-" Python
-"Plug 'davidhalter/jedi-vim'
-"Plug 'zchee/deoplete-jedi'
+"" Python
+""Plug 'davidhalter/jedi-vim'
+""Plug 'zchee/deoplete-jedi'
 Plug 'nvie/vim-flake8'
 
-" Go
-Plug 'fatih/vim-go'
+"" Go
+"Plug 'fatih/vim-go'
 
-" Haskell
-Plug 'bitc/vim-hdevtools'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'pbrisbin/vim-syntax-shakespeare'
+"" Haskell
+"Plug 'bitc/vim-hdevtools'
+"Plug 'neovimhaskell/haskell-vim'
+"Plug 'pbrisbin/vim-syntax-shakespeare'
 
-Plug 'ekalinin/Dockerfile.vim'
+"Plug 'ekalinin/Dockerfile.vim'
 
-Plug 'vim-jp/vim-cpp'
+"Plug 'vim-jp/vim-cpp'

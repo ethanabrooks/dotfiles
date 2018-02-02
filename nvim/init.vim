@@ -1,3 +1,5 @@
+scriptencoding utf-8
+set encoding=utf-8
 filetype plugin indent on
  
 "{{{ au FileType
@@ -72,9 +74,10 @@ set guifont="Droid Sans Mono":h14
 set noswapfile
 set incsearch     " incremental searching
 set autowrite     " :write before leaving file
-set background=light 
+set background=dark 
 set tabstop=2 " show existing tab with 2 spaces width
 set shiftwidth=2 " when indenting with '>', use 2 spaces width 
+set textwidth=80 
 set expandtab " On pressing tab, insert 2 spaces
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set number
@@ -168,4 +171,4 @@ autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-colorscheme PaperColor
+"colorscheme PaperColor

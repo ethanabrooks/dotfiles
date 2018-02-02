@@ -1,13 +1,13 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
-/usr/local/cuda-8.0/bin:\
+/usr/local/cuda-9.1/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
-export LD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin:/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin:/usr/local/cuda-9.1/lib64:$LD_LIBRARY_PATH"
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -16,13 +16,16 @@ export CELLAR='/usr/local/Cellar/'
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
+export VIRTUALENV_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
-export VISUAL=vim
+export VISUAL=nvim
+export EGL=1
+export TERM=xterm-256color
 
 fpath=($fpath $dotfiles/pure)
 
@@ -57,7 +60,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.config/i3/config"
-alias vi=nvim
+alias vi=vim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
