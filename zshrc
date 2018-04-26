@@ -26,6 +26,7 @@ export pv="$eab/placevault"
 export VISUAL=nvim
 export EGL=1
 export TERM=xterm-256color
+export VTE_VERSION="100"
 
 fpath=($fpath $dotfiles/pure)
 
@@ -60,7 +61,7 @@ alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitig
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
 alias i3config="vi ~/.config/i3/config"
-alias vi=vim
+alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'

@@ -18,6 +18,7 @@ au BufRead,BufNewFile *.mjcf setfiletype xml
 "}}}
 "
 "{{{ let
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 let mapleader = " "
 let $PATH .= ':' . '$HOME/.local/bin/'
 let g:syntastic_check_on_open=1
@@ -33,6 +34,10 @@ let g:python3_host_prog  = '/usr/bin/python3'
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
+
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 "}}}
 
 "{{{ nnoremap
@@ -50,7 +55,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "execute this file
-nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
+"nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
 
 "execute last command
 nnoremap <leader>x :<up><CR>
@@ -171,4 +176,4 @@ autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-"colorscheme PaperColor
+colorscheme PaperColor

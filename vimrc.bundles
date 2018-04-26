@@ -2,7 +2,7 @@
 Plug 'scrooloose/nerdcommenter'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'jszakmeister/vim-togglecursor'
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -21,7 +21,7 @@ Plug 'tpope/vim-surround'
 "Plug 'justinmk/vim-syntax-extra'
 "Plug 'blueshirts/darcula'
 "Plug 'whatyouhide/vim-gotham'
-"Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 ""Plug 'morhetz/gruvbox'
 
 "" MarkDown
@@ -31,9 +31,11 @@ Plug 'tpope/vim-surround'
 "Plug 'ekalinin/Dockerfile.vim'
 
 "" Python
-""Plug 'davidhalter/jedi-vim'
+Plug 'tarmack/vim-python-ftplugin'
+"Plug 'dbsr/vimpy'
+"Plug 'davidhalter/jedi-vim'
 ""Plug 'zchee/deoplete-jedi'
-Plug 'nvie/vim-flake8'
+"Plug 'nvie/vim-flake8'
 
 "" Go
 "Plug 'fatih/vim-go'
@@ -46,3 +48,5 @@ Plug 'nvie/vim-flake8'
 "Plug 'ekalinin/Dockerfile.vim'
 
 "Plug 'vim-jp/vim-cpp'
+"
+Plug 'lervag/vimtex'
