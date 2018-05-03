@@ -21,7 +21,6 @@ augroup END
 "}}}
 "
 "{{{ let
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 let mapleader = " "
 let $PATH .= ':' . '$HOME/.local/bin/'
 let g:syntastic_check_on_open=1
@@ -31,8 +30,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/bin/python'
-let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog  = '/usr/local/bin/python3'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
@@ -73,8 +72,8 @@ nnoremap <leader>w :w<CR>
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.config/nvim/bundles"))
+  source ~/.config/nvim/bundles
 endif
 call plug#end()
 "}}}
