@@ -17,6 +17,9 @@ export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
 export VIRTUALENV_PYTHON=$(which python3)
 
+#MYPY
+export MYPYPATH=~/stubs
+
 # exports
 export bin="$dotfiles/bin/"
 export config="$HOME/.config/"
@@ -26,7 +29,7 @@ export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/etha
 export pv="$eab/placevault"
 export VISUAL=vim
 
-fpath=($fpath $dotfiles/pure)
+fpath=($fpath $dotfiles/pure $HOME/autocompletion-tutorial)
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -102,9 +105,12 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
+
+# added by travis gem
+[ -f /Users/ethan/.travis/travis.sh ] && source /Users/ethan/.travis/travis.sh
