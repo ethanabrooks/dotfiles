@@ -66,19 +66,6 @@ alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
 
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
-
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
@@ -114,4 +101,22 @@ compinit
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
 
+
+
+# added by travis gem
+[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+
+# save last visited dir
+export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+}
+function current {
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
+    cd "$(cat $CURRENT_PROJECT_PATH)"
+  fi
+}
+current
 
