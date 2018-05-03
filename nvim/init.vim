@@ -72,8 +72,8 @@ nnoremap <leader>w :w<CR>
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.config/nvim/bundles"))
-  source ~/.config/nvim/bundles
+if filereadable(expand("~/.config/nvim/vimrc.bundles"))
+  source ~/.config/nvim/vimrc.bundles
 endif
 call plug#end()
 "}}}
