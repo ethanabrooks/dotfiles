@@ -30,8 +30,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/local/bin/python'
-let g:python3_host_prog  = '/usr/local/bin/python3'
+let g:python_host_prog  = '/usr/bin/python'
+let g:python3_host_prog  = '/usr/bin/python3'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
