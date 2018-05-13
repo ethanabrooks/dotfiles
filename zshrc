@@ -46,8 +46,8 @@ bindkey '^R' history-incremental-search-backward
 # export ARCHFLAGS="-arch x86_64"
 
 # aliases
-alias zshrc="vi ~/.zshrc"
-alias vimrc="vi $vimrc"
+alias zshrc="vi $zshrc"
+alias vimrc='vi ~/.vimrc'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.vimrc.bundles'
