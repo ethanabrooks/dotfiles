@@ -1,20 +1,20 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
-/usr/local/cuda-8.0/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
-export LD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin:/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH"
 
 export CELLAR='/usr/local/Cellar/'
+export EGL=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
+export VIRTUALENV_PYTHON=$(which python3)
 source '/usr/local/bin/virtualenvwrapper.sh'
 
 # exports
@@ -61,6 +61,8 @@ alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
+alias git='~/run_manager/runs-git'
+
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
@@ -109,5 +111,8 @@ compinit
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
+TERM='xterm'
 
-
+if [[ -e $dotfiles/system_specific.zsh ]]; then
+  source $dotfiles/system_specific.zsh
+fi
