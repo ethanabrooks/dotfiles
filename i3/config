@@ -3,8 +3,6 @@
 # It will not be overwritten, so edit it as you like.
 #
 # Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
 
 # i3 config file (v4)
 #
@@ -12,13 +10,14 @@
 
 
 set $mod Mod4
+focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 3
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -151,23 +150,34 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-mode "moveit" {
-    bindsym "k" move up 20px
-    bindsym "h" move left 20px
-    bindsym "j" move down 20px
-    bindsym "l" move right 20px
+mode "nudge" {
+    bindsym Up move up 20px
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Right move right 20px
     bindsym Mod4+m mode "default"
 }
-bindsym Mod4+m focus floating; mode "moveit"
+bindsym Mod4+m focus floating; mode "nudge"
 
 bindsym $mod+r mode "resize"
-font pango:nimbus sans 10
-bar {
-        status_command i3status
-}
 
+bar {
+ 	font pango:Source Sans Pro-10 10, Font Awesome 11
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  colors {
+          background #262728
+          statusline #888888
+          separator #666666
+
+          focused_workspace  #262728 #262728 #ffb52a
+          active_workspace   #262728 #262728 #ffffff
+          inactive_workspace #262728 #262728 #888888
+          urgent_workspace   #262728 #262728 #ffffff
+          binding_mode       #262728 #262728 #ffffff
+  }
+}
 for_window [class="\w*"] border pixel 1
-# class                 border  backgr. text    indicator child_border
+#class                   border  backgr. text    indicator child_border
 client.focused          #b0b6ba #b0b6ba #282828 #282828
 client.focused_inactive #F1F2F6 #282828 #282828 #282828
 client.unfocused        #F1F2F6 #282828 #282828 #282828

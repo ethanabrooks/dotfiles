@@ -3,6 +3,8 @@ set encoding=utf-8
 filetype plugin indent on
  
 "{{{ au FileType
+augroup filetypes
+autocmd!
 au FileType vim set foldmethod=marker
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
@@ -15,6 +17,7 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
+augroup END
 "}}}
 "
 "{{{ let
@@ -33,14 +36,22 @@ let g:python3_host_prog  = '/usr/bin/python3'
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
+
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+let g:pymode_options_max_line_length = 120
+let g:pymode_python = 'python3'
+let g:pymode_rope = 1
+let g:pymode_rope_autoimport=1
+let g:pymode_lint_options_mccabe = { 'complexity': 13 }
 "}}}
 
 "{{{ nnoremap
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
-nnoremap <C-t> :TagbarToggle<CR>
 nnoremap <F4> :Autoformat<CR>
 
 " Quicker window movement
@@ -50,7 +61,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "execute this file
-nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
+"nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
 
 "execute last command
 nnoremap <leader>x :<up><CR>
@@ -61,8 +72,8 @@ nnoremap <leader>w :w<CR>
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.config/nvim/vimrc.bundles"))
+  source ~/.config/nvim/vimrc.bundles
 endif
 call plug#end()
 "}}}
@@ -74,9 +85,10 @@ set guifont="Droid Sans Mono":h14
 set noswapfile
 set incsearch     " incremental searching
 set autowrite     " :write before leaving file
-set background=light 
+set background=dark 
 set tabstop=2 " show existing tab with 2 spaces width
 set shiftwidth=2 " when indenting with '>', use 2 spaces width 
+set textwidth=80 
 set expandtab " On pressing tab, insert 2 spaces
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set number
@@ -85,6 +97,7 @@ set complete+=kspell " Autocomplete with dictionary words when spell check is on
 set cursorline
 set wildmenu
 set lazyredraw  " maybe faster with macros
+set mouse=a
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -170,4 +183,5 @@ autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-colorscheme PaperColor
+"colorscheme PaperColor
+colorscheme gruvbox

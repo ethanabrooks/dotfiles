@@ -8,7 +8,6 @@ $PATH\
 "
 
 export CELLAR='/usr/local/Cellar/'
-export EGL=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -22,7 +21,9 @@ export bin="$dotfiles/bin/"
 export zshrc="$HOME/.zshrc"
 export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
 export pv="$eab/placevault"
-export VISUAL=vim
+export VISUAL=nvim
+export TERM=xterm-256color
+export VTE_VERSION="100"
 
 fpath=($fpath $dotfiles/pure)
 
@@ -52,7 +53,7 @@ alias zshrc="vi $zshrc"
 alias vimrc='vi ~/.config/nvim/init.vim'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
-alias bundles='vi ~/.vimrc.bundles'
+alias bundles='vi ~/dotfiles/nvim/vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
@@ -61,21 +62,7 @@ alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
-alias git='~/run_manager/runs-git'
 
-
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
 
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
@@ -116,3 +103,20 @@ TERM='xterm'
 if [[ -e $dotfiles/system_specific.zsh ]]; then
   source $dotfiles/system_specific.zsh
 fi
+
+# added by travis gem
+[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+
+# save last visited dir
+export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+}
+function current {
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
+    cd "$(cat $CURRENT_PROJECT_PATH)"
+  fi
+}
+current
