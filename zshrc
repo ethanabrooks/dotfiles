@@ -1,5 +1,6 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
+<<<<<<< HEAD
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
@@ -13,8 +14,8 @@ export CELLAR='/usr/local/Cellar/'
 
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
-export VIRTUALENV_PYTHON=$(which python3)
 source '/usr/local/bin/virtualenvwrapper.sh'
+export VIRTUALENV_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
@@ -63,7 +64,6 @@ alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
 
-
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
@@ -98,11 +98,14 @@ compinit
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
-TERM='xterm'
 
 if [[ -e $dotfiles/system_specific.zsh ]]; then
   source $dotfiles/system_specific.zsh
 fi
+
+# added by travis gem
+[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+
 
 # added by travis gem
 [ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
