@@ -44,6 +44,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 let g:pymode_options_max_line_length = 120
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
 let g:pymode_rope_autoimport=1
 let g:pymode_lint_options_mccabe = { 'complexity': 13 }
 "}}}
