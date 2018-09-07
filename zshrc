@@ -1,6 +1,5 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
-<<<<<<< HEAD
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
@@ -15,7 +14,7 @@ export CELLAR='/usr/local/Cellar/'
 # virtualenvwrapper
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
-export VIRTUALENV_PYTHON=$(which python3)
+export VIRTUALENV_PYTHON=$(which python3.6)
 
 # exports
 export bin="$dotfiles/bin/"

@@ -2,7 +2,7 @@
 	email = ethanabrooks@gmail.com
 	name = Ethan Brooks
 [diff]
-    tool = meld
+	tool = meld
 [difftool]
     prompt = false
 [difftool "meld"]

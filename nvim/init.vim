@@ -30,8 +30,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/bin/python'
-let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/home/ethanbro/virtualenvs/neovim2/bin/python'
+let g:python3_host_prog  = '/home/ethanbro/virtualenvs/neovim/bin/python'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
@@ -41,7 +41,8 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:pymode_options_max_line_length = 120
+let g:pymode_options_max_line_length = 90
+let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
 let g:pymode_rope_autoimport=1
