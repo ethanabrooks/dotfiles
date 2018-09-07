@@ -56,11 +56,11 @@ alias sovim='source ~/.vimrc'
 alias bundles='vi ~/dotfiles/nvim/vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
-alias commit="git commit -am $@"
+alias cmt="git commit -am $@"
+alias ckt="git checkout $@"
 alias i3config="vi ~/.config/i3/config"
 alias vi=nvim
 alias ls='ls --color'
-alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
 
 # pretty vi
