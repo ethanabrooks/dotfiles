@@ -45,6 +45,7 @@ let g:pymode_options_max_line_length = 90
 let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
 let g:pymode_rope_autoimport=1
 let g:pymode_lint_options_mccabe = { 'complexity': 13 }
 "}}}

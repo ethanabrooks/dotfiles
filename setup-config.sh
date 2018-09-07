@@ -38,7 +38,7 @@ if [[ $privileged == 'y' ]]; then
 
   print 'Cloning zsh-syntax-highlighting...'
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
-  chsh -s "$(which zsh)"
+  chsh -s "$(which zsh)" || :
 fi
 
 print 'Linking local dotfiles'
