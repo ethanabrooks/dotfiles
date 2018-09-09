@@ -2,11 +2,11 @@
 	email = ethanabrooks@gmail.com
 	name = Ethan Brooks
 [diff]
-    tool = filemerge
+    tool = opendiff
 [difftool]
     prompt = false
 [difftool "filemerge"]
-    cmd = filemerge "$LOCAL" "$REMOTE"
+    cmd = opendiff "$LOCAL" "$REMOTE"
 [push]
 	default = simple
 [merge]

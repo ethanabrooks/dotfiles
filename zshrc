@@ -13,9 +13,9 @@ export CELLAR='/usr/local/Cellar/'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper
+export VIRTUALENV_PYTHON=$(which python3.6)
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
-export VIRTUALENV_PYTHON=$(which python3)
 
 #MYPY
 export MYPYPATH=~/stubs
@@ -57,24 +57,9 @@ alias zshrc="vi $zshrc"
 alias vimrc='vi $vimrc'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
-alias bundles='vi ~/.vimrc.bundles'
+alias bundles='vi ~/.config/nvim/bundles.vim'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
-alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
-alias commit="git commit -am $@"
 alias vi=nvim
-
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
 
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
@@ -114,3 +99,19 @@ PATH=$PATH:$GOPATH/bin
 
 # added by travis gem
 [ -f /Users/ethan/.travis/travis.sh ] && source /Users/ethan/.travis/travis.sh
+
+
+# save last visited dir
+export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+
+}
+function current {
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
+    cd "$(cat $CURRENT_PROJECT_PATH)"
+  fi
+}
+current

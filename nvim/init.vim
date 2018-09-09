@@ -22,7 +22,7 @@ augroup END
 "
 "{{{ let
 let mapleader = " "
-let $PATH .= ':' . '$HOME/.local/bin/'
+let $PATH = '/usr/bin:' . $PATH . ':' . '$HOME/.local/bin/'
 let g:syntastic_check_on_open=1
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
@@ -30,18 +30,21 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/local/bin/python'
-let g:python3_host_prog  = '/usr/local/bin/python3'
+let g:python_host_prog  = '/Users/ethan/virtualenvs/neovim2/bin/python'
+let g:python3_host_prog  = '/Users/ethan/virtualenvs/neovim/bin/python'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_compiler_latexmk = { 'build_dir' : 'build'}
 
-let g:pymode_options_max_line_length = 120
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_method = 'skim'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
+
+let g:pymode_options_max_line_length = 90
 let g:pymode_python = 'python3'
 let g:pymode_rope = 1
 let g:pymode_rope_autoimport=1
@@ -71,8 +74,8 @@ nnoremap <leader>w :w<CR>
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.config/nvim/bundles"))
-  source ~/.config/nvim/bundles
+if filereadable(expand("~/.config/nvim/bundles.vim"))
+  source ~/.config/nvim/bundles.vim
 endif
 call plug#end()
 "}}}
