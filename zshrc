@@ -1,8 +1,8 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
+$dotfiles/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
-$dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
