@@ -17,17 +17,18 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
+autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
 augroup END
 "}}}
-"
+
 "{{{ let
 let mapleader = " "
-let $PATH .= ':' . '$HOME/.local/bin/'
-let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
+let $PATH = '/usr/bin:' . $PATH . ':' . '$HOME/.local/bin/'
+"let g:syntastic_check_on_open=1
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
 let g:python_host_prog  = '/home/ethanbro/virtualenvs/neovim2/bin/python'
@@ -40,6 +41,10 @@ let g:is_posix = 1
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
+
+let g:ale_fixers = ['yapf', 'isort']
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_fix_on_save = 1
 
 let g:pymode_options_max_line_length = 90
 let g:pymode_rope_regenerate_on_write = 0
@@ -70,12 +75,15 @@ nnoremap <leader>x :<up><CR>
 
 "save
 nnoremap <leader>w :w<CR>
+
+" fzf
+nnoremap <C-p> :Files<CR>
 "}}}
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.config/nvim/vimrc.bundles"))
-  source ~/.config/nvim/vimrc.bundles
+if filereadable(expand("~/.config/nvim/bundles.vim"))
+  source ~/.config/nvim/bundles.vim
 endif
 call plug#end()
 "}}}

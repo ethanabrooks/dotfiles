@@ -5,15 +5,19 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 "Plug 'osyo-manga/vim-over'
 "Plug 'scrooloose/syntastic'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 "Plug 'ervandew/supertab'
 "Plug 'majutsushi/tagbar'
 "Plug 'Chiel92/vim-autoformat'
 "Plug 'Yggdroot/indentLine'
-"
+Plug 'w0rp/ale'
 
 " Prettiness
 "Plug 'flazz/vim-colorschemes'
@@ -35,7 +39,7 @@ Plug 'morhetz/gruvbox'
 "Plug 'tarmack/vim-python-ftplugin'
 "Plug 'dbsr/vimpy'
 "Plug 'davidhalter/jedi-vim'
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+"Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 "Plug 'zchee/deoplete-jedi'
 "Plug 'nvie/vim-flake8'
 
