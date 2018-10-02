@@ -17,19 +17,20 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
+autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
 augroup END
 "}}}
-"
+
 "{{{ let
 let mapleader = " "
 let $PATH = '/usr/bin:' . $PATH . ':' . '$HOME/.local/bin/'
-let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
+"let g:syntastic_check_on_open=1
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
-" jedi-vim
+" neovim
 let g:python_host_prog  = '/Users/ethan/virtualenvs/neovim2/bin/python'
 let g:python3_host_prog  = '/Users/ethan/virtualenvs/neovim/bin/python'
 
@@ -41,13 +42,15 @@ let g:vimtex_compiler_latexmk = { 'build_dir' : 'build'}
 
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
-"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-"let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:pymode_options_max_line_length = 90
-let g:pymode_python = 'python3'
-let g:pymode_rope = 1
-let g:pymode_rope_autoimport=1
+let g:ale_fixers = ['yapf', 'isort']
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_fix_on_save = 1
+
+"let g:pymode_options_max_line_length = 90
+"let g:pymode_python = 'python3'
+"let g:pymode_rope = 1
+"let g:pymode_rope_autoimport=1
 "}}}
 
 "{{{ nnoremap
@@ -70,6 +73,9 @@ nnoremap <leader>x :<up><CR>
 
 "save
 nnoremap <leader>w :w<CR>
+
+" fzf
+nnoremap <C-p> :Files<CR>
 "}}}
 
 "{{{ plug
