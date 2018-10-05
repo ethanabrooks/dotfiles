@@ -43,8 +43,10 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
 let g:ale_fixers = ['yapf', 'isort']
-let g:ale_linters = {'python': ['pylint']}
+let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_auto_pipenv = 1
 
 let g:pymode_options_max_line_length = 90
 let g:pymode_rope_regenerate_on_write = 0
@@ -60,7 +62,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <F4> :Autoformat<CR>
-nnoremap <leader>b Oimport ipdb; ipdb.set_trace()
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -79,6 +80,12 @@ nnoremap <leader>w :w<CR>
 
 " fzf
 nnoremap <C-p> :Files<CR>
+
+" break
+nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+
+nnoremap <leader>k :ALEPrevious<CR>
+nnoremap <leader>j :ALENext<CR>
 "}}}
 
 "{{{ plug
@@ -90,6 +97,8 @@ call plug#end()
 "}}}
 
 "{{{ set
+set shell=/usr/local/bin/zsh
+
 set t_Co=256
 set guifont="Droid Sans Mono":h14
 
