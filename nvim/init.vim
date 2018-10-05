@@ -44,8 +44,10 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
 
 let g:ale_fixers = ['yapf', 'isort']
-let g:ale_linters = {'python': ['pylint']}
+let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_auto_pipenv = 1
 
 "let g:pymode_options_max_line_length = 90
 "let g:pymode_python = 'python3'
@@ -76,6 +78,12 @@ nnoremap <leader>w :w<CR>
 
 " fzf
 nnoremap <C-p> :Files<CR>
+
+" break
+nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+
+nnoremap <leader>k :ALEPrevious<CR>
+nnoremap <leader>j :ALENext<CR>
 "}}}
 
 "{{{ plug
@@ -87,6 +95,8 @@ call plug#end()
 "}}}
 
 "{{{ set
+set shell=/usr/local/bin/zsh
+
 set t_Co=256
 set guifont="Droid Sans Mono":h14
 

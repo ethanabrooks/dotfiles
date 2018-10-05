@@ -13,7 +13,7 @@ export CELLAR='/usr/local/Cellar/'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper
-export VIRTUALENV_PYTHON=$(which python3.6)
+export VIRTUALENV_PYTHON=$(which python3)
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
 
