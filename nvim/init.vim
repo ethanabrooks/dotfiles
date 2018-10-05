@@ -60,6 +60,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <F4> :Autoformat<CR>
+nnoremap <leader>b Oimport ipdb; ipdb.set_trace()
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
