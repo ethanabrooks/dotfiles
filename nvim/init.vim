@@ -1,7 +1,3 @@
-scriptencoding utf-8
-set encoding=utf-8
-filetype plugin indent on
- 
 "{{{ au FileType
 augroup filetypes
 autocmd!
@@ -96,4 +92,91 @@ endif
 call plug#end()
 "}}}
 
+"{{{ set
+set noswapfile
+set incsearch     " incremental searching
+set autowrite     " :write before leaving file
+set background=dark 
+set tabstop=2 " show existing tab with 2 spaces width
+set shiftwidth=2 " when indenting with '>', use 2 spaces width 
+set textwidth=80 
+set expandtab " On pressing tab, insert 2 spaces
+set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+set number
+set numberwidth=1
+set complete+=kspell " Autocomplete with dictionary words when spell check is on
+set cursorline
+set wildmenu
+set lazyredraw  " maybe faster with macros
+set mouse=a
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+"}}}
+
+"{{{ command!
+"easy source virmc
+command! Sovim source $MYVIMRC
+"easy update plugins
+command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
+"delete trailing whitespace
+command! Despace %s/\s\+\n/\r/g
+"}}}
+
+"{{{ Hashbang
+function! Hashbang(portable, permission, RemExt)
+  let shells = {
+        \    'awk': "awk",
+        \     'sh': "bash",
+        \     'hs': "stack",
+        \     'jl': "julia",
+        \    'lua': "lua",
+        \    'mak': "make",
+        \     'js': "node",
+        \      'm': "octave",
+        \     'pl': "perl",
+        \    'php': "php",
+        \     'py': "python",
+        \      'r': "Rscript",
+        \     'rb': "ruby",
+        \  'scala': "scala",
+        \    'tcl': "tclsh",
+        \     'tk': "wish",
+        \  'swift': "swift"
+        \    }
+
+  let extension = expand("%:e")
+
+  if has_key(shells,extension)
+    let fileshell = shells[extension]
+
+    if a:portable
+      let line =  "#! /usr/bin/env " . fileshell
+    else
+      let line = "#! " . system("which " . fileshell)
+    endif
+
+    0put = line
+
+    if a:permission
+      :autocmd BufWritePost * :autocmd VimLeave * :!chmod u+x %
+    endif
+
+
+    if a:RemExt
+      :autocmd BufWritePost * :autocmd VimLeave * :!mv % "%:p:r"
+    endif
+
+  endif
+
+endfunction
+autocmd BufNewFile * :call Hashbang(1,0,0)
+"}}}
+
+scriptencoding utf-8
+set encoding=utf-8
+filetype plugin indent on
 colorscheme gruvbox
+ 
