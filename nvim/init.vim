@@ -48,13 +48,13 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
 
-let g:pymode_options_max_line_length = 90
-let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_python = 'python3'
-let g:pymode_rope = 1
-let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
-let g:pymode_rope_autoimport=1
-let g:pymode_lint_options_mccabe = { 'complexity': 13 }
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
+"let g:pymode_options_max_line_length = 90
+"let g:pymode_python = 'python3'
+"let g:pymode_rope = 1
+"let g:pymode_rope_autoimport=1
 "}}}
 
 "{{{ nnoremap
@@ -203,5 +203,4 @@ autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-"colorscheme PaperColor
 colorscheme gruvbox
