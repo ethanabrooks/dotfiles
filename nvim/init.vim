@@ -17,6 +17,8 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
+au BufRead,BufNewFile *.pyi setfiletype python
+au BufRead,BufNewFile .pylintrc setfiletype dosini
 autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
 augroup END
 "}}}
@@ -38,12 +40,13 @@ let g:python3_host_prog  = '/Users/ethan/virtualenvs/neovim/bin/python'
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-let g:vimtex_compiler_latexmk = { 'build_dir' : 'build'}
+"let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
 
 let g:ale_fixers = ['yapf', 'isort']
-let g:ale_linters = {'python': ['pylint', 'pyls']}
+let g:ale_linters = {'python': ['pylint', 'pyls'], 'tex': ['lacheck']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
@@ -51,6 +54,7 @@ let g:ale_python_pyls_auto_pipenv = 1
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
 
+let g:python_highlight_all = 1
 "let g:pymode_options_max_line_length = 90
 "let g:pymode_python = 'python3'
 "let g:pymode_rope = 1

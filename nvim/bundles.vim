@@ -38,3 +38,4 @@ Plug 'morhetz/gruvbox'
 Plug 'ekalinin/Dockerfile.vim', {'for': 'docker'}
 
 Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'vim-python/python-syntax'

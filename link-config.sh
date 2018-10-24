@@ -22,7 +22,7 @@ do
   fi
 done
 
-configs="nvim"
+configs="nvim yapf"
 mkdir -p "$HOME/.config"
 
 for config in $configs 
