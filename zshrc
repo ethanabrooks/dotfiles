@@ -13,7 +13,7 @@ export CELLAR='/usr/local/Cellar/'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper
-export VIRTUALENV_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export WORKON_HOME="$HOME/virtualenvs"
 source '/usr/local/bin/virtualenvwrapper.sh'
 
@@ -60,6 +60,7 @@ alias sovim='source ~/.vimrc'
 alias bundles='vi ~/.config/nvim/bundles.vim'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias vi=nvim
+alias wtf='python -m ipdb -c continue'
 
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"

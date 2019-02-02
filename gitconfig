@@ -1,18 +1,20 @@
 [user]
-	email = ethanabrooks@gmail.com
-	name = Ethan Brooks
+  email = ethanabrooks@gmail.com
+  name = Ethan Brooks
 [diff]
-    tool = opendiff
+  tool = opendiff
 [difftool]
-    prompt = false
+  prompt = false
 [difftool "filemerge"]
-    cmd = opendiff "$LOCAL" "$REMOTE"
+  cmd = opendiff "$LOCAL" "$REMOTE"
+[core]
+  editor = nvim
 [push]
-	default = simple
+  default = simple
 [merge]
-	tool = opendiff
+  tool = opendiff
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   br = branch
   co = checkout
   cm = commit -am

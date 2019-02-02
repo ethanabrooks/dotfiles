@@ -19,7 +19,8 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
 au BufRead,BufNewFile *.pyi setfiletype python
 au BufRead,BufNewFile .pylintrc setfiletype dosini
-autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
+au BufRead,BufNewFile .pyre_configuration setfiletype json
+au BufRead,BufNewFile *.cls setfiletype tex
 augroup END
 "}}}
 
@@ -40,7 +41,7 @@ let g:python3_host_prog  = '/Users/ethan/virtualenvs/neovim/bin/python'
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-"let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
