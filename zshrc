@@ -88,6 +88,7 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
+autoload zmv
 autoload -U compinit
 compinit
 

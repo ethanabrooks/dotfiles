@@ -44,6 +44,8 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 let g:ale_fixers = ['yapf', 'isort']
 let g:ale_linters = {'python': ['pylint', 'pyls']}
+let g:ale_linters = {'c': ['clang-format']}
+let g:ale_c_clangformat_executable = '/usr/bin/clang-format'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
@@ -57,7 +59,7 @@ let g:pymode_rope_autoimport=1
 let g:pymode_lint_options_mccabe = { 'complexity': 13 }
 "}}}
 
-"{{{ nnoremap
+"{{{ map
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -86,6 +88,7 @@ nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
 
 nnoremap <leader>k :ALEPrevious<CR>
 nnoremap <leader>j :ALENext<CR>
+
 "}}}
 
 "{{{ plug
@@ -97,7 +100,9 @@ call plug#end()
 "}}}
 
 "{{{ set
-set shell=/usr/local/bin/zsh
+set wildmode=longest,list,full
+set wildmenu
+
 
 set t_Co=256
 set guifont="Droid Sans Mono":h14
