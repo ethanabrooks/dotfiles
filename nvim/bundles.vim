@@ -2,8 +2,6 @@
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
-"Plug 'osyo-manga/vim-over'
-"Plug 'scrooloose/syntastic'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'

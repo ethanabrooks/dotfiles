@@ -94,12 +94,6 @@ call plug#end()
 "}}}
 
 "{{{ set
-set wildmode=longest,list,full
-set wildmenu
-
-
-set t_Co=256
-set guifont="Droid Sans Mono":h14
 set noswapfile
 set incsearch     " incremental searching
 set autowrite     " :write before leaving file
