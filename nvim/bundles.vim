@@ -16,6 +16,7 @@ Plug 'ervandew/supertab'
 "Plug 'Chiel92/vim-autoformat'
 "Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+Plug 'ervandew/supertab'
 
 " Prettiness
 "Plug 'flazz/vim-colorschemes'
@@ -34,23 +35,7 @@ Plug 'morhetz/gruvbox'
 "Plug 'ekalinin/Dockerfile.vim'
 
 "" Python
-"Plug 'tarmack/vim-python-ftplugin'
-"Plug 'dbsr/vimpy'
-"Plug 'davidhalter/jedi-vim'
-"Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-"Plug 'zchee/deoplete-jedi'
-"Plug 'nvie/vim-flake8'
-
-"" Go
-Plug 'fatih/vim-go', {'for': 'go'}
-
-"" Haskell
-Plug 'bitc/vim-hdevtools', {'for': 'haskell'}
-"Plug 'neovimhaskell/haskell-vim'
-"Plug 'pbrisbin/vim-syntax-shakespeare'
 
 Plug 'ekalinin/Dockerfile.vim', {'for': 'docker'}
-
-Plug 'vim-jp/vim-cpp', {'for': 'cpp'}
 
 Plug 'lervag/vimtex', {'for': 'tex'}

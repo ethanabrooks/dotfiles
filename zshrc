@@ -53,7 +53,7 @@ alias zshrc="vi $zshrc"
 alias vimrc='vi ~/.config/nvim/init.vim'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
-alias bundles='vi ~/dotfiles/nvim/vimrc.bundles'
+alias bundles='vi ~/dotfiles/nvim/bundles.vim'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias i3config="vi ~/.config/i3/config"
 alias vi=nvim
@@ -88,6 +88,7 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
+autoload zmv
 autoload -U compinit
 compinit
 
@@ -119,3 +120,8 @@ function current {
   fi
 }
 current
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}
