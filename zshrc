@@ -120,3 +120,8 @@ function current {
   fi
 }
 current
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}
