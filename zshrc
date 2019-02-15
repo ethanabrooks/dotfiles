@@ -88,6 +88,7 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
+autoload zmv
 autoload -U compinit
 compinit
 
@@ -119,3 +120,7 @@ function current {
   fi
 }
 current
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

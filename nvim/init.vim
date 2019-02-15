@@ -97,8 +97,6 @@ call plug#end()
 "}}}
 
 "{{{ set
-set shell=/usr/local/bin/zsh
-
 set t_Co=256
 set guifont="Droid Sans Mono":h14
 
