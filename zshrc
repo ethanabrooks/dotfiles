@@ -53,7 +53,7 @@ alias zshrc="vi $zshrc"
 alias vimrc='vi ~/.config/nvim/init.vim'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
-alias bundles='vi ~/dotfiles/nvim/vimrc.bundles'
+alias bundles='vi ~/dotfiles/nvim/bundles.vim'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias i3config="vi ~/.config/i3/config"
 alias vi=nvim
@@ -120,7 +120,8 @@ function current {
   fi
 }
 current
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}

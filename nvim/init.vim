@@ -1,7 +1,3 @@
-scriptencoding utf-8
-set encoding=utf-8
-filetype plugin indent on
- 
 "{{{ au FileType
 augroup filetypes
 autocmd!
@@ -42,22 +38,22 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:ale_fixers = ['yapf', 'isort']
 let g:ale_linters = {'python': ['pylint', 'pyls']}
+let g:ale_fixers = {'c': ['clang-format'], 'python': ['yapf', 'isort'], 'json': ['yapf']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
 
-let g:pymode_options_max_line_length = 90
-let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_python = 'python3'
-let g:pymode_rope = 1
-let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()'
-let g:pymode_rope_autoimport=1
-let g:pymode_lint_options_mccabe = { 'complexity': 13 }
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
+"let g:pymode_options_max_line_length = 90
+"let g:pymode_python = 'python3'
+"let g:pymode_rope = 1
+"let g:pymode_rope_autoimport=1
 "}}}
 
-"{{{ nnoremap
+"{{{ map
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -86,6 +82,7 @@ nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
 
 nnoremap <leader>k :ALEPrevious<CR>
 nnoremap <leader>j :ALENext<CR>
+
 "}}}
 
 "{{{ plug
@@ -120,25 +117,8 @@ set mouse=a
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
 "}}}
-
-"{{{ Use The Silver Searcher for CtrlP
-if executable('ag')
- " Use Ag over Grep
-   set grepprg=ag\ --nogroup\ --nocolor
-
-   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-   " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
-
-   if !exists(":Ag")
-     command -nargs=+ -complete=file -bar Ag silent! grep!  <args>|cwindow|redraw!
-     nnoremap \ :Ag<SPACE>
-   endif
- endif
- "}}}
 
 "{{{ command!
 "easy source virmc
@@ -196,10 +176,11 @@ function! Hashbang(portable, permission, RemExt)
   endif
 
 endfunction
-
-autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-"colorscheme PaperColor
+scriptencoding utf-8
+set encoding=utf-8
+filetype plugin indent on
 colorscheme gruvbox
+ 
