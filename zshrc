@@ -1,3 +1,10 @@
+source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && conda activate $(cat .venv)
+}
+
 dotfiles="$HOME/dotfiles"
 export PATH="\
 $dotfiles/bin:\
@@ -8,13 +15,6 @@ $PATH\
 "
 
 export CELLAR='/usr/local/Cellar/'
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# virtualenvwrapper
-export WORKON_HOME="$HOME/virtualenvs"
-source '/usr/local/bin/virtualenvwrapper.sh'
-export VIRTUALENV_PYTHON=$(which python3.6)
 
 # exports
 export bin="$dotfiles/bin/"
@@ -109,11 +109,6 @@ fi
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && workon $(cat .venv)
-}
 function current {
   if [[ -f $CURRENT_PROJECT_PATH  ]]; then
     cd "$(cat $CURRENT_PROJECT_PATH)"
