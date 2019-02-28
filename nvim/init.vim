@@ -46,7 +46,7 @@ let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
 
-let g:ale_fixers = ['yapf', 'isort']
+let g:ale_fixers = {'python': ['yapf', 'isort'], 'markdown': ['prettier']}
 let g:ale_linters = {'python': ['pylint', 'pyls'], 'tex': ['lacheck']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
