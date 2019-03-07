@@ -1,5 +1,6 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
+$dotfiles/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
@@ -88,6 +89,7 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
+autoload zmv
 autoload -U compinit
 compinit
 
@@ -102,15 +104,14 @@ PATH=$PATH:$GOPATH/bin
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && workon $(cat .venv)
-}
 function current {
   if [[ -f $CURRENT_PROJECT_PATH  ]]; then
     cd "$(cat $CURRENT_PROJECT_PATH)"
   fi
 }
 current
-
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}

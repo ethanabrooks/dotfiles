@@ -1,6 +1,6 @@
-filetype plugin indent on
- 
 "{{{ au FileType
+augroup filetypes
+autocmd!
 au FileType vim set foldmethod=marker
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
@@ -12,21 +12,23 @@ au FileType hamlet set syntax=html
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+au BufRead,BufNewFile *.mjcf setfiletype xml
+autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
+augroup END
 "}}}
-"
+
 "{{{ let
 let mapleader = " "
-let $PATH .= ':' . '$HOME/.local/bin/'
-let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
-let g:syntastic_tex_checkers = ['lacheck']
+let $PATH = '/usr/bin:' . $PATH . ':' . '$HOME/.local/bin/'
+"let g:syntastic_check_on_open=1
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
 
 " jedi-vim
-let g:python_host_prog  = '/usr/bin/python'
-let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/home/ethanbro/virtualenvs/neovim2/bin/python'
+let g:python3_host_prog  = '/home/ethanbro/virtualenvs/neovim/bin/python'
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
 " shell for syntax highlighting purposes.
@@ -35,17 +37,27 @@ let g:is_posix = 1
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_compiler_latexmk = {
-      \ 'build_dir' : './build/',
-      \}
+
+let g:ale_linters = {'python': ['pylint', 'pyls']}
+let g:ale_fixers = {'c': ['clang-format'], 'python': ['yapf', 'isort'], 'json': ['yapf']}
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_auto_pipenv = 1
+
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
+"let g:pymode_options_max_line_length = 90
+"let g:pymode_python = 'python3'
+"let g:pymode_rope = 1
+"let g:pymode_rope_autoimport=1
 "}}}
 
-"{{{ nnoremap
+"{{{ map
 nnoremap <leader>w :w<CR>
 nnoremap <C-w> :close<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-c> :.!pbcopy<CR>k:r !pbpaste<CR>
-nnoremap <C-t> :TagbarToggle<CR>
+nnoremap <F4> :Autoformat<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -54,19 +66,29 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "execute this file
-nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
+"nnoremap <C-x> :execute "!./" . expand('%:t')<CR>
 
 "execute last command
 nnoremap <leader>x :<up><CR>
 
 "save
 nnoremap <leader>w :w<CR>
+
+" fzf
+nnoremap <C-p> :Files<CR>
+
+" break
+nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+
+nnoremap <leader>k :ALEPrevious<CR>
+nnoremap <leader>j :ALENext<CR>
+
 "}}}
 
 "{{{ plug
 call plug#begin('~/.vim/bundle')
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.config/nvim/bundles.vim"))
+  source ~/.config/nvim/bundles.vim
 endif
 call plug#end()
 "}}}
@@ -78,9 +100,10 @@ set guifont="Droid Sans Mono":h14
 set noswapfile
 set incsearch     " incremental searching
 set autowrite     " :write before leaving file
-set background=light 
+set background=dark 
 set tabstop=2 " show existing tab with 2 spaces width
 set shiftwidth=2 " when indenting with '>', use 2 spaces width 
+set textwidth=80 
 set expandtab " On pressing tab, insert 2 spaces
 set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set number
@@ -89,29 +112,13 @@ set complete+=kspell " Autocomplete with dictionary words when spell check is on
 set cursorline
 set wildmenu
 set lazyredraw  " maybe faster with macros
+set mouse=a
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
 "}}}
-
-"{{{ Use The Silver Searcher for CtrlP
-if executable('ag')
- " Use Ag over Grep
-   set grepprg=ag\ --nogroup\ --nocolor
-
-   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-   " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
-
-   if !exists(":Ag")
-     command -nargs=+ -complete=file -bar Ag silent! grep!  <args>|cwindow|redraw!
-     nnoremap \ :Ag<SPACE>
-   endif
- endif
- "}}}
 
 "{{{ command!
 "easy source virmc
@@ -169,9 +176,11 @@ function! Hashbang(portable, permission, RemExt)
   endif
 
 endfunction
-
-autocmd BufRead,BufNewFile ~/dotfiles/*/config setfiletype dosini
 autocmd BufNewFile * :call Hashbang(1,0,0)
 "}}}
 
-colorscheme PaperColor
+scriptencoding utf-8
+set encoding=utf-8
+filetype plugin indent on
+colorscheme gruvbox
+ 

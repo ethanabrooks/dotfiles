@@ -2,12 +2,18 @@
 	email = ethanabrooks@gmail.com
 	name = Ethan Brooks
 [diff]
-    tool = meld
+	tool = meld
 [difftool]
     prompt = false
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
 [push]
 	default = simple
+[mergetool]
+	keepBackup = false
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  co = checkout
+  cm = commit -am
+  br = branch
+	up = "!git remote update -p; git merge --ff-only @{u}"
