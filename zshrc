@@ -47,10 +47,10 @@ bindkey '^R' history-incremental-search-backward
 
 # aliases
 alias zshrc="vi $zshrc"
-alias vimrc='vi ~/.vimrc'
+alias vimrc='vi ~/.config/nvim/init.vim'
 alias xinitrc="vi ~/.xinitrc"
 alias sovim='source ~/.vimrc'
-alias bundles='vi ~/.vimrc.bundles'
+alias bundles='vi ~/dotfiles/nvim/vimrc.bundles'
 alias ignore-untracked="git status --porcelain | grep '^??' | cut -c4- >> .gitignore"
 alias install-tensorflow="pip install --upgrade $TF_BINARY_URL"
 alias commit="git commit -am $@"
@@ -59,19 +59,6 @@ alias vi=nvim
 alias ls='ls --color'
 alias pacman='sudo pacman'
 alias wifi='sudo wifi-menu'
-
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
 
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
@@ -107,3 +94,23 @@ compinit
 # Go
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
+
+
+
+# added by travis gem
+[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+
+# save last visited dir
+export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+}
+function current {
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
+    cd "$(cat $CURRENT_PROJECT_PATH)"
+  fi
+}
+current
+
