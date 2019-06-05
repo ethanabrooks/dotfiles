@@ -114,7 +114,7 @@ function current {
     cd "$(cat $CURRENT_PROJECT_PATH)"
   fi
 }
-current
+#current
 function wtf { 
   local args 
   args="$@" 
