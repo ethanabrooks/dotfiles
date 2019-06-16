@@ -2,6 +2,7 @@
 augroup filetypes
 autocmd!
 au FileType vim set foldmethod=marker
+au FileType python set foldmethod=indent
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
 au FileType markdown nnoremap j gj
