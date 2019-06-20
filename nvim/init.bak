@@ -1,0 +1,9 @@
+scriptencoding utf-8
+set encoding=utf-8
+
+call plug#begin('~/.vim/bundle')
+Plug 'lervag/vimtex', {'for': 'tex'}
+
+call plug#end()
+
+let g:vimtex_fold_enabled=1

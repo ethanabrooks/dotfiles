@@ -1,0 +1,2 @@
+"Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'lervag/vimtex', {'for': 'tex'}
