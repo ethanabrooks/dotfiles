@@ -5,7 +5,7 @@ filetype plugin indent on
 "{{{ au FileType
 augroup filetypes
 autocmd!
-au FileType vim set foldmethod=marker
+"au FileType vim set foldmethod=marker
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
 au FileType markdown nnoremap j gj
@@ -45,8 +45,11 @@ let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
+let g:vimtex_view_method = 'skim'
+let g:vimtex_fold_enabled = 1
 
-let g:ale_fixers = {'python': ['yapf', 'isort'], 'markdown': ['prettier']}
+
+let g:ale_fixers = {'python': ['yapf', 'isort'], 'markdown': ['prettier'], 'tex': ['latexindent']}
 let g:ale_linters = {'python': ['pylint', 'pyls'], 'tex': ['lacheck']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1

@@ -1,10 +1,12 @@
 dotfiles="$HOME/dotfiles"
 export PATH="\
+/usr/local/sbin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
 $dotfiles/bin:\
 /usr/local/bin:\
-$PATH\
+$PATH:\
+/Users/ethan/Murphi3.1/src\
 "
 #export DYLD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin"
 
@@ -108,5 +110,5 @@ current
 function wtf { 
   local args 
   args="$@" 
-  ipython --pdb -c "%run $args"
+  ipython3 --pdb -c "%run $args"
 }
