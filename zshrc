@@ -5,14 +5,10 @@ export PATH="\
 $HOME/.local/bin:\
 $dotfiles/bin:\
 /usr/local/bin:\
-$PATH:\
-/Users/ethan/Murphi3.1/src\
+$PATH
 "
-#export DYLD_LIBRARY_PATH="/home/ethanbro/.mujoco/mjpro150/bin"
 
 export CELLAR='/usr/local/Cellar/'
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
@@ -44,8 +40,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 # User configurationw
-bindkey -v  # vim
-export KEYTIMEOUT=1  # 0.1 second timeout between modes
+bindkey -v # vim
+export KEYTIMEOUT=1 # 0.1 second timeout between modes
 bindkey '^R' history-incremental-search-backward
 
 # Compilation flags

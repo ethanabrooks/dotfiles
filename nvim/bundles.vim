@@ -16,6 +16,7 @@ Plug 'ervandew/supertab'
 "Plug 'Chiel92/vim-autoformat'
 "Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+Plug 'ervandew/supertab'
 
 " Prettiness
 "Plug 'flazz/vim-colorschemes'

@@ -1,0 +1,2 @@
+touch /tmp/xsessionrc.tmp
+setxkbmap -option caps:swapescape

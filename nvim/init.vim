@@ -5,7 +5,8 @@ filetype plugin indent on
 "{{{ au FileType
 augroup filetypes
 autocmd!
-"au FileType vim set foldmethod=marker
+au FileType vim set foldmethod=marker
+au FileType python set foldmethod=indent
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
 au FileType markdown nnoremap j gj
@@ -17,10 +18,7 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 au BufRead,BufNewFile *.mjcf setfiletype xml
-au BufRead,BufNewFile *.pyi setfiletype python
-au BufRead,BufNewFile .pylintrc setfiletype dosini
-au BufRead,BufNewFile .pyre_configuration setfiletype json
-au BufRead,BufNewFile *.cls setfiletype tex
+autocmd BufNewFile,BufRead .pyre_configuration set syntax=json
 augroup END
 "}}}
 
@@ -64,6 +62,11 @@ let g:python_highlight_all = 1
 "let g:pymode_rope = 1
 "let g:pymode_rope_autoimport=1
 "}}}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 
 "{{{ nnoremap
 nnoremap <leader>w :w<CR>

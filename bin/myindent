@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-for file in "$@"
-do
-    indent "$file"
-    rm "$file".BAK
-done
+indent -linux "$@"
+rm "$@"~
+
