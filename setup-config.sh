@@ -50,3 +50,8 @@ tput setaf $green
 printf "\nAll done! Congratulations, your system is all setup.\n"
 zsh
 
+cd ~/dotfiles
+git submodule init
+git submodule update
+sudo ln -s "$HOME/dotfiles/pure/pure.zsh" "/usr/local/share/zsh/site-functions/prompt_pure_setup"
+sudo ln -s "$HOME/dotfiles/pure/async.zsh" "/usr/local/share/zsh/site-functions/async"
