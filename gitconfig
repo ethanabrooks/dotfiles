@@ -18,3 +18,4 @@
   br = branch
   co = checkout
   cm = commit -am
+  df = !git reset && git diff

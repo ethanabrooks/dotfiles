@@ -44,7 +44,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 # User configurationw
-bindkey -v
+bindkey -v  # vim
+export KEYTIMEOUT=1  # 0.1 second timeout between modes
 bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
