@@ -2,8 +2,8 @@ source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && conda activate $(cat .venv)
 }
+conda activate ppo
 
 dotfiles="$HOME/dotfiles"
 export PATH="\
