@@ -53,6 +53,11 @@ let g:lightline.colorscheme = 'gruvbox'
 "let g:pymode_rope = 1
 "let g:pymode_rope_autoimport=1
 "}}}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 
 "{{{ map
 nnoremap <leader>w :w<CR>
