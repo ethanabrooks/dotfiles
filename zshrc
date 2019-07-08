@@ -1,9 +1,9 @@
 source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && conda activate $(cat .venv)
+  #echo $(pwd) >! $CURRENT_PROJECT_PATH
 }
+conda activate ppo
 
 dotfiles="$HOME/dotfiles"
 export PATH="\
@@ -42,7 +42,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 # User configurationw
-bindkey -v
+bindkey -v # vim
+export KEYTIMEOUT=1 # 0.1 second timeout between modes
 bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
