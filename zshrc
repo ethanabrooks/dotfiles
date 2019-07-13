@@ -123,11 +123,6 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
-<<<<<<< HEAD
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-=======
 if [[ -e $dotfiles/system_specific.zsh ]]; then
   source $dotfiles/system_specific.zsh
 fi
->>>>>>> 490c806863bcd3e5b7ccaf9a3e372cc5927f0b7f
