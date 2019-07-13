@@ -2,8 +2,8 @@ source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && conda activate $(cat .venv)
 }
+conda activate ppo
 
 dotfiles="$HOME/dotfiles"
 export PATH="\
@@ -42,7 +42,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 # User configurationw
-bindkey -v
+bindkey -v # vim
+export KEYTIMEOUT=1 # 0.1 second timeout between modes
 bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
@@ -96,9 +97,6 @@ compinit
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
 
-if [[ -e $dotfiles/system_specific.zsh ]]; then
-  source $dotfiles/system_specific.zsh
-fi
 
 # added by travis gem
 [ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
@@ -125,5 +123,11 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
+<<<<<<< HEAD
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+=======
+if [[ -e $dotfiles/system_specific.zsh ]]; then
+  source $dotfiles/system_specific.zsh
+fi
+>>>>>>> 490c806863bcd3e5b7ccaf9a3e372cc5927f0b7f
