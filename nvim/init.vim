@@ -45,7 +45,11 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
 
-let g:lightline = {}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 let g:lightline.colorscheme = 'gruvbox'
 
 "let g:pymode_options_max_line_length = 90

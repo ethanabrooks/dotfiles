@@ -97,9 +97,6 @@ compinit
 export GOPATH=~/go
 PATH=$PATH:$GOPATH/bin
 
-if [[ -e $dotfiles/system_specific.zsh ]]; then
-  source $dotfiles/system_specific.zsh
-fi
 
 # added by travis gem
 [ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
@@ -126,3 +123,6 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
+if [[ -e $dotfiles/system_specific.zsh ]]; then
+  source $dotfiles/system_specific.zsh
+fi
