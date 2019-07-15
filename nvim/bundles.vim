@@ -18,6 +18,7 @@ Plug 'ervandew/supertab'
 "Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
+Plug 'davidhalter/jedi-vim'
 
 " Prettiness
 "Plug 'flazz/vim-colorschemes'

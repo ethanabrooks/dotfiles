@@ -1,10 +1,3 @@
-source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
-function chpwd {
-  ls
-  #echo $(pwd) >! $CURRENT_PROJECT_PATH
-}
-conda activate ppo
-
 dotfiles="$HOME/dotfiles"
 export PATH="\
 $dotfiles/bin:\
@@ -13,6 +6,13 @@ $HOME/.local/bin:\
 /usr/local/bin:\
 $PATH\
 "
+
+source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
+function chpwd {
+  ls
+  #echo $(pwd) >! $CURRENT_PROJECT_PATH
+}
+conda activate ppo
 
 export CELLAR='/usr/local/Cellar/'
 
