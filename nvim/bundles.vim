@@ -1,4 +1,5 @@
 "Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'tmhedberg/SimpylFold'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'

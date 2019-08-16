@@ -134,7 +134,7 @@ set splitright
 "easy source virmc
 command! Sovim source $MYVIMRC
 "easy update plugins
-command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
+command! Replug source $MYVIMRC | PlugUpgrade | PlugUpdate | PlugClean | PlugInstall
 "delete trailing whitespace
 command! Despace %s/\s\+\n/\r/g
 "}}}

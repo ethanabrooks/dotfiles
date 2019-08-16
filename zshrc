@@ -126,3 +126,5 @@ export FZF_DEFAULT_COMMAND='
 if [[ -e $dotfiles/system_specific.zsh ]]; then
   source $dotfiles/system_specific.zsh
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
