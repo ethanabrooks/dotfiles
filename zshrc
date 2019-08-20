@@ -7,12 +7,10 @@ $HOME/.local/bin:\
 $PATH\
 "
 
-source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
 }
-conda activate ppo
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -63,10 +61,6 @@ alias wifi='sudo wifi-menu'
 
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-
-# pure
-autoload -U promptinit; promptinit
-prompt pure
 
 # zsh syntax highlighting
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -128,3 +122,8 @@ if [[ -e $dotfiles/system_specific.zsh ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pure
+autoload -U promptinit; promptinit
+prompt pure
+
