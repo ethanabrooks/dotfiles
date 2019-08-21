@@ -7,10 +7,12 @@ $HOME/.local/bin:\
 $PATH\
 "
 
+source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
 }
+conda activate ppo
 
 export CELLAR='/usr/local/Cellar/'
 
