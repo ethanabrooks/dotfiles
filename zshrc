@@ -3,25 +3,25 @@ export PATH="\
 $dotfiles/bin:\
 /usr/local/bin:\
 $HOME/.local/bin:\
-$dotfiles/bin:\
 /usr/local/bin:\
 $PATH\
 "
 
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+}
+
 export CELLAR='/usr/local/Cellar/'
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# virtualenvwrapper
-export WORKON_HOME="$HOME/virtualenvs"
-source '/usr/local/bin/virtualenvwrapper.sh'
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 # exports
 export bin="$dotfiles/bin/"
-export config="$HOME/.config/"
-export vimrc="$config/nvim/init.vim"
-export VISUAL=vim
+export zshrc="$HOME/.zshrc"
+export eab='/google/src/cloud/ethanabrooks/ethan/google3/experimental/users/ethanabrooks/'
+export pv="$eab/placevault"
+export VISUAL=nvim
+export TERM=xterm-256color
+export VTE_VERSION="100"
 
 fpath=($fpath $dotfiles/pure)
 
@@ -40,7 +40,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 
 # User configurationw
-bindkey -v
+bindkey -v # vim
+export KEYTIMEOUT=1 # 0.1 second timeout between modes
 bindkey '^R' history-incremental-search-backward
 
 # Compilation flags
@@ -110,8 +111,23 @@ function current {
   fi
 }
 current
-function wtf { 
-  local args 
-  args="$@" 
-  ipython --pdb -c "%run $args"
-}
+#function wtf { 
+  #local args 
+  #args="$@" 
+  #ipython --pdb -c "%run $args"
+#}
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+      sed s/^..//) 2> /dev/null'
+
+if [[ -e $dotfiles/system_specific.zsh ]]; then
+  source $dotfiles/system_specific.zsh
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pure
+autoload -U promptinit; promptinit
+prompt pure
+

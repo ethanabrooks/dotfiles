@@ -1,0 +1,4 @@
+#/usr/bin/env zsh
+args="$@" 
+ipython --pdb -c "%run $args"
+

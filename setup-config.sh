@@ -16,6 +16,9 @@ if [[ $privileged == 'y' ]]; then
     curl \
     zsh \
     python-pip \
+    python3-pip \
+    python-dev \
+    python3-dev \
     tree \
     meld \
     xclip \
@@ -29,7 +32,7 @@ if [[ $privileged == 'y' ]]; then
 
   print 'Cloning zsh-syntax-highlighting...'
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
-  chsh -s "$(which zsh)"
+  chsh -s "$(which zsh)" || :
 fi
 
 print 'Linking local dotfiles'
@@ -40,9 +43,14 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 print 'Installing vim plugins...'
-vim -c PlugInstall -c qall
+vim +PlugInstall +qall
 
 GREEN='\033[0;32m'
 print "${GREEN}All done! Congratulations, your system is all setup."
 zsh
 
+cd ~/dotfiles
+git submodule init
+git submodule update
+sudo ln -s "$HOME/dotfiles/pure/pure.zsh" "/usr/local/share/zsh/site-functions/prompt_pure_setup"
+sudo ln -s "$HOME/dotfiles/pure/async.zsh" "/usr/local/share/zsh/site-functions/async"

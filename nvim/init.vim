@@ -2,6 +2,7 @@
 augroup filetypes
 autocmd!
 au FileType vim set foldmethod=marker
+au FileType python set foldmethod=indent
 au FileType markdown setlocal spell
 au FileType markdown nnoremap k gk
 au FileType markdown nnoremap j gj
@@ -39,12 +40,16 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
 let g:ale_linters = {'python': ['pylint', 'pyls']}
-let g:ale_fixers = {'c': ['clang-format'], 'python': ['yapf', 'isort'], 'json': ['yapf']}
+let g:ale_fixers = {'c': ['clang-format'], 'python': ['black'], 'json': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
 
-let g:lightline = {}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 let g:lightline.colorscheme = 'gruvbox'
 
 "let g:pymode_options_max_line_length = 90
@@ -52,6 +57,11 @@ let g:lightline.colorscheme = 'gruvbox'
 "let g:pymode_rope = 1
 "let g:pymode_rope_autoimport=1
 "}}}
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
 
 "{{{ map
 nnoremap <leader>w :w<CR>
@@ -124,7 +134,7 @@ set splitright
 "easy source virmc
 command! Sovim source $MYVIMRC
 "easy update plugins
-command! Replug source $MYVIMRC | PlugUpgrade | PlugClean | PlugInstall
+command! Replug source $MYVIMRC | PlugUpgrade | PlugUpdate | PlugClean | PlugInstall
 "delete trailing whitespace
 command! Despace %s/\s\+\n/\r/g
 "}}}

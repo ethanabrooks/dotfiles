@@ -150,6 +150,15 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+mode "nudge" {
+    bindsym Up move up 20px
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Right move right 20px
+    bindsym Mod4+m mode "default"
+}
+bindsym Mod4+m focus floating; mode "nudge"
+
 bindsym $mod+r mode "resize"
 
 bar {

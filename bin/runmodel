@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-cd database_nn/RNN-EM
-if [ $# -eq 0 ]
-then
-  python main.py
-else
-  python main.py --num_questions=$1
-fi
