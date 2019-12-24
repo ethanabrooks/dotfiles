@@ -25,7 +25,7 @@ export VISUAL=nvim
 export TERM=xterm-256color
 export VTE_VERSION="100"
 
-fpath=($fpath $dotfiles/pure)
+fpath+=("$HOME/.zsh/pure")
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
