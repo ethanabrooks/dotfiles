@@ -50,10 +50,11 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 print 'Installing vim plugins...'
 vim +PlugInstall +qall
 
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+fpath+=("$HOME/.zsh/pure")
+
 GREEN='\033[0;32m'
 print "${GREEN}All done! Congratulations, your system is all setup."
 zsh
 
-mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fpath+=("$HOME/.zsh/pure")
