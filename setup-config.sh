@@ -30,13 +30,12 @@ if [[ $privileged == 'y' ]]; then
     vim-gnome \
     neovim \
     mlocate \
-    terminator \
-    google-chrome-stable
+    terminator 
   sudo pip install --upgrade pip virtualenvwrapper
   mkdir -p "$HOME/virtualenvs"
 
   print 'Cloning zsh-syntax-highlighting...'
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
+  git clone https://github.com/sindresorhus/pure.git "$HOME/zsh-syntax-highlighting" || :
   chsh -s "$(which zsh)" || :
 fi
 
