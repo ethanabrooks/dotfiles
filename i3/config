@@ -182,3 +182,12 @@ client.focused          #b0b6ba #b0b6ba #282828 #282828
 client.focused_inactive #F1F2F6 #282828 #282828 #282828
 client.unfocused        #F1F2F6 #282828 #282828 #282828
 client.urgent           #F1F2F6 #282828 #282828 #C1D1E0
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness

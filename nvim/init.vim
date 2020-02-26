@@ -39,8 +39,9 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:ale_linters = {'python': ['pylint', 'pyls']}
-let g:ale_fixers = {'c': ['clang-format'], 'python': ['black'], 'json': ['prettier']}
+
+let g:ale_linters = {'python': ['mypy']}
+let g:ale_fixers = {'c': ['clang-format'], 'python': ['black'], 'json': ['prettier'], 'rust': ['rustfmt']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
@@ -88,7 +89,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-p> :Files<CR>
 
 " break
-nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+nnoremap <leader>b Oimport ipdb # type:ignore<CR>ipdb.set_trace()<ESC>
 
 nnoremap <leader>k :ALEPrevious<CR>
 nnoremap <leader>j :ALENext<CR>
