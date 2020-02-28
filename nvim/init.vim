@@ -36,8 +36,11 @@ let g:python3_host_prog  = '/home/ethanbro/virtualenvs/neovim/bin/python'
 let g:is_posix = 1
 
 let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_compiler_latexmk = {
+      \ 'build_dir' : 'build',
+      \}
 
 
 let g:ale_linters = {'python': ['mypy']}
