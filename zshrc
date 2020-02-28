@@ -126,3 +126,5 @@ autoload -U promptinit; promptinit
 prompt pure
 
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/bin/virtualenvwrapper.sh
+
