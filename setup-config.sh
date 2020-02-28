@@ -10,6 +10,8 @@ function print() {
 # print "Do you have root privileges? [y|n]"
 # read privileged
 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
 sudo apt-get update || :
 sudo apt-get install -y \
 curl \
@@ -25,7 +27,9 @@ i3 \
 silversearcher-ag \
 neovim \
 mlocate \
+google-chrome-stable \
 terminator 
+
 sudo pip install --upgrade pip virtualenvwrapper
 mkdir -p "$HOME/virtualenvs"
 
