@@ -10,7 +10,7 @@ $PATH\
 source $HOME/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
-  #echo $(pwd) >! $CURRENT_PROJECT_PATH
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
 }
 
 export CELLAR='/usr/local/Cellar/'
@@ -104,7 +104,7 @@ function current {
     cd "$(cat $CURRENT_PROJECT_PATH)"
   fi
 }
-#current
+current
 #function wtf { 
   #local args 
   #args="$@" 
