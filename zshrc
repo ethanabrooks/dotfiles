@@ -1,12 +1,11 @@
 dotfiles="$HOME/dotfiles"
-export PATH="\
-/usr/local/sbin:\
-/usr/local/bin:\
-$HOME/.local/bin:\
-$dotfiles/bin:\
-/usr/local/bin:\
-$PATH
-"
+path+=(/usr/local/sbin
+/usr/local/bin
+$HOME/.local/bin
+$dotfiles/bin
+/usr/local/bin
+/Users/ethan/.opam/system/bin/
+)
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -19,9 +18,10 @@ source '/usr/local/bin/virtualenvwrapper.sh'
 export MYPYPATH=~/stubs
 
 # exports
-export vimrc="${config}nvim/init.vim"
+export vimrc="$HOME/dotfiles/nvim/init.vim"
 export zshrc="$HOME/.zshrc"
 export VISUAL=vim
+export TEXMFHOME="$HOME/.tex"
 
 fpath=($fpath $dotfiles/pure)
 
@@ -108,3 +108,17 @@ export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
+
+# opam configuration
+test -r /Users/ethan/.opam/opam-init/init.zsh && . /Users/ethan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ethan/grandpa/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ethan/grandpa/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc'; fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
