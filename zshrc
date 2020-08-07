@@ -1,11 +1,12 @@
 dotfiles="$HOME/dotfiles"
-export PATH="\
-$dotfiles/bin:\
-/usr/local/bin:\
-$HOME/.local/bin:\
-/usr/local/bin:\
-$PATH\
-"
+path+=(
+$dotfiles/bin
+/usr/local/bin
+$HOME/.local/bin
+/usr/local/bin
+$HOME/.yarn/bin
+$PATH
+)
 
 source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
