@@ -100,6 +100,15 @@ PATH=$PATH:$GOPATH/bin
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
+}
 function current {
   if [[ -f $CURRENT_PROJECT_PATH  ]]; then
     cd "$(cat $CURRENT_PROJECT_PATH)"
