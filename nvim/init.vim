@@ -41,7 +41,7 @@ let g:python3_host_prog  = '/Users/ethan/virtualenvs/neovim/bin/python'
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-let g:vimtex_compiler_latexmk = {'build_dir': 'build', 'options' : ['-shell-escape']}
+let g:vimtex_compiler_latexmk = {'options' : ['-shell-escape']}
 let g:tex_flavor='latex'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'skim'
@@ -50,7 +50,7 @@ let g:vimtex_fold_enabled = 1
 
 
 let g:ale_fixers = {'python': ['black'], 'markdown': ['prettier'], 'tex': ['latexindent'], 'yaml': ['yapf'], 'ocaml': ['ocamlformat'], 'javascript': ['prettier'], 'haskell': ['brittany', 'hlint'], 'rust': ['rustfmt'], 'typescript': ['prettier'], 'json': ['prettier'], 'html': ['prettier'], 'css': ['prettier'] }
-let g:ale_linters = {'python': ['pylint', 'pyls'], 'tex': ['lacheck'], 'ocaml': ['merlin'], 'haskell': ['stack-ghc'], 'css': ['prettier']}
+let g:ale_linters = {'python': ['mypy', 'pyls'], 'tex': ['lacheck'], 'ocaml': ['merlin'], 'haskell': ['stack-ghc'], 'css': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1

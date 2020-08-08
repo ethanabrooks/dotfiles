@@ -23,7 +23,7 @@ export zshrc="$HOME/.zshrc"
 export VISUAL=vim
 export TEXMFHOME="$HOME/.tex"
 
-fpath=($fpath $dotfiles/pure)
+#fpath=($fpath $dotfiles/pure)
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -96,7 +96,10 @@ function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
   test -e .venv && workon $(cat .venv)
-
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
 }
 function current {
   if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
@@ -121,4 +124,5 @@ if [ -f '/Users/ethan/grandpa/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/e
 if [ -f '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc'; fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
 

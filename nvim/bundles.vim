@@ -11,7 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'ervandew/supertab'
-Plug 'ethanabrooks/ale'
+Plug 'dense-analysis/ale'
 Plug 'ekalinin/Dockerfile.vim', {'for': 'docker'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'manicmaniac/coconut.vim'
