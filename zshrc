@@ -1,75 +1,30 @@
-dotfiles="$HOME/dotfiles"
-path+=(/usr/local/sbin
+path+=(
 /usr/local/bin
 $HOME/.local/bin
-$dotfiles/bin
 /usr/local/bin
-/Users/ethan/.opam/system/bin/
 )
 
-export CELLAR='/usr/local/Cellar/'
-
-# virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export WORKON_HOME="$HOME/virtualenvs"
-source '/usr/local/bin/virtualenvwrapper.sh'
-
-#MYPY
-export MYPYPATH=~/stubs
-
 # exports
-export vimrc="$HOME/dotfiles/nvim/init.vim"
-export zshrc="$HOME/.zshrc"
-export VISUAL=vim
-export TEXMFHOME="$HOME/.tex"
-
-#fpath=($fpath $dotfiles/pure)
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
-
-# User configurationw
-bindkey -v # vim
-export KEYTIMEOUT=1 # 0.1 second timeout between modes
-bindkey '^R' history-incremental-search-backward
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export vimrc="$config/nvim/init.vim"
 
 # aliases
-alias zshrc="vi $zshrc"
-alias vimrc='vi $vimrc'
-alias bundles='vi ~/.config/nvim/bundles.vim'
+alias zshrc="vi $HOME/.zshrc"
+alias vimrc="vi $HOME/.config/nvim/init.vim"
 alias vi=nvim
 
 # pure
 autoload -U promptinit; promptinit
 prompt pure
 
-# zsh syntax highlighting
-source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# source z
+# match from middle of filename
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit
 
-setopt autocd
-setopt extendedglob
-setopt autopushd
-setopt inc_append_history
-setopt inc_append_history
-setopt share_history
+# reverse search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # History
 setopt APPEND_HISTORY          # append rather than overwrite history file.
@@ -79,16 +34,12 @@ HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
 
-autoload -Uz compinit
-compinit
+plugins=(git zsh-syntax-highlighting)
 
-# Go
-export GOPATH=~/go
-PATH=$PATH:$GOPATH/bin
-
-# added by travis gem
-[ -f /Users/ethan/.travis/travis.sh ] && source /Users/ethan/.travis/travis.sh
-
+set -o vi # vim keybindings
+setopt autopushd # use directory stack
+setopt autocd # implicit cd
+autoload zmv
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
@@ -107,22 +58,24 @@ function current {
   fi
 }
 current
-export FZF_DEFAULT_COMMAND='
-  (git ls-tree -r --name-only HEAD ||
-   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
-      sed s/^..//) 2> /dev/null'
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# opam configuration
-test -r /Users/ethan/.opam/opam-init/init.zsh && . /Users/ethan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ethan/grandpa/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ethan/grandpa/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ethan/grandpa/google-cloud-sdk/completion.zsh.inc'; fi
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-
-
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ethanbrooks/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ethanbrooks/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ethanbrooks/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ethanbrooks/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

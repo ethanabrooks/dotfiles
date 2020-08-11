@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 echo "Checking for existing SSH keys"
-sudo pacman -S --noconfirm xclip openssh
 if ! [[ -e ~/.ssh/id_rsa.pub ]]; then
 
   echo "Generating a new SSH key"
@@ -19,7 +18,7 @@ then
   cat $key_path
 else
   echo "Copying SSH key to clipboard:"
-  xclip -sel clip < $key_path
+  pbcopy < $key_path
   echo "Your SSH key is now copied to your clipboard."
 fi
 
