@@ -1,13 +1,14 @@
 dotfiles="$HOME/dotfiles"
-export PATH="\
-$dotfiles/bin:\
-/usr/local/bin:\
-$HOME/.local/bin:\
-/usr/local/bin:\
-$PATH\
-"
+path+=(
+$dotfiles/bin
+/usr/local/bin
+$HOME/.local/bin
+/usr/local/bin
+$HOME/.yarn/bin
+$PATH
+)
 
-source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
+source $HOME/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
@@ -17,7 +18,6 @@ function chpwd {
   fi
 
 }
-
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -69,9 +69,6 @@ alias wifi='sudo wifi-menu'
 # pretty vi
 #source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
-# zsh syntax highlighting
-source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # source z
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
@@ -100,20 +97,29 @@ PATH=$PATH:$GOPATH/bin
 
 
 # added by travis gem
-[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 
 # added by travis gem
-[ -f /home/ethanbro/.travis/travis.sh ] && source /home/ethanbro/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e .venv && workon $(cat .venv)
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
+}
 function current {
   if [[ -f $CURRENT_PROJECT_PATH  ]]; then
     cd "$(cat $CURRENT_PROJECT_PATH)"
   fi
 }
-#current
+current
 #function wtf { 
   #local args 
   #args="$@" 
@@ -134,6 +140,9 @@ fi
 autoload -U promptinit; promptinit
 prompt pure
 
+
 export DEBEMAIL="ethanabrooks@gmail.com"
 export DEBFULLNAME="Ethan Brooks"
+
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

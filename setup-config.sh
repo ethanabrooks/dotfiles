@@ -9,36 +9,29 @@ function print() {
 
 # print "Do you have root privileges? [y|n]"
 # read privileged
-privileged='y'
 
-if [[ $privileged == 'y' ]]; then
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  sudo add-apt-repository -y ppa:neovim-ppa/stable
-  sudo apt-get update || :
-  sudo apt-get install -y \
-    curl \
-    zsh \
-    python-pip \
-    python3-pip \
-    python-dev \
-    python3-dev \
-    tree \
-    meld \
-    xclip \
-    i3 \
-    silversearcher-ag \
-    vim-gnome \
-    neovim \
-    mlocate \
-    terminator \
-    google-chrome-stable
-  sudo pip install --upgrade pip virtualenvwrapper
-  mkdir -p "$HOME/virtualenvs"
+sudo apt-get update || :
+sudo apt-get install -y \
+curl \
+zsh \
+python-pip \
+python3-pip \
+python-dev \
+python3-dev \
+tree \
+meld \
+xclip \
+i3 \
+silversearcher-ag \
+neovim \
+mlocate \
+terminator 
+sudo pip install --upgrade pip virtualenvwrapper
+mkdir -p "$HOME/virtualenvs"
 
-  print 'Cloning zsh-syntax-highlighting...'
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/zsh-syntax-highlighting" || :
-  chsh -s "$(which zsh)" || :
-fi
+print 'Cloning zsh-syntax-highlighting...'
+git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/zsh-syntax-highlighting" || :
+chsh -s "$(which zsh)" || :
 
 print 'Linking local dotfiles'
 bash "$HOME/dotfiles/link-config.sh"
