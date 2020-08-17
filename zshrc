@@ -11,8 +11,13 @@ source /home/ethanbro/miniconda3/etc/profile.d/conda.sh
 function chpwd {
   ls
   #echo $(pwd) >! $CURRENT_PROJECT_PATH
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
+
 }
-conda activate ppo
+
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -128,4 +133,7 @@ fi
 # pure
 autoload -U promptinit; promptinit
 prompt pure
+
+export DEBEMAIL="ethanabrooks@gmail.com"
+export DEBFULLNAME="Ethan Brooks"
 
