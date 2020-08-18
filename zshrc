@@ -1,6 +1,7 @@
 path+=(
-/usr/local/bin
 $HOME/.local/bin
+$HOME/dotfiles/bin
+/usr/local/bin
 /usr/local/bin
 )
 
@@ -30,6 +31,7 @@ bindkey '^R' history-incremental-search-backward
 setopt APPEND_HISTORY          # append rather than overwrite history file.
 setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HISTSIZE
 setopt EXTENDED_HISTORY        # save timestamp and runtime information
+setopt share_history           # share between terminal sessions
 HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 HISTSIZE=1200                  # lines of history to maintain memory
 SAVEHIST=1000                  # lines of history to maintain in history file.
@@ -43,26 +45,6 @@ autoload zmv
 
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && workon $(cat .venv)
-  if [[  -e env.sh  ]]; then 
-    source env.sh
-    cat env.sh
-  fi
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
-function wtf { 
-  local args 
-  args="$@" 
-  ipython --pdb -c "%run $args"
-}
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # >>> conda initialize >>>
@@ -79,3 +61,23 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e environment.yml && conda activate $(yq r environment.yml name)
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
+}
+function current {
+  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
+    cd "$(cat $CURRENT_PROJECT_PATH)"
+  fi
+}
+current
+function wtf { 
+  local args 
+  args="$@" 
+  ipython --pdb -c "%run $args"
+}
