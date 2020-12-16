@@ -108,7 +108,8 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && conda activate $(cat .venv)
+  test -e environment.yml && eval "conda activate $(cat environment.yml | yq .name)"
+
   if [[  -e env.sh  ]]; then 
     source env.sh
     cat env.sh
