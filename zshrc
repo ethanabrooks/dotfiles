@@ -1,6 +1,7 @@
 dotfiles="$HOME/dotfiles"
 path+=(
 $dotfiles/bin
+/snap/bin
 /usr/local/bin
 $HOME/.local/bin
 /usr/local/bin
@@ -108,7 +109,7 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e environment.yml && eval "conda activate $(cat environment.yml | yq .name)"
+  test -e environment.yml && eval "conda activate $(cat environment.yml| yq e .name  -)"
 
   if [[  -e env.sh  ]]; then 
     source env.sh
