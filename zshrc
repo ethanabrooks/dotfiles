@@ -147,4 +147,5 @@ export DEBEMAIL="ethanabrooks@gmail.com"
 export DEBFULLNAME="Ethan Brooks"
 
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ulimit -u unlimited
 
