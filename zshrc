@@ -122,11 +122,10 @@ function current {
   fi
 }
 current
-#function wtf { 
-  #local args 
-  #args="$@" 
-  #ipython --pdb -c "%run $args"
-#}
+function wtf { 
+  HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
+}
+
 export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
