@@ -91,7 +91,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-p> :Files<CR>
 
 " break
-nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+nnoremap <leader>b Obreakpoint()<ESC>
 
 nnoremap <leader>k :ALEPrevious<CR>
 nnoremap <leader>j :ALENext<CR>

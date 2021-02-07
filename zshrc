@@ -144,6 +144,7 @@ prompt pure
 
 export DEBEMAIL="ethanabrooks@gmail.com"
 export DEBFULLNAME="Ethan Brooks"
+export PYTHONBREAKPOINT="ipdb.set_trace"
 
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ulimit -Sn 10000
