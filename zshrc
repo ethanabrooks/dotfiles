@@ -1,6 +1,7 @@
 dotfiles="$HOME/dotfiles"
 path+=(
 $dotfiles/bin
+/snap/bin
 /usr/local/bin
 $HOME/.local/bin
 /usr/local/bin
@@ -109,7 +110,8 @@ export CURRENT_PROJECT_PATH=$HOME/.current-project
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e .venv && workon $(cat .venv)
+  test -e environment.yml && eval "conda activate $(cat environment.yml| yq e .name  -)"
+
   if [[  -e env.sh  ]]; then 
     source env.sh
     cat env.sh
@@ -121,11 +123,10 @@ function current {
   fi
 }
 current
-#function wtf { 
-  #local args 
-  #args="$@" 
-  #ipython --pdb -c "%run $args"
-#}
+function wtf { 
+  HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
+}
+
 export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
@@ -144,6 +145,8 @@ prompt pure
 
 export DEBEMAIL="ethanabrooks@gmail.com"
 export DEBFULLNAME="Ethan Brooks"
+export PYTHONBREAKPOINT="ipdb.set_trace"
 
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ulimit -Sn 10000
 

@@ -43,7 +43,7 @@ let g:vimtex_compiler_latexmk = {
       \}
 
 let g:ale_linters = {'python': ['pylint', 'pyls']}
-let g:ale_fixers = {'c': ['clang-format'], 'python': ['black'], 'json': ['prettier']}
+let g:ale_fixers = {'c': ['clang-format'], 'python': ['black'], 'json': ['prettier'], 'yaml': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_auto_pipenv = 1
@@ -91,10 +91,12 @@ nnoremap <leader>w :w<CR>
 nnoremap <C-p> :Files<CR>
 
 " break
-nnoremap <leader>b Oimport ipdb; ipdb.set_trace()<ESC>
+nnoremap <leader>b Obreakpoint()<ESC>
 
 nnoremap <leader>k :ALEPrevious<CR>
 nnoremap <leader>j :ALENext<CR>
+command! ALEDisableFixers       let g:ale_fix_on_save=0
+command! ALEEnableFixers        let g:ale_fix_on_save=1
 
 "}}}
 
