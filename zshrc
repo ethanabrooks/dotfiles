@@ -5,6 +5,7 @@ $dotfiles/bin
 $HOME/.local/bin
 /usr/local/bin
 $HOME/.yarn/bin
+/snap/bin
 $PATH
 )
 
