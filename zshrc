@@ -1,14 +1,3 @@
-path+=(
-$HOME/.local/bin
-$HOME/dotfiles/bin
-/usr/local/bin
-/usr/local/bin
-/usr/local/opt/findutils/libexec/gnubin
-)
-
-# poetry
-fpath+=~/.zfunc
-
 # exports
 export vimrc="$config/nvim/init.vim"
 
@@ -66,6 +55,11 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+function wtf { 
+  HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
+}
+
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
@@ -75,12 +69,6 @@ function chpwd {
     cat env.sh
   fi
 }
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then 
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
 function wtf { 
   HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
@@ -90,12 +78,6 @@ export CPPFLAGS="-I/usr/local/opt/libffi/include"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 export PYTHONBREAKPOINT="ipdb.set_trace"
 
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
-PATH="/Users/ethanbrooks/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL_MB_OPT="--install_base \"/Users/ethanbrooks/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/ethanbrooks/perl5"; export PERL_MM_OPT;
 
 # opam configuration
 test -r /Users/ethanbrooks/.opam/opam-init/init.zsh && . /Users/ethanbrooks/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
