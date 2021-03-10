@@ -1,14 +1,4 @@
 dotfiles="$HOME/dotfiles"
-path+=(
-$dotfiles/bin
-/snap/bin
-/usr/local/bin
-$HOME/.local/bin
-/usr/local/bin
-$HOME/.yarn/bin
-/snap/bin
-$PATH
-)
 
 source $HOME/miniconda3/etc/profile.d/conda.sh
 function chpwd {
@@ -31,8 +21,6 @@ export pv="$eab/placevault"
 export VISUAL=nvim
 export TERM=xterm-256color
 export VTE_VERSION="100"
-
-fpath+=("$HOME/.zsh/pure")
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -93,36 +81,6 @@ autoload zmv
 autoload -U compinit
 compinit
 
-# Go
-export GOPATH=~/go
-PATH=$PATH:$GOPATH/bin
-
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e environment.yml && eval "conda activate $(cat environment.yml| yq e .name  -)"
-
-  if [[  -e env.sh  ]]; then 
-    source env.sh
-    cat env.sh
-  fi
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
 function wtf { 
   HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
@@ -131,10 +89,6 @@ export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
-
-if [[ -e $dotfiles/system_specific.zsh ]]; then
-  source $dotfiles/system_specific.zsh
-fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
