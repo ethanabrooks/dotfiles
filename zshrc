@@ -3,7 +3,11 @@ $HOME/.local/bin
 $HOME/dotfiles/bin
 /usr/local/bin
 /usr/local/bin
+/usr/local/opt/findutils/libexec/gnubin
 )
+
+# poetry
+fpath+=~/.zfunc
 
 # exports
 export vimrc="$config/nvim/init.vim"
@@ -16,6 +20,7 @@ alias vi=nvim
 # pure
 autoload -U promptinit; promptinit
 prompt pure
+
 
 # match from middle of filename
 zstyle ':completion:*' completer _complete
@@ -64,7 +69,7 @@ unset __conda_setup
 function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e environment.yml && conda activate $(yq r environment.yml name)
+  test -e environment.yml && eval "conda activate $(cat environment.yml | yq eval '.name' -)"
   if [[  -e env.sh  ]]; then 
     source env.sh
     cat env.sh
@@ -77,7 +82,23 @@ function current {
 }
 current
 function wtf { 
-  local args 
-  args="$@" 
-  ipython --pdb -c "%run $args"
+  HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
+
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export CPPFLAGS="-I/usr/local/opt/libffi/include"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+export PYTHONBREAKPOINT="ipdb.set_trace"
+
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+PATH="/Users/ethanbrooks/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL_MB_OPT="--install_base \"/Users/ethanbrooks/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/ethanbrooks/perl5"; export PERL_MM_OPT;
+
+# opam configuration
+test -r /Users/ethanbrooks/.opam/opam-init/init.zsh && . /Users/ethanbrooks/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+eval "$(direnv hook zsh)"
+
