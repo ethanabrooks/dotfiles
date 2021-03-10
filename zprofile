@@ -13,6 +13,11 @@ $PATH
 
 fpath+=("$HOME/.zsh/pure")
 
+# pure
+autoload -U promptinit; promptinit
+prompt pure
+
+
 # save last visited dir
 export CURRENT_PROJECT_PATH=$HOME/.current-project
 function chpwd {

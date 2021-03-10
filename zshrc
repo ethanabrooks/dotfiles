@@ -92,10 +92,6 @@ export FZF_DEFAULT_COMMAND='
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# pure
-autoload -U promptinit; promptinit
-prompt pure
-
 
 export DEBEMAIL="ethanabrooks@gmail.com"
 export DEBFULLNAME="Ethan Brooks"
