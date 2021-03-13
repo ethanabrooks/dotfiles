@@ -14,25 +14,6 @@ $PATH
 
 source $HOME/miniconda3/etc/profile.d/conda.sh
 
-# save last visited dir
-export CURRENT_PROJECT_PATH=$HOME/.current-project
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e environment.yml && eval "conda activate $(cat environment.yml| yq e .name  -)"
-
-  if [[  -e env.sh  ]]; then 
-    source env.sh
-    cat env.sh
-  fi
-}
-function current {
-  if [[ -f $CURRENT_PROJECT_PATH  ]]; then
-    cd "$(cat $CURRENT_PROJECT_PATH)"
-  fi
-}
-current
-
 if [[ -e $dotfiles/system_specific.zsh ]]; then
   source $dotfiles/system_specific.zsh
 fi
@@ -43,16 +24,6 @@ fpath+=("$HOME/.zsh/pure")
 # pure
 autoload -U promptinit; promptinit
 prompt pure
-
-function chpwd {
-  ls
-  #echo $(pwd) >! $CURRENT_PROJECT_PATH
-  if [[  -e env.sh  ]]; then 
-    source env.sh
-    cat env.sh
-  fi
-
-}
 
 export CELLAR='/usr/local/Cellar/'
 
@@ -144,4 +115,3 @@ source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ulimit -Sn 10000
 
 
-export PATH="$HOME/.poetry/bin:$PATH"
