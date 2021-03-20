@@ -22,6 +22,7 @@ Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
 Plug 'davidhalter/jedi-vim'
+Plug 'jabirali/vim-tmux-yank'
 
 " Prettiness
 "Plug 'flazz/vim-colorschemes'
