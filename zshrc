@@ -12,6 +12,7 @@ $PATH
 /usr/local/go/bin
 )
 
+export DOCKER_BUILDKIT=1
 
 source $HOME/miniconda3/etc/profile.d/conda.sh
 
