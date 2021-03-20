@@ -11,6 +11,7 @@ $HOME/.yarn/bin
 $PATH
 )
 
+export DOCKER_BUILDKIT=1
 
 source $HOME/miniconda3/etc/profile.d/conda.sh
 
