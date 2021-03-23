@@ -14,6 +14,11 @@ $PATH
 
 export DOCKER_BUILDKIT=1
 
+# https://unix.stackexchange.com/a/113768
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 source $HOME/miniconda3/etc/profile.d/conda.sh
 
 if [[ -e $dotfiles/system_specific.zsh ]]; then
