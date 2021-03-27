@@ -22,3 +22,4 @@ function current {
   fi
 }
 current
+

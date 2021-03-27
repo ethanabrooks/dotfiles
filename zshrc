@@ -1,15 +1,34 @@
 # exports
 export vimrc="$config/nvim/init.vim"
 
+export DOCKER_BUILDKIT=1
+
 # aliases
 alias zshrc="vi $HOME/.zshrc"
 alias vimrc="vi $HOME/.config/nvim/init.vim"
 alias vi=nvim
 
+# https://unix.stackexchange.com/a/113768
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM"
+=~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 # pure
 autoload -U promptinit; promptinit
 prompt pure
 
+function chpwd {
+  ls
+  echo $(pwd) >! $CURRENT_PROJECT_PATH
+  test -e environment.yml && eval "conda activate $(cat environment.yml | yq eval '.name' -)"
+  test -e pyproject.toml && poetry shell
+  if [[  -e env.sh  ]]; then 
+    source env.sh
+    cat env.sh
+  fi
+}
+chpwd
 
 # match from middle of filename
 zstyle ':completion:*' completer _complete
@@ -60,15 +79,6 @@ function wtf {
   HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
 
-function chpwd {
-  ls
-  echo $(pwd) >! $CURRENT_PROJECT_PATH
-  test -e environment.yml && eval "conda activate $(cat environment.yml | yq eval '.name' -)"
-  if [[  -e env.sh  ]]; then 
-    source env.sh
-    cat env.sh
-  fi
-}
 function wtf { 
   HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
@@ -81,6 +91,4 @@ export PYTHONBREAKPOINT="ipdb.set_trace"
 
 # opam configuration
 test -r /Users/ethanbrooks/.opam/opam-init/init.zsh && . /Users/ethanbrooks/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-eval "$(direnv hook zsh)"
 
