@@ -42,6 +42,7 @@ export pv="$eab/placevault"
 export VISUAL=nvim
 export TERM=xterm-256color
 export VTE_VERSION="100"
+export DOCKER_BUILDKIT=1
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
