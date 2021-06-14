@@ -12,6 +12,7 @@ $PATH
 /usr/local/go/bin
 )
 
+export EDITOR=vim # https://unencumberedbyfacts.com/2016/01/04/psql-vim-happy-face/
 export DOCKER_BUILDKIT=1
 
 # https://unix.stackexchange.com/a/113768
@@ -148,3 +149,4 @@ chpwd
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+eval "$(direnv hook zsh)"

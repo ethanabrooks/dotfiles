@@ -1,4 +1,6 @@
+"
 "{{{ au FileType
+syntax on
 augroup filetypes
 autocmd!
 au FileType vim set foldmethod=marker
@@ -9,6 +11,7 @@ au FileType markdown nnoremap j gj
 au FileType markdown nnoremap gk k
 au FileType markdown nnoremap gj j
 au FileType julius set syntax=javascript
+au BufRead /tmp/psql.edit.* set syntax=sql
 au FileType hamlet set syntax=html
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
