@@ -7,27 +7,17 @@ function print() {
   echo -e "$YELLOW$1$NORMAL"
 }
 
-# print "Do you have root privileges? [y|n]"
-# read privileged
-
 sudo apt-get update || :
 sudo apt-get install -y \
 curl \
 zsh \
-python-pip \
 python3-pip \
-python-dev \
 python3-dev \
 tree \
-meld \
-xclip \
-i3 \
 silversearcher-ag \
 neovim \
-mlocate \
-terminator 
-sudo pip install --upgrade pip virtualenvwrapper
-mkdir -p "$HOME/virtualenvs"
+mlocate
+
 
 print 'Cloning zsh-syntax-highlighting...'
 git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/zsh-syntax-highlighting" || :
@@ -43,9 +33,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 print 'Installing vim plugins...'
 vim +PlugInstall +qall
 
-mkdir -p "$HOME/.zsh"
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fpath+=("$HOME/.zsh/pure")
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install --global pure-prompt
 
 GREEN='\033[0;32m'
 print "${GREEN}All done! Congratulations, your system is all setup."
