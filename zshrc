@@ -150,3 +150,5 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 eval "$(direnv hook zsh)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
