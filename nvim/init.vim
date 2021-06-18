@@ -115,6 +115,7 @@ call plug#end()
 set t_Co=256
 set guifont="Droid Sans Mono":h14
 
+set textwidth=0 wrapmargin=0   " prevent line splitting https://stackoverflow.com/a/2280128/4176597
 set noswapfile
 set incsearch     " incremental searching
 set autowrite     " :write before leaving file
