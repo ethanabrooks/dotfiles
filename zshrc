@@ -8,11 +8,12 @@ alias zshrc="vi $HOME/.zshrc"
 alias vimrc="vi $HOME/.config/nvim/init.vim"
 alias vi=nvim
 
+
 # https://unix.stackexchange.com/a/113768
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM"
-=~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM"
+#=~ tmux ]] && [ -z "$TMUX" ]; then
+  #exec tmux
+#fi
 
 # pure
 autoload -U promptinit; promptinit
@@ -22,7 +23,7 @@ function chpwd {
   ls
   echo $(pwd) >! $CURRENT_PROJECT_PATH
   test -e environment.yml && eval "conda activate $(cat environment.yml | yq eval '.name' -)"
-  test -e pyproject.toml && poetry shell
+  #test -e pyproject.toml && poetry shell
   if [[  -e env.sh  ]]; then 
     source env.sh
     cat env.sh
@@ -60,21 +61,6 @@ autoload zmv
 export CURRENT_PROJECT_PATH=$HOME/.current-project
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ethanbrooks/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/ethanbrooks/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ethanbrooks/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/ethanbrooks/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 function wtf { 
   HYDRA_FULL_ERROR=1 python -m ipdb -c continue $@
 }
@@ -92,3 +78,19 @@ export PYTHONBREAKPOINT="ipdb.set_trace"
 # opam configuration
 test -r /Users/ethanbrooks/.opam/opam-init/init.zsh && . /Users/ethanbrooks/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+eval "$(direnv hook zsh)"
+eval "$(nodenv init -)"
+eval "$(rbenv init - zsh)"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

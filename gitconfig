@@ -19,3 +19,7 @@
   co = checkout
   cm = commit -am
   df = !git reset && git diff
+[mergetool]
+	keepBackup = false
+[init]
+	defaultBranch = main

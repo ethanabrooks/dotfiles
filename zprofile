@@ -4,7 +4,13 @@ $HOME/dotfiles/bin
 /usr/local/bin
 /usr/local/bin
 /usr/local/opt/findutils/libexec/gnubin
+"$(go env GOPATH)/bin"
 )
+
+LDFLAGS="-L/usr/local/opt/curl/lib"
+CPPFLAGS="-I/usr/local/opt/curl/include"
+PATH="/usr/local/opt/curl/bin:$PATH"
+PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"
 
 PATH="/Users/ethanbrooks/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL_MB_OPT="--install_base \"/Users/ethanbrooks/perl5\""; export PERL_MB_OPT;
